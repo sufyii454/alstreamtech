@@ -110,7 +110,7 @@ const megaTabs: { key: MegaTab; label: string }[] = [
   { key: "industries", label: "Industry Applications" },
 ];
 
-const nav = [
+const nav: { to: string; label: string; mega?: boolean }[] = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/why-us", label: "Why Us" },
@@ -120,7 +120,7 @@ const nav = [
   { to: "/industries", label: "Industries" },
   { to: "/process", label: "Process" },
   { to: "/blog", label: "Blog" },
-] as const;
+];
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
