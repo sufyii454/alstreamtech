@@ -22,9 +22,6 @@ function TechBadge({ label, delay }: { label: string; delay: number }) {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay }}
       whileHover={{ scale: 1.12, rotate: 2, y: -4 }}
-      animate={{ y: [0, -4, 0] }}
-      // @ts-expect-error framer types
-      transition_animate={{ duration: 4 + delay * 2, repeat: Infinity, ease: "easeInOut" }}
       className="glass-strong group cursor-default rounded-2xl border border-primary/25 px-4 py-2 text-sm font-semibold text-foreground/90 shadow-[0_4px_20px_rgba(21,171,230,0.15)] transition-all duration-300 hover:border-primary/70 hover:text-primary hover:shadow-[0_0_25px_rgba(21,171,230,0.55)]"
     >
       <span className="relative">{label}</span>
