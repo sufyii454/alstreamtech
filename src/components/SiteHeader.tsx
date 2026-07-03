@@ -36,7 +36,7 @@ const nav: Array<{ to: string; label: string; dropdown?: { to: string; label: st
     ],
   },
   { to: "/blog", label: "Blog" },
-  { to: "/contact", label: "Contact" },
+  { to: "/contact", label: "Contact Us" },
 ];
 
 export function SiteHeader() {
