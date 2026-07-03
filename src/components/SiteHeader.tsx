@@ -3,28 +3,42 @@ import { useEffect, useState } from "react";
 import { Phone, Mail, MapPin, Clock, Linkedin, Twitter, Github, Menu, X, ChevronDown } from "lucide-react";
 import logoAsset from "../assets/alstream-logo.jpeg.asset.json";
 
-const services = [
-  { slug: "ai-development", name: "AI Development" },
-  { slug: "custom-software", name: "Custom Software" },
-  { slug: "web-applications", name: "Web Applications" },
-  { slug: "mobile-apps", name: "Mobile Apps" },
-  { slug: "chatbots", name: "AI Chatbots" },
-  { slug: "automation", name: "Business Automation" },
-  { slug: "cloud-devops", name: "Cloud & DevOps" },
-  { slug: "data-analytics", name: "Data Analytics" },
-];
-
-const nav = [
+const nav: Array<{ to: string; label: string; dropdown?: { to: string; label: string }[] }> = [
   { to: "/", label: "Home" },
-  { to: "/about", label: "About Us" },
-  { to: "/why-us", label: "Why Choose Us" },
-  { to: "/services", label: "Services", dropdown: services.map((s) => ({ to: `/services#${s.slug}`, label: s.name })) },
+  {
+    to: "/about",
+    label: "About Us",
+    dropdown: [
+      { to: "/about", label: "About Us" },
+      { to: "/why-us", label: "Why Choose Us" },
+      { to: "/portfolio", label: "Portfolio" },
+      { to: "/testimonials", label: "Testimonials" },
+    ],
+  },
+  {
+    to: "/services",
+    label: "Our Services",
+    dropdown: [
+      { to: "/services#quick-overview", label: "Quick Overview" },
+      { to: "/services#key-benefits", label: "Key Benefits" },
+      { to: "/services#technologies", label: "Technologies" },
+      { to: "/services#industry-applications", label: "Industry Applications" },
+    ],
+  },
   { to: "/case-studies", label: "Case Studies" },
-  { to: "/ai-solutions", label: "AI Solutions" },
-  { to: "/industries", label: "Industries" },
-  { to: "/technologies", label: "Technologies" },
-  { to: "/process", label: "Process" },
+  {
+    to: "/ai-solutions",
+    label: "AI Solutions",
+    dropdown: [
+      { to: "/ai-solutions", label: "AI Solutions" },
+      { to: "/ai-solutions#showcase", label: "AI Solution Showcase" },
+      { to: "/industries", label: "Industries" },
+      { to: "/technologies", label: "Technologies" },
+      { to: "/process", label: "Process" },
+    ],
+  },
   { to: "/blog", label: "Blog" },
+  { to: "/contact", label: "Contact" },
 ];
 
 export function SiteHeader() {
