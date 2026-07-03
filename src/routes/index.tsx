@@ -2,13 +2,14 @@ import { motion } from "motion/react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight, Calendar, Sparkles, Brain, Bot, Zap, Cloud, Code2, Smartphone,
-  BarChart3, ShieldCheck, Rocket, Users, Award, CheckCircle2,
+  BarChart3, ShieldCheck, Rocket, Award,
 } from "lucide-react";
 import { ParticleNetwork } from "../components/ParticleNetwork";
 import { RotatingText } from "../components/RotatingText";
 import { CTASection } from "../components/CTASection";
 import { SectionHeading } from "../components/SectionHeading";
 import { HomeAboutSections } from "../components/HomeAboutSections";
+import { HomeTechJourney } from "../components/HomeTechJourney";
 
 export const Route = createFileRoute("/")({ component: Home });
 
