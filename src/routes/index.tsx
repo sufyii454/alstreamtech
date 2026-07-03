@@ -8,6 +8,7 @@ import { ParticleNetwork } from "../components/ParticleNetwork";
 import { RotatingText } from "../components/RotatingText";
 import { CTASection } from "../components/CTASection";
 import { SectionHeading } from "../components/SectionHeading";
+import { HomeAboutSections } from "../components/HomeAboutSections";
 
 export const Route = createFileRoute("/")({ component: Home });
 
