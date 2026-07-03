@@ -1,0 +1,136 @@
+import { Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import {
+  Phone, Mail, MapPin, Clock, Linkedin, Twitter, Github,
+  Menu, X, ChevronDown, Sparkles,
+} from "lucide-react";
+
+const services = [
+  { slug: "ai-development", name: "AI Development" },
+  { slug: "custom-software", name: "Custom Software" },
+  { slug: "web-applications", name: "Web Applications" },
+  { slug: "mobile-apps", name: "Mobile Apps" },
+  { slug: "chatbots", name: "AI Chatbots" },
+  { slug: "automation", name: "Business Automation" },
+  { slug: "cloud-devops", name: "Cloud & DevOps" },
+  { slug: "data-analytics", name: "Data Analytics" },
+];
+
+const nav = [
+  { to: "/", label: "Home" },
+  { to: "/about", label: "About" },
+  { to: "/why-us", label: "Why Us" },
+  { to: "/services", label: "Services", dropdown: services.map(s => ({ to: `/services#${s.slug}`, label: s.name })) },
+  { to: "/case-studies", label: "Case Studies" },
+  { to: "/ai-solutions", label: "AI Solutions" },
+  { to: "/industries", label: "Industries" },
+  { to: "/technologies", label: "Technologies" },
+  { to: "/process", label: "Process" },
+  { to: "/blog", label: "Blog" },
+];
+
+export function SiteHeader() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <header className="sticky top-0 z-50">
+      {/* Top icon bar */}
+      <div className="hidden border-b border-white/5 bg-background/80 backdrop-blur md:block">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 text-xs text-muted-foreground">
+          <div className="flex items-center gap-6">
+            <a href="tel:+15551234567" className="flex items-center gap-2 transition hover:text-primary">
+              <Phone className="h-3.5 w-3.5 text-primary" /> +1 (555) 123-4567
+            </a>
+            <a href="mailto:hello@aixis.dev" className="flex items-center gap-2 transition hover:text-primary">
+              <Mail className="h-3.5 w-3.5 text-primary" /> hello@aixis.dev
+            </a>
+            <span className="flex items-center gap-2">
+              <MapPin className="h-3.5 w-3.5 text-primary" /> San Francisco · London · Bengaluru
+            </span>
+            <span className="flex items-center gap-2">
+              <Clock className="h-3.5 w-3.5 text-primary" /> Mon–Fri · 9am – 7pm
+            </span>
+          </div>
+          <div className="flex items-center gap-4">
+            <a href="#" aria-label="LinkedIn" className="transition hover:text-primary"><Linkedin className="h-3.5 w-3.5" /></a>
+            <a href="#" aria-label="Twitter" className="transition hover:text-primary"><Twitter className="h-3.5 w-3.5" /></a>
+            <a href="#" aria-label="GitHub" className="transition hover:text-primary"><Github className="h-3.5 w-3.5" /></a>
+          </div>
+        </div>
+      </div>
+
+      {/* Main nav */}
+      <div className={`transition-all ${scrolled ? "bg-background/90 shadow-elegant" : "bg-background/60"} backdrop-blur-xl border-b border-white/5`}>
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+          <Link to="/" className="flex items-center gap-2">
+            <div className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-brand shadow-glow">
+              <Sparkles className="h-5 w-5 text-primary-foreground" />
+            </div>
+            <div className="leading-tight">
+              <div className="font-display text-lg font-bold tracking-tight">AIXIS</div>
+              <div className="text-[10px] uppercase tracking-widest text-muted-foreground">AI · Software</div>
+            </div>
+          </Link>
+
+          <nav className="hidden items-center gap-1 lg:flex">
+            {nav.map(item => (
+              <div key={item.to} className="group relative">
+                <Link
+                  to={item.to}
+                  className="flex items-center gap-1 rounded-md px-3 py-2 text-sm text-foreground/80 transition hover:bg-white/5 hover:text-primary"
+                  activeProps={{ className: "text-primary" }}
+                  activeOptions={{ exact: item.to === "/" }}
+                >
+                  {item.label}
+                  {item.dropdown && <ChevronDown className="h-3.5 w-3.5" />}
+                </Link>
+                {item.dropdown && (
+                  <div className="invisible absolute left-0 top-full mt-1 w-64 rounded-xl border border-white/10 bg-popover/95 p-2 opacity-0 shadow-elegant backdrop-blur-xl transition-all group-hover:visible group-hover:opacity-100">
+                    {item.dropdown.map(d => (
+                      <a key={d.to} href={d.to} className="block rounded-md px-3 py-2 text-sm text-foreground/80 transition hover:bg-primary/10 hover:text-primary">
+                        {d.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-3">
+            <Link
+              to="/contact"
+              className="hidden rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow transition hover:scale-105 md:inline-block"
+            >
+              Book a Consultation
+            </Link>
+            <button className="rounded-md p-2 lg:hidden" onClick={() => setOpen(v => !v)} aria-label="Menu">
+              {open ? <X /> : <Menu />}
+            </button>
+          </div>
+        </div>
+
+        {open && (
+          <div className="border-t border-white/5 bg-background/95 px-6 py-4 lg:hidden">
+            <nav className="flex flex-col gap-1">
+              {nav.map(item => (
+                <Link key={item.to} to={item.to} onClick={() => setOpen(false)} className="rounded-md px-3 py-2 text-sm hover:bg-white/5 hover:text-primary">
+                  {item.label}
+                </Link>
+              ))}
+              <Link to="/contact" onClick={() => setOpen(false)} className="mt-2 rounded-full bg-gradient-brand px-5 py-2.5 text-center text-sm font-semibold text-primary-foreground">
+                Book a Consultation
+              </Link>
+            </nav>
+          </div>
+        )}
+      </div>
+    </header>
+  );
+}
