@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Mail, Phone, MapPin, Send, CheckCircle2, MessageSquare, Calendar } from "lucide-react";
 import { PageHero } from "../components/PageHero";
-import { site } from "@/lib/site";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -30,10 +29,10 @@ function Contact() {
         <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
           <div className="space-y-6">
             {[
-              { icon: Mail, t: "Email", v: site.email },
-              { icon: Phone, t: "Phone", v: site.phone },
-              { icon: MapPin, t: "Office", v: `${site.address.line1}, ${site.address.line2}, ${site.address.city}, ${site.address.state} ${site.address.zip}` },
-              { icon: Calendar, t: "Availability", v: site.hours },
+              { icon: Mail, t: "Email", v: "hello@aixis.dev" },
+              { icon: Phone, t: "Phone", v: "+1 (555) 123-4567" },
+              { icon: MapPin, t: "Offices", v: "San Francisco · London · Bengaluru" },
+              { icon: Calendar, t: "Availability", v: "Mon–Fri · 9am – 7pm local" },
             ].map(({ icon: Icon, t, v }) => (
               <div key={t} className="glass rounded-2xl p-6">
                 <Icon className="mb-3 h-6 w-6 text-primary" />

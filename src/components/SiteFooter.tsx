@@ -1,7 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, Phone, MapPin, Linkedin, Twitter, Github, ArrowRight } from "lucide-react";
-import logoAsset from "@/assets/logo.jpeg.asset.json";
-import { site } from "@/lib/site";
+import { Sparkles, Mail, Phone, MapPin, Linkedin, Twitter, Github, ArrowRight } from "lucide-react";
 
 export function SiteFooter() {
   return (
@@ -10,9 +8,11 @@ export function SiteFooter() {
       <div className="relative mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-3">
-              <img src={logoAsset.url} alt={site.legal} className="h-11 w-auto rounded-md" />
-              <span className="font-display text-lg font-bold tracking-tight">AL STREAM TECH</span>
+            <Link to="/" className="flex items-center gap-2">
+              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-brand shadow-glow">
+                <Sparkles className="h-5 w-5 text-primary-foreground" />
+              </div>
+              <span className="font-display text-lg font-bold">AIXIS</span>
             </Link>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
               We design and build AI-powered software, intelligent automation, and custom digital
@@ -54,22 +54,9 @@ export function SiteFooter() {
           <div>
             <div className="mb-4 font-semibold text-foreground">Get in touch</div>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li className="flex items-start gap-2">
-                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <a href={`mailto:${site.email}`} className="hover:text-primary">{site.email}</a>
-              </li>
-              <li className="flex items-start gap-2">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <a href={`tel:${site.phoneHref}`} className="hover:text-primary">{site.phone}</a>
-              </li>
-              <li className="flex items-start gap-2">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <span>
-                  {site.address.line1},<br />
-                  {site.address.line2},<br />
-                  {site.address.city}, {site.address.state} {site.address.zip}
-                </span>
-              </li>
+              <li className="flex items-start gap-2"><Mail className="mt-0.5 h-4 w-4 text-primary" /> hello@aixis.dev</li>
+              <li className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4 text-primary" /> +1 (555) 123-4567</li>
+              <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 text-primary" /> San Francisco · London · Bengaluru</li>
             </ul>
             <Link to="/contact" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all">
               Start a project <ArrowRight className="h-4 w-4" />
@@ -78,7 +65,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
-          <div>© {new Date().getFullYear()} {site.legal} All rights reserved.</div>
+          <div>© {new Date().getFullYear()} AIXIS Technologies. All rights reserved.</div>
           <div className="flex gap-6">
             <a href="#" className="hover:text-primary">Privacy</a>
             <a href="#" className="hover:text-primary">Terms</a>
