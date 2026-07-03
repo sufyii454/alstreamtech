@@ -9,22 +9,32 @@ export function CTASection() {
         <div className="pointer-events-none absolute -bottom-32 -left-32 h-72 w-72 rounded-full bg-accent/30 blur-3xl" />
         <div className="relative grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:items-center">
           <div>
-            <div className="glass inline-flex rounded-full px-3 py-1 text-xs uppercase tracking-widest text-primary">Ready when you are</div>
+            <div className="glass inline-flex rounded-full px-3 py-1 text-xs uppercase tracking-widest text-primary">
+              Ready to contact
+            </div>
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight md:text-5xl">
-              Let's build the <span className="text-gradient">intelligent software</span><br /> your business deserves.
+              Ready to Build the <span className="text-gradient">Future with </span>
+              <br /> AI?
             </h2>
             <p className="mt-4 max-w-xl text-muted-foreground">
-              Book a free 30-minute strategy call. We'll map your goals, unpack the tech, and outline a
-              custom AI + software roadmap — no obligation.
+              Discuss your project with our experts and discover how intelligent software can transform your business.
             </p>
           </div>
           <div className="flex flex-col gap-3">
-            <Link to="/contact" className="group flex items-center justify-between rounded-2xl bg-gradient-brand px-6 py-5 font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.02]">
-              <span className="flex items-center gap-3"><Calendar className="h-5 w-5" /> Book a Free Consultation</span>
+            <Link
+              to="/contact"
+              className="group flex items-center justify-between rounded-2xl bg-gradient-brand px-6 py-5 font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.02]"
+            >
+              <span className="flex items-center gap-3">
+                <Calendar className="h-5 w-5" /> Book a Free Consultation
+              </span>
               <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
             </Link>
-            <Link to="/services" className="glass group flex items-center justify-between rounded-2xl px-6 py-5 font-semibold transition hover:bg-white/10">
-              <span>View Our Services</span>
+            <Link
+              to="/services"
+              className="glass group flex items-center justify-between rounded-2xl px-6 py-5 font-semibold transition hover:bg-white/10"
+            >
+              <span>Explore Our Services </span>
               <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
             </Link>
           </div>
