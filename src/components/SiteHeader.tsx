@@ -2,8 +2,9 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   Phone, Mail, MapPin, Clock, Linkedin, Twitter, Github,
-  Menu, X, ChevronDown, Sparkles,
+  Menu, X, ChevronDown,
 } from "lucide-react";
+import logoAsset from "../assets/alstream-logo.jpeg.asset.json";
 
 const services = [
   { slug: "ai-development", name: "AI Development" },
