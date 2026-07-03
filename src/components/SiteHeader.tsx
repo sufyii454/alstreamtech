@@ -9,7 +9,6 @@ const nav: Array<{ to: string; label: string; dropdown?: { to: string; label: st
     to: "/about",
     label: "About Us",
     dropdown: [
-      { to: "/about", label: "About Us" },
       { to: "/why-us", label: "Why Choose Us" },
       { to: "/portfolio", label: "Portfolio" },
       { to: "/testimonials", label: "Testimonials" },
@@ -30,7 +29,6 @@ const nav: Array<{ to: string; label: string; dropdown?: { to: string; label: st
     to: "/ai-solutions",
     label: "AI Solutions",
     dropdown: [
-      { to: "/ai-solutions", label: "AI Solutions" },
       { to: "/ai-solutions#showcase", label: "AI Solution Showcase" },
       { to: "/industries", label: "Industries" },
       { to: "/technologies", label: "Technologies" },
