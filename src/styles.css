@@ -57,7 +57,7 @@
   /* Brand #15ABE6 */
   --primary: #15abe6;
   --primary-foreground: #06121f;
-  --primary-glow: oklch(0.78 0.16 220);
+  --primary-glow: #4ec6f0;
 
   --secondary: oklch(0.28 0.05 275);
   --secondary-foreground: oklch(0.97 0.01 240);
@@ -65,24 +65,24 @@
   --muted: oklch(0.24 0.03 258);
   --muted-foreground: oklch(0.72 0.03 250);
 
-  --accent: oklch(0.55 0.22 295);
-  --accent-foreground: oklch(0.98 0.01 240);
+  --accent: #15abe6;
+  --accent-foreground: #06121f;
 
   --destructive: oklch(0.65 0.22 25);
   --destructive-foreground: oklch(0.98 0.01 240);
 
   --border: oklch(1 0 0 / 0.09);
   --input: oklch(1 0 0 / 0.12);
-  --ring: oklch(0.72 0.14 232);
+  --ring: #15abe6;
 
-  --gradient-hero: radial-gradient(ellipse at top left, oklch(0.28 0.12 260) 0%, transparent 55%),
-                   radial-gradient(ellipse at bottom right, oklch(0.28 0.18 290) 0%, transparent 55%),
-                   linear-gradient(135deg, oklch(0.14 0.04 255) 0%, oklch(0.12 0.03 265) 50%, oklch(0.15 0.05 275) 100%);
-  --gradient-brand: linear-gradient(135deg, oklch(0.72 0.14 232) 0%, oklch(0.62 0.2 285) 100%);
-  --gradient-text: linear-gradient(135deg, #15abe6 0%, #7c5cff 100%);
+  --gradient-hero: radial-gradient(ellipse at top left, rgba(21,171,230,0.25) 0%, transparent 55%),
+                   radial-gradient(ellipse at bottom right, rgba(21,171,230,0.18) 0%, transparent 55%),
+                   linear-gradient(135deg, oklch(0.14 0.04 255) 0%, oklch(0.12 0.03 265) 50%, oklch(0.15 0.05 260) 100%);
+  --gradient-brand: linear-gradient(135deg, #15abe6 0%, #0e7fb0 100%);
+  --gradient-text: linear-gradient(135deg, #15abe6 0%, #7bd4f5 100%);
   --gradient-card: linear-gradient(160deg, oklch(1 0 0 / 0.06) 0%, oklch(1 0 0 / 0.02) 100%);
 
-  --shadow-glow: 0 0 40px oklch(0.72 0.14 232 / 0.35);
+  --shadow-glow: 0 0 40px rgba(21,171,230,0.4);
   --shadow-elegant: 0 25px 60px -20px oklch(0.1 0.02 250 / 0.7);
 }
 
