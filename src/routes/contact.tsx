@@ -29,9 +29,9 @@ function Contact() {
         <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
           <div className="space-y-6">
             {[
-              { icon: Mail, t: "Email", v: "hello@aixis.dev" },
-              { icon: Phone, t: "Phone", v: "+1 (555) 123-4567" },
-              { icon: MapPin, t: "Offices", v: "San Francisco · London · Bengaluru" },
+              { icon: Mail, t: "Email", v: "info@alstreamtech.com" },
+              { icon: Phone, t: "Phone", v: "+1 (732) 588-7501" },
+              { icon: MapPin, t: "Office", v: "409 Joyce Kilmer Avenue, Suite 315, New Brunswick, NJ 08901" },
               { icon: Calendar, t: "Availability", v: "Mon–Fri · 9am – 7pm local" },
             ].map(({ icon: Icon, t, v }) => (
               <div key={t} className="glass rounded-2xl p-6">
