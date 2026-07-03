@@ -129,7 +129,7 @@ function Home() {
       {/* Services grid */}
       <section className="mx-auto max-w-7xl px-6 py-16">
         <SectionHeading
-          eyebrow="What we do"
+          eyebrow="OUR SERVICES"
           title={<>Full-stack expertise, <span className="text-gradient">AI at the core</span></>}
           description="Eight core services covering everything from ideation to deployment, and beyond."
         />
