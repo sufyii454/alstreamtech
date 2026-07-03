@@ -52,9 +52,9 @@ export function SiteFooter() {
           <div>
             <div className="mb-4 font-semibold text-foreground">Get in touch</div>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li className="flex items-start gap-2"><Mail className="mt-0.5 h-4 w-4 text-primary" /> hello@aixis.dev</li>
-              <li className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4 text-primary" /> +1 (555) 123-4567</li>
-              <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 text-primary" /> San Francisco · London · Bengaluru</li>
+              <li className="flex items-start gap-2"><Mail className="mt-0.5 h-4 w-4 text-primary" /> info@alstreamtech.com</li>
+              <li className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4 text-primary" /> +1 (732) 588-7501</li>
+              <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 text-primary" /> 409 Joyce Kilmer Avenue, Suite 315, New Brunswick, NJ 08901</li>
             </ul>
             <Link to="/contact" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all">
               Start a project <ArrowRight className="h-4 w-4" />
