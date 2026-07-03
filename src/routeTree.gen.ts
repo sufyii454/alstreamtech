@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhyUsRouteImport } from './routes/why-us'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as TechnologiesRouteImport } from './routes/technologies'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ProcessRouteImport } from './routes/process'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
@@ -36,6 +37,11 @@ const TestimonialsRoute = TestimonialsRouteImport.update({
 const TechnologiesRoute = TechnologiesRouteImport.update({
   id: '/technologies',
   path: '/technologies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -100,6 +106,7 @@ export interface FileRoutesByFullPath {
   '/portfolio': typeof PortfolioRoute
   '/process': typeof ProcessRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/technologies': typeof TechnologiesRoute
   '/testimonials': typeof TestimonialsRoute
   '/why-us': typeof WhyUsRoute
@@ -115,6 +122,7 @@ export interface FileRoutesByTo {
   '/portfolio': typeof PortfolioRoute
   '/process': typeof ProcessRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/technologies': typeof TechnologiesRoute
   '/testimonials': typeof TestimonialsRoute
   '/why-us': typeof WhyUsRoute
@@ -131,6 +139,7 @@ export interface FileRoutesById {
   '/portfolio': typeof PortfolioRoute
   '/process': typeof ProcessRoute
   '/services': typeof ServicesRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/technologies': typeof TechnologiesRoute
   '/testimonials': typeof TestimonialsRoute
   '/why-us': typeof WhyUsRoute
@@ -148,6 +157,7 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/process'
     | '/services'
+    | '/sitemap.xml'
     | '/technologies'
     | '/testimonials'
     | '/why-us'
@@ -163,6 +173,7 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/process'
     | '/services'
+    | '/sitemap.xml'
     | '/technologies'
     | '/testimonials'
     | '/why-us'
@@ -178,6 +189,7 @@ export interface FileRouteTypes {
     | '/portfolio'
     | '/process'
     | '/services'
+    | '/sitemap.xml'
     | '/technologies'
     | '/testimonials'
     | '/why-us'
@@ -194,6 +206,7 @@ export interface RootRouteChildren {
   PortfolioRoute: typeof PortfolioRoute
   ProcessRoute: typeof ProcessRoute
   ServicesRoute: typeof ServicesRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TechnologiesRoute: typeof TechnologiesRoute
   TestimonialsRoute: typeof TestimonialsRoute
   WhyUsRoute: typeof WhyUsRoute
@@ -220,6 +233,13 @@ declare module '@tanstack/react-router' {
       path: '/technologies'
       fullPath: '/technologies'
       preLoaderRoute: typeof TechnologiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -306,6 +326,7 @@ const rootRouteChildren: RootRouteChildren = {
   PortfolioRoute: PortfolioRoute,
   ProcessRoute: ProcessRoute,
   ServicesRoute: ServicesRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TechnologiesRoute: TechnologiesRoute,
   TestimonialsRoute: TestimonialsRoute,
   WhyUsRoute: WhyUsRoute,
