@@ -1,9 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import {
-  Phone, Mail, MapPin, Clock, Linkedin, Twitter, Github,
-  Menu, X, ChevronDown,
-} from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Linkedin, Twitter, Github, Menu, X, ChevronDown } from "lucide-react";
 import logoAsset from "../assets/alstream-logo.jpeg.asset.json";
 
 const services = [
@@ -19,9 +16,9 @@ const services = [
 
 const nav = [
   { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/why-us", label: "Why Us" },
-  { to: "/services", label: "Services", dropdown: services.map(s => ({ to: `/services#${s.slug}`, label: s.name })) },
+  { to: "/about", label: "About Us" },
+  { to: "/why-us", label: "Why Choose Us" },
+  { to: "/services", label: "Services", dropdown: services.map((s) => ({ to: `/services#${s.slug}`, label: s.name })) },
   { to: "/case-studies", label: "Case Studies" },
   { to: "/ai-solutions", label: "AI Solutions" },
   { to: "/industries", label: "Industries" },
@@ -59,15 +56,23 @@ export function SiteHeader() {
             </span>
           </div>
           <div className="flex items-center gap-4">
-            <a href="#" aria-label="LinkedIn" className="transition hover:text-primary"><Linkedin className="h-3.5 w-3.5" /></a>
-            <a href="#" aria-label="Twitter" className="transition hover:text-primary"><Twitter className="h-3.5 w-3.5" /></a>
-            <a href="#" aria-label="GitHub" className="transition hover:text-primary"><Github className="h-3.5 w-3.5" /></a>
+            <a href="#" aria-label="LinkedIn" className="transition hover:text-primary">
+              <Linkedin className="h-3.5 w-3.5" />
+            </a>
+            <a href="#" aria-label="Twitter" className="transition hover:text-primary">
+              <Twitter className="h-3.5 w-3.5" />
+            </a>
+            <a href="#" aria-label="GitHub" className="transition hover:text-primary">
+              <Github className="h-3.5 w-3.5" />
+            </a>
           </div>
         </div>
       </div>
 
       {/* Main nav */}
-      <div className={`transition-all ${scrolled ? "bg-background/90 shadow-elegant" : "bg-background/60"} backdrop-blur-xl border-b border-white/5`}>
+      <div
+        className={`transition-all ${scrolled ? "bg-background/90 shadow-elegant" : "bg-background/60"} backdrop-blur-xl border-b border-white/5`}
+      >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <Link to="/" className="flex items-center gap-2">
             <div className="relative flex h-10 items-center justify-center overflow-hidden rounded-lg bg-[#0a1a3f] px-2 shadow-glow">
@@ -79,7 +84,7 @@ export function SiteHeader() {
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex">
-            {nav.map(item => (
+            {nav.map((item) => (
               <div key={item.to} className="group relative">
                 <Link
                   to={item.to}
@@ -92,8 +97,12 @@ export function SiteHeader() {
                 </Link>
                 {item.dropdown && (
                   <div className="invisible absolute left-0 top-full mt-1 w-64 rounded-xl border border-white/10 bg-popover/95 p-2 opacity-0 shadow-elegant backdrop-blur-xl transition-all group-hover:visible group-hover:opacity-100">
-                    {item.dropdown.map(d => (
-                      <a key={d.to} href={d.to} className="block rounded-md px-3 py-2 text-sm text-foreground/80 transition hover:bg-primary/10 hover:text-primary">
+                    {item.dropdown.map((d) => (
+                      <a
+                        key={d.to}
+                        href={d.to}
+                        className="block rounded-md px-3 py-2 text-sm text-foreground/80 transition hover:bg-primary/10 hover:text-primary"
+                      >
                         {d.label}
                       </a>
                     ))}
@@ -108,9 +117,9 @@ export function SiteHeader() {
               to="/contact"
               className="hidden rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow transition hover:scale-105 md:inline-block"
             >
-              Book a Consultation
+              Book a Call
             </Link>
-            <button className="rounded-md p-2 lg:hidden" onClick={() => setOpen(v => !v)} aria-label="Menu">
+            <button className="rounded-md p-2 lg:hidden" onClick={() => setOpen((v) => !v)} aria-label="Menu">
               {open ? <X /> : <Menu />}
             </button>
           </div>
@@ -119,12 +128,21 @@ export function SiteHeader() {
         {open && (
           <div className="border-t border-white/5 bg-background/95 px-6 py-4 lg:hidden">
             <nav className="flex flex-col gap-1">
-              {nav.map(item => (
-                <Link key={item.to} to={item.to} onClick={() => setOpen(false)} className="rounded-md px-3 py-2 text-sm hover:bg-white/5 hover:text-primary">
+              {nav.map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  onClick={() => setOpen(false)}
+                  className="rounded-md px-3 py-2 text-sm hover:bg-white/5 hover:text-primary"
+                >
                   {item.label}
                 </Link>
               ))}
-              <Link to="/contact" onClick={() => setOpen(false)} className="mt-2 rounded-full bg-gradient-brand px-5 py-2.5 text-center text-sm font-semibold text-primary-foreground">
+              <Link
+                to="/contact"
+                onClick={() => setOpen(false)}
+                className="mt-2 rounded-full bg-gradient-brand px-5 py-2.5 text-center text-sm font-semibold text-primary-foreground"
+              >
                 Book a Consultation
               </Link>
             </nav>
