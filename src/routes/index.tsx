@@ -121,6 +121,8 @@ function Home() {
         </div>
       </section>
 
+      <HomeAboutSections />
+
       {/* Services grid */}
       <section className="mx-auto max-w-7xl px-6 py-16">
         <SectionHeading
