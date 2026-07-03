@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Sparkles, Mail, Phone, MapPin, Linkedin, Twitter, Github, ArrowRight } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Twitter, Github, ArrowRight } from "lucide-react";
+import logoAsset from "../assets/alstream-logo.jpeg.asset.json";
 
 export function SiteFooter() {
   return (
