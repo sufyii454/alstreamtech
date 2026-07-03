@@ -124,6 +124,8 @@ function Home() {
 
       <HomeAboutSections />
 
+      <HomeTechJourney />
+
       {/* Services grid */}
       <section className="mx-auto max-w-7xl px-6 py-16">
         <SectionHeading
@@ -152,46 +154,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Why us teaser */}
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-          <div>
-            <SectionHeading center={false} eyebrow="Why choose us" title={<>The strategic partner for <span className="text-gradient">AI transformation</span></>} description="We combine deep engineering with AI-first thinking to deliver measurable outcomes — not just deliverables." />
-            <ul className="space-y-3">
-              {[
-                "AI-first product strategy across every engagement",
-                "End-to-end teams: design, engineering, ML, DevOps",
-                "Enterprise-grade security and scalability by default",
-                "Long-term support beyond launch",
-              ].map(f => (
-                <li key={f} className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-            <Link to="/why-us" className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all">
-              See why teams choose AIXIS <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-          <div className="glass-strong rounded-3xl p-8">
-            <div className="grid gap-4 sm:grid-cols-2">
-              {[
-                { icon: Users, k: "Senior team", v: "10+ years avg" },
-                { icon: Brain, k: "AI models", v: "GPT, Claude, Llama, custom" },
-                { icon: ShieldCheck, k: "Security", v: "SOC 2 practices" },
-                { icon: Rocket, k: "Delivery", v: "Agile, 2-week sprints" },
-              ].map(({ icon: Icon, k, v }) => (
-                <div key={k} className="glass rounded-2xl p-5">
-                  <Icon className="mb-3 h-6 w-6 text-primary" />
-                  <div className="text-xs uppercase tracking-widest text-muted-foreground">{k}</div>
-                  <div className="mt-1 font-semibold">{v}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       <CTASection />
     </>
