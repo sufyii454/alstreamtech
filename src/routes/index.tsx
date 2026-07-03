@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight, Calendar, Sparkles, Brain, Bot, Zap, Cloud, Code2, Smartphone,
@@ -88,7 +89,7 @@ function Home() {
 
           {/* Right visual */}
           <div className="relative hidden lg:block">
-            <HeroVisual />
+            <AISphere />
           </div>
         </div>
 
@@ -193,31 +194,82 @@ function Home() {
   );
 }
 
-function HeroVisual() {
+function AISphere() {
   return (
-    <div className="relative aspect-square w-full max-w-xl">
-      {/* Orbits */}
-      <div className="absolute inset-0 animate-[spin_40s_linear_infinite] rounded-full border border-white/10" />
-      <div className="absolute inset-6 animate-[spin_25s_linear_infinite_reverse] rounded-full border border-primary/20" />
-      <div className="absolute inset-12 animate-[spin_18s_linear_infinite] rounded-full border border-accent/20" />
-      {/* Core sphere */}
-      <div className="absolute inset-1/4 animate-pulse-glow rounded-full bg-gradient-brand blur-2xl opacity-70" />
-      <div className="glass-strong absolute inset-1/3 flex items-center justify-center rounded-full">
-        <Brain className="h-16 w-16 text-primary drop-shadow-[0_0_20px_rgba(21,171,230,0.8)]" />
-      </div>
-      {/* Floating chips */}
-      {[
-        { t: "GPT-4", x: "10%", y: "8%" },
-        { t: "Claude", x: "78%", y: "12%" },
-        { t: "TensorFlow", x: "4%", y: "70%" },
-        { t: "LangChain", x: "82%", y: "72%" },
-        { t: "Kubernetes", x: "48%", y: "0%" },
-        { t: "AWS", x: "50%", y: "94%" },
-      ].map((c, i) => (
-        <div key={c.t} className="glass animate-float-slow absolute rounded-xl px-3 py-1.5 text-xs font-semibold text-primary" style={{ left: c.x, top: c.y, animationDelay: `${i * 0.4}s` }}>
-          {c.t}
-        </div>
+    <div className="relative aspect-square w-full max-w-[520px] mx-auto">
+      {/* Outer glow */}
+      <div
+        className="absolute inset-0 rounded-full blur-3xl opacity-60"
+        style={{
+          background:
+            "radial-gradient(circle, oklch(0.7 0.22 295 / 0.7), oklch(0.78 0.18 200 / 0.3) 50%, transparent 70%)",
+        }}
+      />
+      {/* Rotating rings */}
+      {[0, 1, 2].map((i) => (
+        <motion.div
+          key={i}
+          className="absolute inset-0 rounded-full border"
+          style={{
+            borderColor: i === 0 ? "oklch(0.78 0.18 200 / 0.4)" : i === 1 ? "oklch(0.7 0.22 295 / 0.35)" : "oklch(0.7 0.27 330 / 0.3)",
+            transform: `scale(${1 - i * 0.13})`,
+          }}
+          animate={{ rotate: i % 2 === 0 ? 360 : -360 }}
+          transition={{ duration: 20 + i * 10, repeat: Infinity, ease: "linear" }}
+        >
+          <div
+            className="absolute w-2 h-2 rounded-full"
+            style={{
+              background: i === 0 ? "oklch(0.82 0.16 200)" : i === 1 ? "oklch(0.7 0.22 295)" : "oklch(0.78 0.25 330)",
+              boxShadow: "0 0 12px currentColor",
+              top: "-4px",
+              left: "50%",
+            }}
+          />
+        </motion.div>
       ))}
+      {/* Core sphere */}
+      <motion.div
+        className="absolute inset-[18%] rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle at 35% 30%, oklch(0.9 0.1 200), oklch(0.55 0.25 295) 45%, oklch(0.25 0.15 285) 75%, oklch(0.15 0.08 275))",
+          boxShadow: "0 0 80px oklch(0.7 0.22 295 / 0.6), inset 0 0 60px oklch(0.4 0.2 250 / 0.5)",
+        }}
+        animate={{ scale: [1, 1.04, 1] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      >
+        {/* Inner grid lines simulate neural mesh */}
+        <div
+          className="absolute inset-0 rounded-full opacity-30 mix-blend-screen"
+          style={{
+            background:
+              "repeating-linear-gradient(0deg, transparent 0 14px, oklch(0.9 0.1 200 / 0.3) 14px 15px), repeating-linear-gradient(90deg, transparent 0 14px, oklch(0.9 0.1 200 / 0.3) 14px 15px)",
+          }}
+        />
+      </motion.div>
+      {/* Floating tech chips */}
+      {[
+        { label: "GPT", angle: 20, r: 46 },
+        { label: "ML", angle: 120, r: 50 },
+        { label: "{ }", angle: 210, r: 45 },
+        { label: "AI", angle: 310, r: 48 },
+      ].map((c, i) => {
+        const rad = (c.angle * Math.PI) / 180;
+        const x = 50 + Math.cos(rad) * c.r;
+        const y = 50 + Math.sin(rad) * c.r;
+        return (
+          <motion.div
+            key={c.label}
+            className="absolute glass-strong rounded-xl px-3 py-1.5 text-xs font-mono text-accent"
+            style={{ left: `${x}%`, top: `${y}%`, transform: "translate(-50%, -50%)" }}
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
+          >
+            {c.label}
+          </motion.div>
+        );
+      })}
     </div>
   );
 }
