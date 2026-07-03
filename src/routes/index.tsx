@@ -100,7 +100,7 @@ function Home() {
             <div className="flex w-max animate-marquee gap-16 px-6 opacity-70">
               {[...Array(2)].flatMap((_, i) =>
                 ["OpenAI", "Anthropic", "AWS", "Google Cloud", "Microsoft Azure", "NVIDIA", "Databricks", "Snowflake", "Vercel", "Stripe"].map(n => (
-                  <span key={n + i} className="font-display text-lg font-semibold text-foreground/50">{n}</span>
+                <span key={n + i} className="font-display text-lg font-semibold text-foreground/50 transition-all duration-300 hover:text-primary hover:text-foreground hover:drop-shadow-[0_0_10px_rgba(21,171,230,0.85)] cursor-default">{n}</span>
                 ))
               )}
             </div>
