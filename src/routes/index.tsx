@@ -89,7 +89,7 @@ function Home() {
 
           {/* Right visual */}
           <div className="relative hidden lg:block">
-            <HeroVisual />
+            <AISphere />
           </div>
         </div>
 
