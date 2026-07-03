@@ -63,7 +63,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-white/10 pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
-          <div>© {new Date().getFullYear()} AIXIS Technologies. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} ALStream Tech Inc. All rights reserved.</div>
           <div className="flex gap-6">
             <a href="#" className="hover:text-primary">Privacy</a>
             <a href="#" className="hover:text-primary">Terms</a>
