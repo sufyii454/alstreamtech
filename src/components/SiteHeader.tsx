@@ -45,14 +45,14 @@ export function SiteHeader() {
       <div className="hidden border-b border-white/5 bg-background/80 backdrop-blur md:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 text-xs text-muted-foreground">
           <div className="flex items-center gap-6">
-            <a href="tel:+15551234567" className="flex items-center gap-2 transition hover:text-primary">
-              <Phone className="h-3.5 w-3.5 text-primary" /> +1 (555) 123-4567
+            <a href="tel:+17325887501" className="flex items-center gap-2 transition hover:text-primary">
+              <Phone className="h-3.5 w-3.5 text-primary" /> +1 (732) 588-7501
             </a>
-            <a href="mailto:hello@aixis.dev" className="flex items-center gap-2 transition hover:text-primary">
-              <Mail className="h-3.5 w-3.5 text-primary" /> hello@aixis.dev
+            <a href="mailto:info@alstreamtech.com" className="flex items-center gap-2 transition hover:text-primary">
+              <Mail className="h-3.5 w-3.5 text-primary" /> info@alstreamtech.com
             </a>
-            <span className="flex items-center gap-2">
-              <MapPin className="h-3.5 w-3.5 text-primary" /> San Francisco · London · Bengaluru
+            <span className="hidden items-center gap-2 xl:flex">
+              <MapPin className="h-3.5 w-3.5 text-primary" /> 409 Joyce Kilmer Ave, Suite 315, New Brunswick, NJ 08901
             </span>
             <span className="flex items-center gap-2">
               <Clock className="h-3.5 w-3.5 text-primary" /> Mon–Fri · 9am – 7pm
