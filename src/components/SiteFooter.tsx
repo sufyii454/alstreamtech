@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Github, ArrowRight } from "lucide-react";
-import logoAsset from "../assets/alstream-logo.jpeg.asset.json";
+import logoAsset from "../assets/alstream-logo.png.asset.json";
 
 export function SiteFooter() {
   return (
@@ -9,8 +9,8 @@ export function SiteFooter() {
       <div className="relative mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <Link to="/" className="inline-flex items-center gap-2 rounded-lg bg-[#0a1a3f] px-3 py-2 shadow-glow">
-              <img src={logoAsset.url} alt="ALStream Tech" className="h-8 w-auto" />
+            <Link to="/" className="inline-flex items-center gap-2">
+              <img src={logoAsset.url} alt="ALStream Tech" className="h-9 w-auto" />
             </Link>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
               We design and build AI-powered software, intelligent automation, and custom digital platforms that help

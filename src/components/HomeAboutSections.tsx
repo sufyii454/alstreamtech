@@ -228,7 +228,7 @@ function Mission() {
           <div className="glass mx-auto inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs uppercase tracking-widest text-primary">
             <Target className="h-3.5 w-3.5" /> Our Mission
           </div>
-          <h2 className="relative mt-6 font-display text-3xl font-bold leading-tight md:text-5xl">
+          <h2 className="relative mt-6 font-display text-2xl font-bold leading-tight md:text-4xl">
             "Our mission is to empower businesses through{" "}
             <span className="text-gradient">intelligent software, AI innovation,</span> and automation
             solutions that create measurable business impact."
