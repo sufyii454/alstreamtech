@@ -455,65 +455,108 @@ function IndustriesSlider() {
   }, [paused]);
 
   return (
-    <section className="relative overflow-hidden py-24 md:py-28">
-      <div className="pointer-events-none absolute inset-0 ai-grid opacity-[0.06]" />
-      <div className="relative mx-auto max-w-7xl px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-10 flex flex-wrap items-end justify-between gap-6"
+    <section className="relative overflow-hidden py-20 md:py-24">
+      <div className="mx-auto max-w-7xl px-6">
+        <div
+          className="relative overflow-hidden rounded-3xl border border-slate-200/60 px-4 py-14 md:px-10 md:py-16"
+          style={{
+            background:
+              "linear-gradient(180deg, #f6f9fc 0%, #eef4f9 100%)",
+          }}
         >
-          <div className="max-w-2xl">
-            <div className="glass inline-flex rounded-full px-4 py-1.5 text-xs uppercase tracking-widest text-primary">
+          <div className="pointer-events-none absolute inset-0 opacity-40"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle, rgba(21,171,230,0.18) 1px, transparent 1px)",
+              backgroundSize: "22px 22px",
+            }}
+          />
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative mx-auto mb-10 max-w-2xl text-center"
+          >
+            <div className="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.35em]"
+              style={{ color: "#15ABE6" }}>
+              <span className="h-px w-8" style={{ background: "#15ABE6" }} />
+              <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#15ABE6" }} />
               Industries
+              <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#15ABE6" }} />
+              <span className="h-px w-8" style={{ background: "#15ABE6" }} />
             </div>
-            <h2 className="mt-4 font-display text-3xl font-bold md:text-5xl">
-              Industries <span className="text-gradient">we impact</span>
+            <h2 className="mt-4 font-display text-3xl font-bold text-slate-900 md:text-5xl">
+              Industries We Impact
             </h2>
-            <p className="mt-3 text-muted-foreground md:text-lg">
-              Tailored AI and software solutions across every industry we serve.
+            <p className="mt-3 text-slate-500 md:text-lg">
+              Delivering intelligent solutions across a wide range of industries.
             </p>
-          </div>
-          <div className="flex gap-2">
-            <button aria-label="Previous" onClick={() => scrollBy(-1)} className="glass grid h-11 w-11 place-items-center rounded-full transition hover:border-primary/50 hover:text-primary">
+          </motion.div>
+
+          <div className="relative">
+            {/* arrows */}
+            <button
+              aria-label="Previous"
+              onClick={() => scrollBy(-1)}
+              className="absolute -left-2 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white text-slate-600 shadow-lg ring-1 ring-slate-200 transition hover:text-[#15ABE6] hover:ring-[#15ABE6]/40 md:-left-4"
+            >
               <ArrowLeft className="h-4 w-4" />
             </button>
-            <button aria-label="Next" onClick={() => scrollBy(1)} className="glass grid h-11 w-11 place-items-center rounded-full transition hover:border-primary/50 hover:text-primary">
+            <button
+              aria-label="Next"
+              onClick={() => scrollBy(1)}
+              className="absolute -right-2 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white text-slate-600 shadow-lg ring-1 ring-slate-200 transition hover:text-[#15ABE6] hover:ring-[#15ABE6]/40 md:-right-4"
+            >
               <ArrowRight className="h-4 w-4" />
             </button>
-          </div>
-        </motion.div>
 
-        <div
-          ref={trackRef}
-          onMouseEnter={() => setPaused(true)}
-          onMouseLeave={() => setPaused(false)}
-          className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        >
-          {industries.map(({ icon: Icon, title, desc }) => (
-            <motion.div
-              key={title}
-              whileHover={{ y: -8 }}
-              className="glass group relative min-w-[260px] max-w-[280px] shrink-0 snap-start overflow-hidden rounded-2xl p-6 transition hover:border-primary/50 hover:shadow-glow sm:min-w-[300px]"
+            <div
+              ref={trackRef}
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+              className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
             >
-              <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-primary/10 opacity-0 blur-2xl transition group-hover:opacity-100" />
-              <div className="relative mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15 text-primary ring-1 ring-primary/30 transition group-hover:bg-gradient-brand group-hover:text-primary-foreground">
-                <Icon className="h-6 w-6" />
-              </div>
-              <div className="relative font-display text-lg font-semibold">{title}</div>
-              <p className="relative mt-2 text-sm text-muted-foreground">{desc}</p>
-              <div className="relative mt-4 flex items-center gap-1 text-xs font-semibold text-primary opacity-0 transition group-hover:opacity-100">
-                Explore <ArrowRight className="h-3 w-3" />
-              </div>
-            </motion.div>
-          ))}
+              {industries.map(({ icon: Icon, title, desc }) => (
+                <motion.div
+                  key={title}
+                  whileHover={{ y: -6 }}
+                  className="group relative flex min-w-[220px] max-w-[240px] shrink-0 snap-start flex-col items-center rounded-2xl border border-slate-200/70 bg-white p-6 text-center shadow-sm transition hover:border-[#15ABE6]/60 hover:shadow-[0_20px_40px_-15px_rgba(21,171,230,0.4)] sm:min-w-[240px]"
+                >
+                  <div
+                    className="mb-4 flex h-14 w-14 items-center justify-center rounded-full transition group-hover:scale-110"
+                    style={{
+                      background: "rgba(21,171,230,0.12)",
+                      color: "#15ABE6",
+                    }}
+                  >
+                    <Icon className="h-7 w-7" />
+                  </div>
+                  <div className="font-display text-base font-bold text-slate-900">{title}</div>
+                  <div className="mx-auto mt-2 h-0.5 w-8 rounded-full" style={{ background: "#15ABE6" }} />
+                  <p className="mt-4 text-sm leading-relaxed text-slate-500">{desc}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Dots */}
+            <div className="mt-8 flex justify-center gap-2">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <span
+                  key={i}
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{ background: i === 2 ? "#15ABE6" : "rgba(21,171,230,0.25)" }}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
 
 /* ---------------- Export composed sections ---------------- */
 
