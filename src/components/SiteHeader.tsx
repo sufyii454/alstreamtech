@@ -87,8 +87,8 @@ export function SiteHeader() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <Link to="/" className="flex items-center gap-2">
-            <div className="relative flex h-10 items-center justify-center overflow-hidden rounded-lg bg-[#0a1a3f] px-2 shadow-glow">
-              <img src={logoAsset.url} alt="ALStream Tech" className="h-8 w-auto" />
+            <div className="relative flex h-10 items-center justify-center">
+              <img src={logoAsset.url} alt="ALStream Tech" className="h-9 w-auto" />
             </div>
             <div className="leading-tight sr-only">
               <div className="font-display text-lg font-bold tracking-tight">ALStream Tech</div>
