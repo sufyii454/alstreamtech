@@ -221,8 +221,9 @@ function Blog() {
               key={p.title}
               className="glass group relative flex flex-col overflow-hidden rounded-2xl p-6 transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow"
             >
-              <div className="mb-4 aspect-video overflow-hidden rounded-xl">
-                <CategoryVisual label={p.category} />
+              <div className="relative mb-4 aspect-video overflow-hidden rounded-xl">
+                <img src={p.image} alt={p.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+                <div className="absolute left-3 top-3 glass rounded-full px-3 py-1 text-xs font-semibold text-primary">{p.category}</div>
               </div>
               <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
                 <span className="flex items-center gap-1"><User className="h-3 w-3" /> {p.author}</span>
@@ -233,9 +234,6 @@ function Blog() {
                 {p.title}
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">{p.summary}</p>
-              <Link to="/blog" className="mt-auto pt-4 text-sm font-semibold text-primary flex items-center gap-1">
-                Read article <ArrowRight className="h-3 w-3 transition group-hover:translate-x-1" />
-              </Link>
             </article>
           ))}
         </div>
