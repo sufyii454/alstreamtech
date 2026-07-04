@@ -120,16 +120,38 @@ function Contact() {
     }
     setStatus("loading");
     try {
-      // Simulated submission — wire up to a backend when available.
-      await new Promise((r) => setTimeout(r, 900));
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "8d4a68ab-4716-4d75-9a9b-e07f8be1467c",
+          subject: `New consultation request from ${form.name}`,
+          from_name: "AIXIS Website",
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          company: form.company,
+          service: form.service,
+          budget: form.budget,
+          message: form.message,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.message || "Submission failed");
       setStatus("success");
       setForm(INITIAL);
       toast.success("Thanks — we'll be in touch within one business day.");
-    } catch {
+    } catch (err) {
       setStatus("error");
-      toast.error("Something went wrong. Please try again.");
+      toast.error(
+        err instanceof Error ? err.message : "Something went wrong. Please try again.",
+      );
     }
   };
+
 
   return (
     <>
