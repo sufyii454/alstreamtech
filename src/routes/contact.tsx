@@ -168,7 +168,7 @@ function Contact() {
       >
         <div className="mt-8 flex flex-wrap items-center gap-4 animate-fade-up">
           <a
-            href="#contact-form"
+            href="#contact-section"
             className="group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.03]"
             style={{ background: `linear-gradient(135deg, ${BRAND}, #7C5CFF)` }}
           >
@@ -188,70 +188,9 @@ function Contact() {
         </div>
       </PageHero>
 
-      {/* Contact Info Cards */}
-      <section className="relative mx-auto max-w-7xl px-6 py-20">
-        <div className="mb-12 text-center">
-          <div
-            className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs uppercase tracking-widest"
-            style={{ color: BRAND }}
-          >
-            <span className="h-1.5 w-1.5 rounded-full" style={{ background: BRAND }} />
-            Get in touch
-          </div>
-          <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">
-            Reach us through your favorite channel
-          </h2>
-        </div>
-
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-          <InfoCard
-            icon={Mail}
-            title="Email"
-            value={EMAIL}
-            href={`mailto:${EMAIL}`}
-            delay={0}
-          />
-          <InfoCard
-            icon={Phone}
-            title="Phone"
-            value={PHONE_DISPLAY}
-            href={`tel:${PHONE_TEL}`}
-            delay={0.05}
-          />
-          <InfoCard
-            icon={MessageCircle}
-            title="WhatsApp"
-            value="Message us instantly"
-            href={`https://wa.me/${WHATSAPP_NUMBER}`}
-            external
-            delay={0.1}
-          />
-          <InfoCard
-            icon={MapPin}
-            title="Location"
-            value={ADDRESS}
-            href={`https://maps.google.com/?q=${encodeURIComponent(ADDRESS)}`}
-            external
-            delay={0.15}
-          />
-          <InfoCard
-            icon={Clock}
-            title="Working Hours"
-            value={
-              <>
-                Monday – Friday
-                <br />
-                9 AM – 6 PM
-              </>
-            }
-            delay={0.2}
-          />
-        </div>
-      </section>
-
-      {/* Contact Form */}
+      {/* Two-Column Contact Section */}
       <section
-        id="contact-form"
+        id="contact-section"
         className="relative overflow-hidden border-t border-white/5 py-24"
       >
         <div className="absolute inset-0 ai-grid opacity-10" />
@@ -260,167 +199,231 @@ function Contact() {
           style={{ background: BRAND }}
         />
 
-        <div className="relative mx-auto max-w-5xl px-6">
-          <div className="mb-12 text-center">
-            <div
-              className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs uppercase tracking-widest"
-              style={{ color: BRAND }}
+        <div className="relative mx-auto max-w-7xl px-6">
+          <div className="grid gap-12 lg:grid-cols-[2fr_3fr] lg:gap-16">
+            {/* Left: Get in Touch */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <span className="h-1.5 w-1.5 rounded-full" style={{ background: BRAND }} />
-              Project Inquiry
-            </div>
-            <h2 className="mt-4 font-display text-3xl font-bold md:text-5xl">
-              Tell us about your project
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground">
-              Share a few details and we'll come back with next steps, a rough
-              scope, and a realistic timeline — usually within one business day.
-            </p>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5 }}
-            className="glass-strong relative rounded-3xl p-6 md:p-10"
-            style={{
-              boxShadow: `0 20px 60px -20px ${BRAND}33, 0 0 0 1px rgba(255,255,255,0.06) inset`,
-            }}
-          >
-            {status === "success" ? (
-              <div className="flex flex-col items-center justify-center py-16 text-center">
-                <div
-                  className="mb-5 flex h-20 w-20 items-center justify-center rounded-full"
-                  style={{ background: `${BRAND}22` }}
-                >
-                  <CheckCircle2 className="h-10 w-10" style={{ color: BRAND }} />
-                </div>
-                <h3 className="font-display text-2xl font-bold md:text-3xl">
-                  Message received.
-                </h3>
-                <p className="mt-3 max-w-md text-muted-foreground">
-                  Thanks for reaching out — a specialist will get back to you
-                  within one business day.
-                </p>
-                <button
-                  onClick={() => setStatus("idle")}
-                  className="mt-8 rounded-full border border-white/10 bg-white/5 px-6 py-2.5 text-sm font-semibold transition hover:bg-white/10"
-                >
-                  Send another message
-                </button>
+              <div
+                className="glass inline-flex w-fit items-center gap-2 rounded-full px-4 py-1.5 text-xs uppercase tracking-widest"
+                style={{ color: BRAND }}
+              >
+                <span className="h-1.5 w-1.5 rounded-full" style={{ background: BRAND }} />
+                Get in touch
               </div>
-            ) : (
-              <form onSubmit={onSubmit} noValidate className="grid gap-5">
-                <div className="grid gap-5 md:grid-cols-2">
-                  <Field
-                    label="Full name"
-                    name="name"
-                    value={form.name}
-                    onChange={(v) => update("name", v)}
-                    error={errors.name}
-                    required
-                  />
-                  <Field
-                    label="Work email"
-                    name="email"
-                    type="email"
-                    value={form.email}
-                    onChange={(v) => update("email", v)}
-                    error={errors.email}
-                    required
-                  />
-                </div>
-                <div className="grid gap-5 md:grid-cols-2">
-                  <Field
-                    label="Phone number"
-                    name="phone"
-                    type="tel"
-                    value={form.phone}
-                    onChange={(v) => update("phone", v)}
-                    error={errors.phone}
-                  />
-                  <Field
-                    label="Company name"
-                    name="company"
-                    value={form.company}
-                    onChange={(v) => update("company", v)}
-                    error={errors.company}
-                  />
-                </div>
-                <div className="grid gap-5 md:grid-cols-2">
-                  <SelectField
-                    label="Service required"
-                    name="service"
-                    value={form.service}
-                    onChange={(v) => update("service", v)}
-                    options={SERVICES}
-                    placeholder="Select a service"
-                    error={errors.service}
-                    required
-                  />
-                  <SelectField
-                    label="Budget range"
-                    name="budget"
-                    value={form.budget}
-                    onChange={(v) => update("budget", v)}
-                    options={BUDGETS}
-                    placeholder="Select a budget"
-                    error={errors.budget}
-                    required
-                  />
-                </div>
+              <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">
+                Let's start a conversation
+              </h2>
+              <p className="mt-4 text-base text-muted-foreground">
+                Reach out through your preferred channel. Whether you have a question, project, or partnership idea, we're here to help.
+              </p>
 
-                <div>
-                  <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                    Project description *
-                  </label>
-                  <textarea
-                    name="message"
-                    rows={6}
-                    value={form.message}
-                    onChange={(e) => update("message", e.target.value)}
-                    maxLength={2000}
-                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition placeholder:text-muted-foreground/70 focus:border-[color:var(--brand)] focus:shadow-[0_0_0_4px_rgba(21,171,230,0.15)]"
-                    style={{ ["--brand" as string]: BRAND }}
-                    placeholder="Goals, timeline, systems involved, and anything else that will help us understand your project..."
-                  />
-                  {errors.message && (
-                    <p className="mt-1.5 text-xs font-medium text-destructive">
-                      {errors.message}
-                    </p>
-                  )}
-                </div>
+              <div className="mt-8 grid gap-4">
+                <ContactInfoItem
+                  icon={Mail}
+                  title="Email"
+                  value={EMAIL}
+                  href={`mailto:${EMAIL}`}
+                />
+                <ContactInfoItem
+                  icon={Phone}
+                  title="Phone"
+                  value={PHONE_DISPLAY}
+                  href={`tel:${PHONE_TEL}`}
+                />
+                <ContactInfoItem
+                  icon={MessageCircle}
+                  title="WhatsApp"
+                  value="Message us instantly"
+                  href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                  external
+                />
+                <ContactInfoItem
+                  icon={MapPin}
+                  title="Location"
+                  value={ADDRESS}
+                  href={`https://maps.google.com/?q=${encodeURIComponent(ADDRESS)}`}
+                  external
+                />
+                <ContactInfoItem
+                  icon={Clock}
+                  title="Working Hours"
+                  value={
+                    <>
+                      Monday – Friday
+                      <br />
+                      9 AM – 6 PM
+                    </>
+                  }
+                />
+              </div>
+            </motion.div>
 
-                <div className="mt-2 flex flex-col-reverse items-stretch gap-4 sm:flex-row sm:items-center sm:justify-between">
-                  <p className="text-xs text-muted-foreground">
-                    By submitting this form, you agree to be contacted about your
-                    inquiry.
+            {/* Right: Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+              className="glass-strong relative h-fit rounded-3xl p-6 md:p-10"
+              style={{
+                boxShadow: `0 20px 60px -20px ${BRAND}33, 0 0 0 1px rgba(255,255,255,0.06) inset`,
+              }}
+            >
+              <div className="mb-6">
+                <div
+                  className="glass inline-flex w-fit items-center gap-2 rounded-full px-4 py-1.5 text-xs uppercase tracking-widest"
+                  style={{ color: BRAND }}
+                >
+                  <span className="h-1.5 w-1.5 rounded-full" style={{ background: BRAND }} />
+                  Project Inquiry
+                </div>
+                <h3 className="mt-3 font-display text-2xl font-bold md:text-3xl">
+                  Tell us about your project
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Share a few details and we'll come back with next steps, a rough scope, and a realistic timeline.
+                </p>
+              </div>
+
+              {status === "success" ? (
+                <div className="flex flex-col items-center justify-center py-12 text-center">
+                  <div
+                    className="mb-5 flex h-20 w-20 items-center justify-center rounded-full"
+                    style={{ background: `${BRAND}22` }}
+                  >
+                    <CheckCircle2 className="h-10 w-10" style={{ color: BRAND }} />
+                  </div>
+                  <h3 className="font-display text-2xl font-bold md:text-3xl">
+                    Message received.
+                  </h3>
+                  <p className="mt-3 max-w-md text-muted-foreground">
+                    Thanks for reaching out — a specialist will get back to you
+                    within one business day.
                   </p>
                   <button
-                    type="submit"
-                    disabled={status === "loading"}
-                    className="group inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-70"
-                    style={{
-                      background: `linear-gradient(135deg, ${BRAND}, #7C5CFF)`,
-                    }}
+                    onClick={() => setStatus("idle")}
+                    className="mt-8 rounded-full border border-white/10 bg-white/5 px-6 py-2.5 text-sm font-semibold transition hover:bg-white/10"
                   >
-                    {status === "loading" ? (
-                      <>
-                        <Loader2 className="h-4 w-4 animate-spin" />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="h-4 w-4 transition group-hover:translate-x-0.5" />
-                        Request Consultation
-                      </>
-                    )}
+                    Send another message
                   </button>
                 </div>
-              </form>
-            )}
-          </motion.div>
+              ) : (
+                <form onSubmit={onSubmit} noValidate className="grid gap-5">
+                  <div className="grid gap-5 md:grid-cols-2">
+                    <Field
+                      label="Full name"
+                      name="name"
+                      value={form.name}
+                      onChange={(v) => update("name", v)}
+                      error={errors.name}
+                      required
+                    />
+                    <Field
+                      label="Work email"
+                      name="email"
+                      type="email"
+                      value={form.email}
+                      onChange={(v) => update("email", v)}
+                      error={errors.email}
+                      required
+                    />
+                  </div>
+                  <div className="grid gap-5 md:grid-cols-2">
+                    <Field
+                      label="Phone number"
+                      name="phone"
+                      type="tel"
+                      value={form.phone}
+                      onChange={(v) => update("phone", v)}
+                      error={errors.phone}
+                    />
+                    <Field
+                      label="Company name"
+                      name="company"
+                      value={form.company}
+                      onChange={(v) => update("company", v)}
+                      error={errors.company}
+                    />
+                  </div>
+                  <div className="grid gap-5 md:grid-cols-2">
+                    <SelectField
+                      label="Service required"
+                      name="service"
+                      value={form.service}
+                      onChange={(v) => update("service", v)}
+                      options={SERVICES}
+                      placeholder="Select a service"
+                      error={errors.service}
+                      required
+                    />
+                    <SelectField
+                      label="Budget range"
+                      name="budget"
+                      value={form.budget}
+                      onChange={(v) => update("budget", v)}
+                      options={BUDGETS}
+                      placeholder="Select a budget"
+                      error={errors.budget}
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                      Project description *
+                    </label>
+                    <textarea
+                      name="message"
+                      rows={6}
+                      value={form.message}
+                      onChange={(e) => update("message", e.target.value)}
+                      maxLength={2000}
+                      className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition placeholder:text-muted-foreground/70 focus:border-[color:var(--brand)] focus:shadow-[0_0_0_4px_rgba(21,171,230,0.15)]"
+                      style={{ ["--brand" as string]: BRAND }}
+                      placeholder="Goals, timeline, systems involved, and anything else that will help us understand your project..."
+                    />
+                    {errors.message && (
+                      <p className="mt-1.5 text-xs font-medium text-destructive">
+                        {errors.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <div className="mt-2 flex flex-col-reverse items-stretch gap-4 sm:flex-row sm:items-center sm:justify-between">
+                    <p className="text-xs text-muted-foreground">
+                      By submitting this form, you agree to be contacted about your
+                      inquiry.
+                    </p>
+                    <button
+                      type="submit"
+                      disabled={status === "loading"}
+                      className="group inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-70"
+                      style={{
+                        background: `linear-gradient(135deg, ${BRAND}, #7C5CFF)`,
+                      }}
+                    >
+                      {status === "loading" ? (
+                        <>
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="h-4 w-4 transition group-hover:translate-x-0.5" />
+                          Request Consultation
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </form>
+              )}
+            </motion.div>
+          </div>
         </div>
       </section>
 
