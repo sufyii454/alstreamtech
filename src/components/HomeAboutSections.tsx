@@ -6,6 +6,8 @@ import {
   ArrowRight, ArrowLeft, Sparkles, Target, Eye, Layers, Heart, Building2, ShoppingBag,
   Truck, GraduationCap, Home, Factory, Store, Lightbulb, CheckCircle2, TrendingUp, Users,
 } from "lucide-react";
+import missionTarget from "../assets/mission-target.jpg";
+import missionGlobe from "../assets/mission-ai-globe.jpg";
 
 /* ---------------- Section 1 — Who We Are ---------------- */
 
