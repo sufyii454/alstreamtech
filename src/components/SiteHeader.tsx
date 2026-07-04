@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Phone, Mail, MapPin, Clock, Linkedin, Twitter, Github, Menu, X, ChevronDown } from "lucide-react";
-import logoAsset from "../assets/alstream-logo.jpeg.asset.json";
+import logoAsset from "../assets/alstream-logo.png.asset.json";
 
 const nav: Array<{ to: string; label: string; dropdown?: { to: string; label: string }[] }> = [
   { to: "/", label: "Home" },
