@@ -2,6 +2,13 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, Calendar, Clock, User, Sparkles, MessageSquare } from "lucide-react";
 import { PageHero } from "../components/PageHero";
+import featuredImg from "../assets/blog-ai-automate.jpg.asset.json";
+import chatbotsImg from "../assets/blog-chatbots.jpg.asset.json";
+import agentsImg from "../assets/blog-ai-agents-companies.png.asset.json";
+import customImg from "../assets/blog-custom-vs-ready.png.asset.json";
+import smallBizImg from "../assets/blog-small-business-ai.png.asset.json";
+import futureImg from "../assets/blog-future-ai-automation.png.asset.json";
+import supportImg from "../assets/blog-ai-customer-support.png.asset.json";
 
 export const Route = createFileRoute("/blog")({
   head: () => ({
@@ -48,6 +55,7 @@ const posts = [
     author: "ALStreamTech Team",
     date: "July 2, 2026",
     read: "6 min read",
+    image: chatbotsImg.url,
     summary:
       "AI chatbots help businesses improve customer support, generate leads, automate sales, and provide instant assistance 24/7.",
   },
@@ -57,6 +65,7 @@ const posts = [
     author: "ALStreamTech Team",
     date: "June 30, 2026",
     read: "7 min read",
+    image: agentsImg.url,
     summary:
       "AI agents are revolutionizing business operations by acting as smart assistants for workflow automation, decision-making, and productivity enhancement.",
   },
@@ -66,6 +75,7 @@ const posts = [
     author: "ALStreamTech Team",
     date: "June 28, 2026",
     read: "9 min read",
+    image: customImg.url,
     summary:
       "Choosing between custom software and ready-made tools depends on scalability, budget, and long-term business goals.",
   },
@@ -75,6 +85,7 @@ const posts = [
     author: "ALStreamTech Team",
     date: "June 25, 2026",
     read: "5 min read",
+    image: smallBizImg.url,
     summary:
       "AI is no longer just for large enterprises. Small businesses can now leverage affordable AI tools for automation, analytics, and customer engagement.",
   },
@@ -84,6 +95,7 @@ const posts = [
     author: "ALStreamTech Team",
     date: "June 21, 2026",
     read: "8 min read",
+    image: futureImg.url,
     summary:
       "The future of automation lies in autonomous AI systems capable of managing workflows with minimal human intervention.",
   },
@@ -93,6 +105,7 @@ const posts = [
     author: "ALStreamTech Team",
     date: "June 18, 2026",
     read: "6 min read",
+    image: supportImg.url,
     summary:
       "AI-powered support systems are enhancing customer experiences through chatbots, ticket automation, and intelligent response systems.",
   },
@@ -145,8 +158,9 @@ function Blog() {
           <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 via-transparent to-accent/20 opacity-60" />
           <div className="pointer-events-none absolute -top-32 -right-32 h-72 w-72 rounded-full bg-primary/25 blur-3xl" />
           <div className="relative grid gap-0 lg:grid-cols-2">
-            <div className="relative min-h-[280px] lg:min-h-[420px]">
-              <CategoryVisual label={featured.category} />
+            <div className="relative min-h-[280px] overflow-hidden lg:min-h-[420px]">
+              <img src={featuredImg.url} alt={featured.title} className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+              <div className="absolute left-4 top-4 glass rounded-full px-3 py-1 text-xs font-semibold text-primary">{featured.category}</div>
             </div>
             <div className="flex flex-col justify-center p-8 md:p-12">
               <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
@@ -207,8 +221,9 @@ function Blog() {
               key={p.title}
               className="glass group relative flex flex-col overflow-hidden rounded-2xl p-6 transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow"
             >
-              <div className="mb-4 aspect-video overflow-hidden rounded-xl">
-                <CategoryVisual label={p.category} />
+              <div className="relative mb-4 aspect-video overflow-hidden rounded-xl">
+                <img src={p.image} alt={p.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" />
+                <div className="absolute left-3 top-3 glass rounded-full px-3 py-1 text-xs font-semibold text-primary">{p.category}</div>
               </div>
               <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
                 <span className="flex items-center gap-1"><User className="h-3 w-3" /> {p.author}</span>
@@ -219,9 +234,6 @@ function Blog() {
                 {p.title}
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">{p.summary}</p>
-              <Link to="/blog" className="mt-auto pt-4 text-sm font-semibold text-primary flex items-center gap-1">
-                Read article <ArrowRight className="h-3 w-3 transition group-hover:translate-x-1" />
-              </Link>
             </article>
           ))}
         </div>
