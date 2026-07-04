@@ -207,44 +207,93 @@ function WhoWeAre() {
 
 /* ---------------- Section 2 — Mission ---------------- */
 
+import missionTarget from "../assets/mission-target.jpg";
+import missionGlobe from "../assets/mission-ai-globe.jpg";
+
 function Mission() {
   return (
-    <section className="relative overflow-hidden py-24 md:py-28">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(21,171,230,0.15),transparent_60%)]" />
-      <div className="relative mx-auto max-w-5xl px-6">
+    <section className="relative overflow-hidden py-16 md:py-24">
+      <div className="mx-auto max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.8 }}
-          className="glass-strong relative overflow-hidden rounded-3xl p-10 text-center md:p-16"
+          className="relative overflow-hidden rounded-3xl"
           style={{
-            background:
-              "linear-gradient(160deg, rgba(21,171,230,0.14), rgba(255,255,255,0.03) 60%, rgba(21,171,230,0.08))",
-            boxShadow: "0 0 80px rgba(21,171,230,0.25), inset 0 0 40px rgba(21,171,230,0.08)",
+            background: "linear-gradient(135deg, #061530 0%, #0a1f47 50%, #061530 100%)",
+            boxShadow: "0 30px 80px -20px rgba(21,171,230,0.35)",
           }}
         >
-          <div className="pointer-events-none absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-primary/25 blur-3xl" />
-          <div className="glass mx-auto inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs uppercase tracking-widest text-primary">
-            <Target className="h-3.5 w-3.5" /> Our Mission
-          </div>
-          <h2 className="relative mt-6 font-display text-2xl font-bold leading-tight md:text-4xl">
-            "Our mission is to empower businesses through{" "}
-            <span className="text-gradient">intelligent software, AI innovation,</span> and automation
-            solutions that create measurable business impact."
-          </h2>
-          <div className="relative mt-8 flex flex-wrap justify-center gap-3">
-            {["AI Innovation", "Measurable Impact", "Business Empowerment"].map(t => (
-              <span key={t} className="glass rounded-full border border-primary/25 px-4 py-1.5 text-xs font-semibold text-primary">
-                {t}
-              </span>
-            ))}
+          {/* subtle grid pattern */}
+          <div className="pointer-events-none absolute inset-0 opacity-[0.08]"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(21,171,230,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(21,171,230,0.5) 1px, transparent 1px)",
+              backgroundSize: "40px 40px",
+            }}
+          />
+          <div className="pointer-events-none absolute -top-32 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-primary/25 blur-3xl" />
+
+          <div className="relative grid items-center gap-6 p-6 md:grid-cols-[1fr_1.15fr_1fr] md:gap-4 md:p-10">
+            {/* Left visual */}
+            <motion.img
+              src={missionTarget}
+              alt="Precision target representing our mission focus"
+              loading="lazy"
+              width={768}
+              height={768}
+              className="mx-auto h-auto w-full max-w-[280px] rounded-2xl object-cover md:max-w-none"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              style={{ filter: "drop-shadow(0 0 40px rgba(21,171,230,0.5))" }}
+            />
+
+            {/* Center card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="relative rounded-3xl bg-white p-8 text-center shadow-[0_20px_60px_-15px_rgba(21,171,230,0.5)] md:p-10"
+            >
+              <div className="mx-auto -mt-16 mb-4 flex h-16 w-16 items-center justify-center rounded-full shadow-glow"
+                style={{ background: "linear-gradient(135deg, #15ABE6, #0d8bc4)" }}>
+                <Target className="h-8 w-8 text-white" />
+              </div>
+              <h2 className="font-display text-2xl font-bold tracking-widest md:text-3xl" style={{ color: "#15ABE6" }}>
+                OUR MISSION
+              </h2>
+              <div className="mx-auto mt-3 h-0.5 w-16 rounded-full" style={{ background: "#15ABE6" }} />
+              <p className="mt-5 text-base leading-relaxed text-slate-700 md:text-lg">
+                Our mission is to empower businesses through intelligent software, AI innovation,
+                and automation solutions that create measurable business impact.
+              </p>
+            </motion.div>
+
+            {/* Right visual */}
+            <motion.img
+              src={missionGlobe}
+              alt="AI-powered global network held by a robotic hand"
+              loading="lazy"
+              width={768}
+              height={768}
+              className="mx-auto h-auto w-full max-w-[280px] rounded-2xl object-cover md:max-w-none"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              style={{ filter: "drop-shadow(0 0 40px rgba(21,171,230,0.5))" }}
+            />
           </div>
         </motion.div>
       </div>
     </section>
   );
 }
+
 
 /* ---------------- Section 3 — Vision ---------------- */
 
