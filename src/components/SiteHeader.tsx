@@ -51,7 +51,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50">
       {/* Top icon bar */}
-      <div className="hidden border-b border-white/5 bg-background/80 backdrop-blur md:block">
+      <div className="hidden md:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 text-xs text-muted-foreground">
           <div className="flex items-center gap-6">
             <a href="tel:+17325887501" className="flex items-center gap-2 transition hover:text-primary">
@@ -82,12 +82,10 @@ export function SiteHeader() {
       </div>
 
       {/* Main nav */}
-      <div
-        className={`transition-all ${scrolled ? "bg-background/90 shadow-elegant" : "bg-background/60"} backdrop-blur-xl border-b border-white/5`}
-      >
+      <div className="bg-transparent">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <Link to="/" className="flex items-center gap-2">
-            <div className="relative flex h-10 items-center justify-center">
+            <div className="relative flex h-10 items-center justify-center !bg-transparent !shadow-none !border-none !p-0">
               <img src={logoAsset.url} alt="ALStream Tech" className="h-9 w-auto" />
             </div>
             <div className="leading-tight sr-only">
