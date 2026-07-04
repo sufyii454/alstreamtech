@@ -435,17 +435,10 @@ const industries = [
 
 function IndustriesSlider() {
   const autoplay = useRef(
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    (require("embla-carousel-autoplay") as typeof import("embla-carousel-autoplay")).default({
-      delay: 3000,
-      stopOnInteraction: false,
-      stopOnMouseEnter: true,
-    }),
+    Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true }),
   );
-  const [emblaRef, emblaApi] = (
-    require("embla-carousel-react") as typeof import("embla-carousel-react")
-  ).default(
-    { loop: true, align: "start", slidesToScroll: 1, containScroll: false },
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: "start", slidesToScroll: 1 },
     [autoplay.current],
   );
   const [selected, setSelected] = useState(0);
