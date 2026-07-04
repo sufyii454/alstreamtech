@@ -1,106 +1,549 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, CheckCircle2, MessageSquare, Calendar } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Send,
+  CheckCircle2,
+  Clock,
+  MessageCircle,
+  Loader2,
+  Sparkles,
+} from "lucide-react";
+import { toast } from "sonner";
 import { PageHero } from "../components/PageHero";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact AIXIS — Book a Free Consultation" },
-      { name: "description", content: "Book a free 30-minute strategy call with AIXIS. Discuss your AI, software or automation project with our team." },
+      { title: "Contact AIXIS — Book a Free AI Consultation" },
+      {
+        name: "description",
+        content:
+          "Talk to AIXIS about AI, custom software, chatbots, mobile apps, automation and cloud. Book a free consultation — we reply within one business day.",
+      },
       { property: "og:title", content: "Contact AIXIS" },
-      { property: "og:description", content: "Let's build together." },
+      {
+        property: "og:description",
+        content: "Let's build something amazing together.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Contact,
 });
 
+const BRAND = "#15ABE6";
+
+const WHATSAPP_NUMBER = "17325887501"; // digits only
+const EMAIL = "info@alstreamtech.com";
+const PHONE_DISPLAY = "+1 (732) 588-7501";
+const PHONE_TEL = "+17325887501";
+const ADDRESS =
+  "409 Joyce Kilmer Avenue, Suite 315, New Brunswick, NJ 08901";
+
+type FormState = {
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  service: string;
+  budget: string;
+  message: string;
+};
+
+const INITIAL: FormState = {
+  name: "",
+  email: "",
+  phone: "",
+  company: "",
+  service: "",
+  budget: "",
+  message: "",
+};
+
+const SERVICES = [
+  "AI Development",
+  "AI Chatbots",
+  "Business Automation",
+  "Custom Software",
+  "Web Development",
+  "Mobile Apps",
+  "Cloud & DevOps",
+  "Data Analytics",
+];
+
+const BUDGETS = [
+  "Under $5,000",
+  "$5,000–$10,000",
+  "$10,000–$25,000",
+  "$25,000–$50,000",
+  "$50,000+",
+];
+
 function Contact() {
-  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState<FormState>(INITIAL);
+  const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const update = <K extends keyof FormState>(key: K, value: FormState[K]) => {
+    setForm((f) => ({ ...f, [key]: value }));
+    if (errors[key]) setErrors((e) => ({ ...e, [key]: undefined }));
+  };
+
+  const validate = () => {
+    const e: Partial<Record<keyof FormState, string>> = {};
+    if (!form.name.trim()) e.name = "Please enter your name";
+    else if (form.name.trim().length > 100) e.name = "Name is too long";
+    if (!form.email.trim()) e.email = "Email is required";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim()))
+      e.email = "Enter a valid email";
+    if (form.phone && form.phone.length > 30) e.phone = "Phone is too long";
+    if (!form.service) e.service = "Choose a service";
+    if (!form.budget) e.budget = "Choose a budget";
+    if (!form.message.trim()) e.message = "Tell us a bit about your project";
+    else if (form.message.trim().length < 10)
+      e.message = "Please add a little more detail";
+    else if (form.message.length > 2000) e.message = "Message is too long";
+    setErrors(e);
+    return Object.keys(e).length === 0;
+  };
+
+  const onSubmit = async (ev: React.FormEvent) => {
+    ev.preventDefault();
+    if (!validate()) {
+      toast.error("Please fix the highlighted fields");
+      return;
+    }
+    setStatus("loading");
+    try {
+      // Simulated submission — wire up to a backend when available.
+      await new Promise((r) => setTimeout(r, 900));
+      setStatus("success");
+      setForm(INITIAL);
+      toast.success("Thanks — we'll be in touch within one business day.");
+    } catch {
+      setStatus("error");
+      toast.error("Something went wrong. Please try again.");
+    }
+  };
+
   return (
     <>
       <PageHero
         eyebrow="Contact Us"
-        title={<>Let's build <span className="text-gradient">something intelligent</span></>}
-        subtitle="Tell us about your project. We'll get back within one business day with next steps."
-      />
+        title={
+          <>
+            Let's build{" "}
+            <span className="text-gradient">something amazing</span> together
+          </>
+        }
+        subtitle="Whether you're planning an AI solution, custom software platform, chatbot, mobile application, automation system, or cloud project, we'd love to hear from you."
+      >
+        <div className="mt-8 flex flex-wrap items-center gap-4 animate-fade-up">
+          <a
+            href="#contact-form"
+            className="group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.03]"
+            style={{ background: `linear-gradient(135deg, ${BRAND}, #7C5CFF)` }}
+          >
+            <Sparkles className="h-4 w-4" />
+            Book a Free Consultation
+          </a>
+          <a
+            href={`https://wa.me/${WHATSAPP_NUMBER}`}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-[color:var(--brand)]/40 bg-white/5 px-6 py-3 text-sm font-semibold text-foreground backdrop-blur transition hover:border-[color:var(--brand)] hover:bg-white/10"
+            style={{ ["--brand" as string]: BRAND }}
+          >
+            <MessageCircle className="h-4 w-4" style={{ color: BRAND }} />
+            Chat on WhatsApp
+          </a>
+        </div>
+      </PageHero>
 
-      <section className="mx-auto max-w-7xl px-6 py-24">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr]">
-          <div className="space-y-6">
-            {[
-              { icon: Mail, t: "Email", v: "info@alstreamtech.com" },
-              { icon: Phone, t: "Phone", v: "+1 (732) 588-7501" },
-              { icon: MapPin, t: "Office", v: "409 Joyce Kilmer Avenue, Suite 315, New Brunswick, NJ 08901" },
-              { icon: Calendar, t: "Availability", v: "Mon–Fri · 9am – 7pm local" },
-            ].map(({ icon: Icon, t, v }) => (
-              <div key={t} className="glass rounded-2xl p-6">
-                <Icon className="mb-3 h-6 w-6 text-primary" />
-                <div className="text-xs uppercase tracking-widest text-muted-foreground">{t}</div>
-                <div className="mt-1 font-semibold">{v}</div>
-              </div>
-            ))}
-            <div className="glass-strong rounded-2xl p-6">
-              <MessageSquare className="mb-3 h-6 w-6 text-primary" />
-              <div className="font-display text-lg font-semibold">Prefer a live chat?</div>
-              <p className="mt-1 text-sm text-muted-foreground">Ping our AI receptionist any time — it can book a call directly with the right specialist.</p>
-              <button className="mt-4 rounded-full bg-gradient-brand px-5 py-2 text-sm font-semibold text-primary-foreground shadow-glow">Launch chat</button>
+      {/* Contact Info Cards */}
+      <section className="relative mx-auto max-w-7xl px-6 py-20">
+        <div className="mb-12 text-center">
+          <div
+            className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs uppercase tracking-widest"
+            style={{ color: BRAND }}
+          >
+            <span className="h-1.5 w-1.5 rounded-full" style={{ background: BRAND }} />
+            Get in touch
+          </div>
+          <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">
+            Reach us through your favorite channel
+          </h2>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          <InfoCard
+            icon={Mail}
+            title="Email"
+            value={EMAIL}
+            href={`mailto:${EMAIL}`}
+            delay={0}
+          />
+          <InfoCard
+            icon={Phone}
+            title="Phone"
+            value={PHONE_DISPLAY}
+            href={`tel:${PHONE_TEL}`}
+            delay={0.05}
+          />
+          <InfoCard
+            icon={MessageCircle}
+            title="WhatsApp"
+            value="Message us instantly"
+            href={`https://wa.me/${WHATSAPP_NUMBER}`}
+            external
+            delay={0.1}
+          />
+          <InfoCard
+            icon={MapPin}
+            title="Location"
+            value={ADDRESS}
+            href={`https://maps.google.com/?q=${encodeURIComponent(ADDRESS)}`}
+            external
+            delay={0.15}
+          />
+          <InfoCard
+            icon={Clock}
+            title="Working Hours"
+            value={
+              <>
+                Monday – Friday
+                <br />
+                9 AM – 6 PM
+              </>
+            }
+            delay={0.2}
+          />
+        </div>
+      </section>
+
+      {/* Contact Form */}
+      <section
+        id="contact-form"
+        className="relative overflow-hidden border-t border-white/5 py-24"
+      >
+        <div className="absolute inset-0 ai-grid opacity-10" />
+        <div
+          className="absolute -top-40 left-1/2 h-96 w-[36rem] -translate-x-1/2 rounded-full opacity-30 blur-[120px]"
+          style={{ background: BRAND }}
+        />
+
+        <div className="relative mx-auto max-w-5xl px-6">
+          <div className="mb-12 text-center">
+            <div
+              className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs uppercase tracking-widest"
+              style={{ color: BRAND }}
+            >
+              <span className="h-1.5 w-1.5 rounded-full" style={{ background: BRAND }} />
+              Project Inquiry
             </div>
+            <h2 className="mt-4 font-display text-3xl font-bold md:text-5xl">
+              Tell us about your project
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground">
+              Share a few details and we'll come back with next steps, a rough
+              scope, and a realistic timeline — usually within one business day.
+            </p>
           </div>
 
-          <form
-            onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-            className="glass-strong rounded-3xl p-8 md:p-10"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5 }}
+            className="glass-strong relative rounded-3xl p-6 md:p-10"
+            style={{
+              boxShadow: `0 20px 60px -20px ${BRAND}33, 0 0 0 1px rgba(255,255,255,0.06) inset`,
+            }}
           >
-            {sent ? (
+            {status === "success" ? (
               <div className="flex flex-col items-center justify-center py-16 text-center">
-                <CheckCircle2 className="mb-4 h-16 w-16 text-primary" />
-                <h3 className="font-display text-2xl font-bold">Thanks — we've got it.</h3>
-                <p className="mt-2 text-muted-foreground">Our team will be in touch within one business day.</p>
-              </div>
-            ) : (
-              <div className="grid gap-5">
-                <div className="grid gap-5 md:grid-cols-2">
-                  <Field label="Full name" name="name" required />
-                  <Field label="Work email" name="email" type="email" required />
+                <div
+                  className="mb-5 flex h-20 w-20 items-center justify-center rounded-full"
+                  style={{ background: `${BRAND}22` }}
+                >
+                  <CheckCircle2 className="h-10 w-10" style={{ color: BRAND }} />
                 </div>
-                <div className="grid gap-5 md:grid-cols-2">
-                  <Field label="Company" name="company" />
-                  <Field label="Phone" name="phone" />
-                </div>
-                <Select label="How can we help?" name="topic" options={["AI Development", "Custom Software", "Web Application", "Mobile App", "AI Chatbot", "Automation", "Cloud & DevOps", "Data & Analytics", "Not sure yet"]} />
-                <Select label="Budget range" name="budget" options={["Under $25k", "$25k–$75k", "$75k–$200k", "$200k+", "Not sure"]} />
-                <div>
-                  <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">Tell us about your project</label>
-                  <textarea name="message" rows={5} className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition focus:border-primary" placeholder="Goals, timeline, systems involved, anything relevant..." />
-                </div>
-                <button type="submit" className="group flex items-center justify-center gap-2 rounded-full bg-gradient-brand px-6 py-3.5 font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.02]">
-                  <Send className="h-4 w-4" /> Send message
+                <h3 className="font-display text-2xl font-bold md:text-3xl">
+                  Message received.
+                </h3>
+                <p className="mt-3 max-w-md text-muted-foreground">
+                  Thanks for reaching out — a specialist will get back to you
+                  within one business day.
+                </p>
+                <button
+                  onClick={() => setStatus("idle")}
+                  className="mt-8 rounded-full border border-white/10 bg-white/5 px-6 py-2.5 text-sm font-semibold transition hover:bg-white/10"
+                >
+                  Send another message
                 </button>
               </div>
+            ) : (
+              <form onSubmit={onSubmit} noValidate className="grid gap-5">
+                <div className="grid gap-5 md:grid-cols-2">
+                  <Field
+                    label="Full name"
+                    name="name"
+                    value={form.name}
+                    onChange={(v) => update("name", v)}
+                    error={errors.name}
+                    required
+                  />
+                  <Field
+                    label="Work email"
+                    name="email"
+                    type="email"
+                    value={form.email}
+                    onChange={(v) => update("email", v)}
+                    error={errors.email}
+                    required
+                  />
+                </div>
+                <div className="grid gap-5 md:grid-cols-2">
+                  <Field
+                    label="Phone number"
+                    name="phone"
+                    type="tel"
+                    value={form.phone}
+                    onChange={(v) => update("phone", v)}
+                    error={errors.phone}
+                  />
+                  <Field
+                    label="Company name"
+                    name="company"
+                    value={form.company}
+                    onChange={(v) => update("company", v)}
+                    error={errors.company}
+                  />
+                </div>
+                <div className="grid gap-5 md:grid-cols-2">
+                  <SelectField
+                    label="Service required"
+                    name="service"
+                    value={form.service}
+                    onChange={(v) => update("service", v)}
+                    options={SERVICES}
+                    placeholder="Select a service"
+                    error={errors.service}
+                    required
+                  />
+                  <SelectField
+                    label="Budget range"
+                    name="budget"
+                    value={form.budget}
+                    onChange={(v) => update("budget", v)}
+                    options={BUDGETS}
+                    placeholder="Select a budget"
+                    error={errors.budget}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+                    Project description *
+                  </label>
+                  <textarea
+                    name="message"
+                    rows={6}
+                    value={form.message}
+                    onChange={(e) => update("message", e.target.value)}
+                    maxLength={2000}
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition placeholder:text-muted-foreground/70 focus:border-[color:var(--brand)] focus:shadow-[0_0_0_4px_rgba(21,171,230,0.15)]"
+                    style={{ ["--brand" as string]: BRAND }}
+                    placeholder="Goals, timeline, systems involved, and anything else that will help us understand your project..."
+                  />
+                  {errors.message && (
+                    <p className="mt-1.5 text-xs font-medium text-destructive">
+                      {errors.message}
+                    </p>
+                  )}
+                </div>
+
+                <div className="mt-2 flex flex-col-reverse items-stretch gap-4 sm:flex-row sm:items-center sm:justify-between">
+                  <p className="text-xs text-muted-foreground">
+                    By submitting this form, you agree to be contacted about your
+                    inquiry.
+                  </p>
+                  <button
+                    type="submit"
+                    disabled={status === "loading"}
+                    className="group inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-70"
+                    style={{
+                      background: `linear-gradient(135deg, ${BRAND}, #7C5CFF)`,
+                    }}
+                  >
+                    {status === "loading" ? (
+                      <>
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="h-4 w-4 transition group-hover:translate-x-0.5" />
+                        Request Consultation
+                      </>
+                    )}
+                  </button>
+                </div>
+              </form>
             )}
-          </form>
+          </motion.div>
         </div>
       </section>
     </>
   );
 }
 
-function Field({ label, name, type = "text", required = false }: { label: string; name: string; type?: string; required?: boolean }) {
+function InfoCard({
+  icon: Icon,
+  title,
+  value,
+  href,
+  external,
+  delay = 0,
+}: {
+  icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
+  title: string;
+  value: React.ReactNode;
+  href?: string;
+  external?: boolean;
+  delay?: number;
+}) {
+  const inner = (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, delay }}
+      whileHover={{ y: -4 }}
+      className="group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl transition-all duration-300 hover:border-[color:var(--brand)]/60 hover:bg-white/[0.06] hover:shadow-[0_10px_40px_-10px_rgba(21,171,230,0.5)]"
+      style={{ ["--brand" as string]: BRAND }}
+    >
+      <div
+        className="pointer-events-none absolute -inset-1 rounded-2xl opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-30"
+        style={{ background: BRAND }}
+      />
+      <div
+        className="relative mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110"
+        style={{ background: `${BRAND}1F` }}
+      >
+        <Icon className="h-5 w-5" style={{ color: BRAND }} />
+      </div>
+      <div className="relative text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+        {title}
+      </div>
+      <div className="relative mt-1.5 text-sm font-medium leading-relaxed text-foreground break-words">
+        {value}
+      </div>
+    </motion.div>
+  );
+  if (!href) return inner;
+  return (
+    <a
+      href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noreferrer" : undefined}
+      className="block h-full"
+    >
+      {inner}
+    </a>
+  );
+}
+
+function Field({
+  label,
+  name,
+  value,
+  onChange,
+  type = "text",
+  required = false,
+  error,
+}: {
+  label: string;
+  name: string;
+  value: string;
+  onChange: (v: string) => void;
+  type?: string;
+  required?: boolean;
+  error?: string;
+}) {
   return (
     <div>
-      <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">{label}{required && " *"}</label>
-      <input name={name} type={type} required={required} className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition focus:border-primary" />
+      <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+        {label}
+        {required && " *"}
+      </label>
+      <input
+        name={name}
+        type={type}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition placeholder:text-muted-foreground/70 focus:border-[color:var(--brand)] focus:shadow-[0_0_0_4px_rgba(21,171,230,0.15)]"
+        style={{ ["--brand" as string]: BRAND }}
+        aria-invalid={!!error}
+      />
+      {error && (
+        <p className="mt-1.5 text-xs font-medium text-destructive">{error}</p>
+      )}
     </div>
   );
 }
-function Select({ label, name, options }: { label: string; name: string; options: string[] }) {
+
+function SelectField({
+  label,
+  name,
+  value,
+  onChange,
+  options,
+  placeholder,
+  required = false,
+  error,
+}: {
+  label: string;
+  name: string;
+  value: string;
+  onChange: (v: string) => void;
+  options: string[];
+  placeholder: string;
+  required?: boolean;
+  error?: string;
+}) {
   return (
     <div>
-      <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">{label}</label>
-      <select name={name} className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition focus:border-primary">
-        {options.map(o => <option key={o} value={o} className="bg-background">{o}</option>)}
+      <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+        {label}
+        {required && " *"}
+      </label>
+      <select
+        name={name}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm outline-none transition focus:border-[color:var(--brand)] focus:shadow-[0_0_0_4px_rgba(21,171,230,0.15)]"
+        style={{ ["--brand" as string]: BRAND }}
+        aria-invalid={!!error}
+      >
+        <option value="" className="bg-background">
+          {placeholder}
+        </option>
+        {options.map((o) => (
+          <option key={o} value={o} className="bg-background">
+            {o}
+          </option>
+        ))}
       </select>
+      {error && (
+        <p className="mt-1.5 text-xs font-medium text-destructive">{error}</p>
+      )}
     </div>
   );
 }
