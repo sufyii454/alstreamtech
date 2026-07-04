@@ -8,6 +8,8 @@ import {
 } from "lucide-react";
 import missionTarget from "../assets/mission-target.jpg";
 import missionGlobe from "../assets/mission-ai-globe.jpg";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 /* ---------------- Section 1 — Who We Are ---------------- */
 
