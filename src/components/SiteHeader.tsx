@@ -82,9 +82,7 @@ export function SiteHeader() {
       </div>
 
       {/* Main nav */}
-      <div
-        className={`transition-all ${scrolled ? "bg-background/90 shadow-elegant" : "bg-background/60"} backdrop-blur-xl border-b border-white/5`}
-      >
+      <div className="bg-transparent">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <Link to="/" className="flex items-center gap-2">
             <div className="relative flex h-10 items-center justify-center">
