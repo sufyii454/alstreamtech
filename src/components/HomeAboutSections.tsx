@@ -209,8 +209,6 @@ function WhoWeAre() {
 
 /* ---------------- Section 2 — Mission ---------------- */
 
-import missionTarget from "../assets/mission-target.jpg";
-import missionGlobe from "../assets/mission-ai-globe.jpg";
 
 function Mission() {
   return (
