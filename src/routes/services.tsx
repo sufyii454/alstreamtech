@@ -11,9 +11,9 @@ import { useState } from "react";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — AI Development, Custom Software & Automation | AIXIS" },
+      { title: "Services — AI Development, Custom Software & Automation | ALStreamTech" },
       { name: "description", content: "Eight core services: AI development, custom software, web & mobile apps, chatbots, automation, cloud & DevOps, data analytics, AI integration." },
-      { property: "og:title", content: "AIXIS Services" },
+      { property: "og:title", content: "ALStreamTech Services" },
       { property: "og:description", content: "AI-powered software services from strategy to deployment." },
     ],
   }),

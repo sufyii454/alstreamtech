@@ -6,9 +6,9 @@ import { CTASection } from "../components/CTASection";
 export const Route = createFileRoute("/testimonials")({
   head: () => ({
     meta: [
-      { title: "Client Testimonials — AIXIS" },
-      { name: "description", content: "Hear from clients who partnered with AIXIS to build AI-powered software, automation and digital platforms." },
-      { property: "og:title", content: "AIXIS Testimonials" },
+      { title: "Client Testimonials — ALStreamTech" },
+      { name: "description", content: "Hear from clients who partnered with ALStreamTech to build AI-powered software, automation and digital platforms." },
+      { property: "og:title", content: "ALStreamTech Testimonials" },
       { property: "og:description", content: "What our clients say." },
     ],
   }),
@@ -16,7 +16,7 @@ export const Route = createFileRoute("/testimonials")({
 });
 
 const items = [
-  { q: "AIXIS didn't just build our product — they became an extension of our team. Our AI support agent went live in 6 weeks and cut ticket volume by 68%.", n: "Julia Weston", r: "VP Support, NimbusOps" },
+  { q: "ALStreamTech didn't just build our product — they became an extension of our team. Our AI support agent went live in 6 weeks and cut ticket volume by 68%.", n: "Julia Weston", r: "VP Support, NimbusOps" },
   { q: "The best engineering partner we've worked with. Senior team, brutally honest advice, and shipped exactly what our roadmap needed.", n: "Marcus Delaney", r: "CTO, Sylvan Market" },
   { q: "They understood manufacturing before we finished the intro call. Our defect detection model has been running flawlessly for a year.", n: "Ingrid Hoffmann", r: "COO, Northline Manufacturing" },
   { q: "Our telehealth app is now our biggest growth channel. 4.9 stars, 350k monthly users, and rolling out to two new countries next quarter.", n: "Dr. Ravi Menon", r: "CEO, MedBridge" },
@@ -29,7 +29,7 @@ function Testimonials() {
       <PageHero
         eyebrow="Client Voices"
         title={<>Trusted by teams <span className="text-gradient">shipping intelligent software</span></>}
-        subtitle="Five stories from clients who partnered with AIXIS."
+        subtitle="Five stories from clients who partnered with ALStreamTech."
       />
 
       <section className="mx-auto max-w-7xl px-6 py-24">

@@ -6,9 +6,9 @@ import { CTASection } from "../components/CTASection";
 export const Route = createFileRoute("/industries")({
   head: () => ({
     meta: [
-      { title: "Industries We Serve — AI & Software | AIXIS" },
+      { title: "Industries We Serve — AI & Software | ALStreamTech" },
       { name: "description", content: "AI-powered software for healthcare, finance, retail, logistics, education, real estate, manufacturing and more." },
-      { property: "og:title", content: "Industries — AIXIS" },
+      { property: "og:title", content: "Industries — ALStreamTech" },
       { property: "og:description", content: "Deep expertise across 12+ industries." },
     ],
   }),
