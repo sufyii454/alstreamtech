@@ -2,6 +2,13 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, Calendar, Clock, User, Sparkles, MessageSquare } from "lucide-react";
 import { PageHero } from "../components/PageHero";
+import featuredImg from "../assets/blog-ai-automate.jpg.asset.json";
+import chatbotsImg from "../assets/blog-chatbots.jpg.asset.json";
+import agentsImg from "../assets/blog-ai-agents-companies.png.asset.json";
+import customImg from "../assets/blog-custom-vs-ready.png.asset.json";
+import smallBizImg from "../assets/blog-small-business-ai.png.asset.json";
+import futureImg from "../assets/blog-future-ai-automation.png.asset.json";
+import supportImg from "../assets/blog-ai-customer-support.png.asset.json";
 
 export const Route = createFileRoute("/blog")({
   head: () => ({
