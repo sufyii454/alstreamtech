@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { PageHero } from "../components/PageHero";
-import { BookConsultation } from "../components/BookConsultation";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -423,8 +422,6 @@ function Contact() {
           </motion.div>
         </div>
       </section>
-
-      <BookConsultation />
     </>
   );
 }
