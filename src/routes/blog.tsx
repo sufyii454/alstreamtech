@@ -55,6 +55,7 @@ const posts = [
     author: "ALStreamTech Team",
     date: "July 2, 2026",
     read: "6 min read",
+    image: chatbotsImg.url,
     summary:
       "AI chatbots help businesses improve customer support, generate leads, automate sales, and provide instant assistance 24/7.",
   },
@@ -64,6 +65,7 @@ const posts = [
     author: "ALStreamTech Team",
     date: "June 30, 2026",
     read: "7 min read",
+    image: agentsImg.url,
     summary:
       "AI agents are revolutionizing business operations by acting as smart assistants for workflow automation, decision-making, and productivity enhancement.",
   },
@@ -73,6 +75,7 @@ const posts = [
     author: "ALStreamTech Team",
     date: "June 28, 2026",
     read: "9 min read",
+    image: customImg.url,
     summary:
       "Choosing between custom software and ready-made tools depends on scalability, budget, and long-term business goals.",
   },
@@ -82,6 +85,7 @@ const posts = [
     author: "ALStreamTech Team",
     date: "June 25, 2026",
     read: "5 min read",
+    image: smallBizImg.url,
     summary:
       "AI is no longer just for large enterprises. Small businesses can now leverage affordable AI tools for automation, analytics, and customer engagement.",
   },
@@ -91,6 +95,7 @@ const posts = [
     author: "ALStreamTech Team",
     date: "June 21, 2026",
     read: "8 min read",
+    image: futureImg.url,
     summary:
       "The future of automation lies in autonomous AI systems capable of managing workflows with minimal human intervention.",
   },
@@ -100,6 +105,7 @@ const posts = [
     author: "ALStreamTech Team",
     date: "June 18, 2026",
     read: "6 min read",
+    image: supportImg.url,
     summary:
       "AI-powered support systems are enhancing customer experiences through chatbots, ticket automation, and intelligent response systems.",
   },
