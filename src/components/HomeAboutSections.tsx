@@ -519,11 +519,11 @@ function IndustriesSlider() {
             </button>
 
             <div className="overflow-hidden" ref={emblaRef}>
-              <div className="flex touch-pan-y">
+              <div className="flex touch-pan-y -ml-5">
                 {industries.map(({ icon: Icon, title, desc }) => (
                   <div
                     key={title}
-                    className="min-w-0 shrink-0 grow-0 basis-full pl-5 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4 first:pl-0 sm:[&:nth-child(-n+2)]:first:pl-0 lg:[&:nth-child(-n+3)]:first:pl-0"
+                    className="min-w-0 shrink-0 grow-0 basis-full pl-5 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
                   >
                     <motion.div
                       whileHover={{ y: -6 }}
