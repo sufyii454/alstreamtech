@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Phone, Mail, MapPin, Clock, Linkedin, Twitter, Github, Menu, X, ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
 import logoAsset from "../assets/alstream-logo.png.asset.json";
 
 const nav: Array<{ to: string; label: string; dropdown?: { to: string; label: string }[] }> = [
@@ -49,7 +50,14 @@ export function SiteHeader() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50">
+    <header
+      className={cn(
+        "sticky top-0 z-[1000] w-full transition-all duration-300 ease-out",
+        scrolled
+          ? "bg-[rgba(5,15,35,0.85)] shadow-[0_4px_20px_rgba(0,0,0,0.15)] backdrop-blur-xl"
+          : "bg-transparent"
+      )}
+    >
       {/* Top icon bar */}
       <div className="hidden md:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 text-xs text-muted-foreground">
