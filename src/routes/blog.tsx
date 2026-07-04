@@ -246,11 +246,11 @@ function Blog() {
             <p className="mt-2 text-sm text-muted-foreground">Fresh perspectives from the ALStreamTech team.</p>
           </div>
         </div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid auto-rows-fr gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filtered.map((p) => (
             <article
               key={p.title}
-              className="glass group relative flex flex-col overflow-hidden rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow"
+              className="glass group relative flex h-full flex-col overflow-hidden rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow"
             >
               <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-2xl bg-surface p-3">
                 <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary/5 via-transparent to-accent/5">
@@ -265,15 +265,22 @@ function Blog() {
                   {p.category}
                 </div>
               </div>
-              <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
-                <span className="flex items-center gap-1"><User className="h-3 w-3" /> {p.author}</span>
-                <span className="flex items-center gap-1"><Calendar className="h-3 w-3" /> {p.date}</span>
-                <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {p.read}</span>
+
+              <div className="flex flex-1 flex-col justify-between">
+                <div>
+                  <h3 className="line-clamp-2 min-h-[3.1rem] font-display text-lg font-semibold leading-snug transition group-hover:text-primary">
+                    {p.title}
+                  </h3>
+                  <p className="line-clamp-3 min-h-[4.2rem] mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {p.summary}
+                  </p>
+                </div>
+                <div className="flex flex-wrap items-center gap-3 pt-4 text-xs text-muted-foreground">
+                  <span className="flex items-center gap-1"><User className="h-3 w-3" /> {p.author}</span>
+                  <span className="flex items-center gap-1"><Calendar className="h-3 w-3" /> {p.date}</span>
+                  <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {p.read}</span>
+                </div>
               </div>
-              <h3 className="mt-3 font-display text-lg font-semibold leading-snug transition group-hover:text-primary">
-                {p.title}
-              </h3>
-              <p className="mt-2 text-sm text-muted-foreground">{p.summary}</p>
             </article>
           ))}
         </div>
