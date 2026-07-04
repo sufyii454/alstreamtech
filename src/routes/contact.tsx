@@ -18,13 +18,13 @@ import { PageHero } from "../components/PageHero";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact AIXIS — Book a Free AI Consultation" },
+      { title: "Contact ALStreamTech — Book a Free AI Consultation" },
       {
         name: "description",
         content:
-          "Talk to AIXIS about AI, custom software, chatbots, mobile apps, automation and cloud. Book a free consultation — we reply within one business day.",
+          "Talk to ALStreamTech about AI, custom software, chatbots, mobile apps, automation and cloud. Book a free consultation — we reply within one business day.",
       },
-      { property: "og:title", content: "Contact AIXIS" },
+      { property: "og:title", content: "Contact ALStreamTech" },
       {
         property: "og:description",
         content: "Let's build something amazing together.",
@@ -129,7 +129,7 @@ function Contact() {
         body: JSON.stringify({
           access_key: "8d4a68ab-4716-4d75-9a9b-e07f8be1467c",
           subject: `New consultation request from ${form.name}`,
-          from_name: "AIXIS Website",
+          from_name: "ALStreamTech Website",
           name: form.name,
           email: form.email,
           phone: form.phone,

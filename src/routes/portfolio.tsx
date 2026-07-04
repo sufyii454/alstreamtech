@@ -6,9 +6,9 @@ import { CTASection } from "../components/CTASection";
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
     meta: [
-      { title: "Portfolio — Selected AI & Software Work | AIXIS" },
-      { name: "description", content: "A visual portfolio of AI and software projects delivered by AIXIS across industries." },
-      { property: "og:title", content: "AIXIS Portfolio" },
+      { title: "Portfolio — Selected AI & Software Work | ALStreamTech" },
+      { name: "description", content: "A visual portfolio of AI and software projects delivered by ALStreamTech across industries." },
+      { property: "og:title", content: "ALStreamTech Portfolio" },
       { property: "og:description", content: "Selected work." },
     ],
   }),
@@ -29,7 +29,7 @@ function Portfolio() {
     <>
       <PageHero
         eyebrow="Portfolio"
-        title={<>Selected work from the <span className="text-gradient">AIXIS studio</span></>}
+        title={<>Selected work from the <span className="text-gradient">ALStreamTech studio</span></>}
         subtitle="A visual walk through projects across industries. Every one built by a senior, integrated team."
       />
 

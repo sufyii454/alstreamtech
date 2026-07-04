@@ -6,9 +6,9 @@ import { CTASection } from "../components/CTASection";
 export const Route = createFileRoute("/process")({
   head: () => ({
     meta: [
-      { title: "Our Process — 8 Phases from Idea to Growth | AIXIS" },
-      { name: "description", content: "Discovery, strategy, design, development, testing, deployment, support and growth — AIXIS's proven 8-phase delivery process." },
-      { property: "og:title", content: "AIXIS Process" },
+      { title: "Our Process — 8 Phases from Idea to Growth | ALStreamTech" },
+      { name: "description", content: "Discovery, strategy, design, development, testing, deployment, support and growth — ALStreamTech's proven 8-phase delivery process." },
+      { property: "og:title", content: "ALStreamTech Process" },
       { property: "og:description", content: "Eight phases from idea to growth." },
     ],
   }),

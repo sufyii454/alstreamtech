@@ -7,7 +7,7 @@ import { CTASection } from "../components/CTASection";
 export const Route = createFileRoute("/ai-solutions")({
   head: () => ({
     meta: [
-      { title: "AI Solutions & Showcase — Agents, Chatbots, Vision | AIXIS" },
+      { title: "AI Solutions & Showcase — Agents, Chatbots, Vision | ALStreamTech" },
       { name: "description", content: "Explore five AI solutions and seven live AI showcases: agents, chatbots, generative AI, computer vision, predictive analytics and more." },
       { property: "og:title", content: "AI Solutions" },
       { property: "og:description", content: "Practical, production-ready AI solutions and showcases." },

@@ -6,9 +6,9 @@ import { CTASection } from "../components/CTASection";
 export const Route = createFileRoute("/case-studies")({
   head: () => ({
     meta: [
-      { title: "Case Studies — AI & Software Projects | AIXIS" },
-      { name: "description", content: "Explore six real-world projects: AI agents, SaaS platforms, automation systems and mobile apps built by AIXIS." },
-      { property: "og:title", content: "AIXIS Case Studies" },
+      { title: "Case Studies — AI & Software Projects | ALStreamTech" },
+      { name: "description", content: "Explore six real-world projects: AI agents, SaaS platforms, automation systems and mobile apps built by ALStreamTech." },
+      { property: "og:title", content: "ALStreamTech Case Studies" },
       { property: "og:description", content: "Real projects, measurable outcomes." },
     ],
   }),

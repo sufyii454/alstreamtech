@@ -7,9 +7,9 @@ import { CTASection } from "../components/CTASection";
 export const Route = createFileRoute("/why-us")({
   head: () => ({
     meta: [
-      { title: "Why Choose AIXIS — Your AI Software Partner" },
-      { name: "description", content: "Discover why leading teams choose AIXIS: AI-first thinking, end-to-end delivery, enterprise-grade security, and long-term partnership." },
-      { property: "og:title", content: "Why Choose AIXIS" },
+      { title: "Why Choose ALStreamTech — Your AI Software Partner" },
+      { name: "description", content: "Discover why leading teams choose ALStreamTech: AI-first thinking, end-to-end delivery, enterprise-grade security, and long-term partnership." },
+      { property: "og:title", content: "Why Choose ALStreamTech" },
       { property: "og:description", content: "AI-first, end-to-end, enterprise-grade software development partnership." },
     ],
   }),
@@ -40,7 +40,7 @@ function WhyUs() {
       <PageHero
         eyebrow="Why Choose Us"
         title={<>Not just <span className="text-gradient">developers</span> — your AI transformation partner</>}
-        subtitle="Modern engineering. Practical AI. Long-term partnership. Here's what makes AIXIS the team teams keep coming back to."
+        subtitle="Modern engineering. Practical AI. Long-term partnership. Here's what makes ALStreamTech the team teams keep coming back to."
       />
 
       <section className="mx-auto max-w-7xl px-6 py-24">
@@ -69,12 +69,12 @@ function WhyUs() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-16">
-        <SectionHeading eyebrow="Compared" title={<>Traditional agencies vs. <span className="text-gradient">AIXIS</span></>} />
+        <SectionHeading eyebrow="Compared" title={<>Traditional agencies vs. <span className="text-gradient">ALStreamTech</span></>} />
         <div className="glass-strong overflow-hidden rounded-3xl">
           <div className="grid grid-cols-3 border-b border-white/10 bg-white/5">
             <div className="p-5 text-sm font-semibold text-muted-foreground">Capability</div>
             <div className="p-5 text-sm font-semibold text-muted-foreground">Traditional</div>
-            <div className="p-5 text-sm font-semibold text-primary">AIXIS</div>
+            <div className="p-5 text-sm font-semibold text-primary">ALStreamTech</div>
           </div>
           {[
             ["AI expertise", "Bolt-on team or subcontracted", "In-house ML & AI research"],

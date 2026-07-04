@@ -7,14 +7,14 @@ import { CTASection } from "../components/CTASection";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About AIXIS — Our Story, Mission & Team" },
+      { title: "About ALStreamTech — Our Story, Mission & Team" },
       {
         name: "description",
         content:
-          "Meet AIXIS: a team of AI researchers, software engineers, designers and strategists dedicated to building intelligent digital solutions.",
+          "Meet ALStreamTech: a team of AI researchers, software engineers, designers and strategists dedicated to building intelligent digital solutions.",
       },
-      { property: "og:title", content: "About AIXIS — Our Story, Mission & Team" },
-      { property: "og:description", content: "The story, mission, values and people behind AIXIS." },
+      { property: "og:title", content: "About ALStreamTech — Our Story, Mission & Team" },
+      { property: "og:description", content: "The story, mission, values and people behind ALStreamTech." },
     ],
   }),
   component: About,
@@ -43,7 +43,7 @@ function About() {
             Engineers and dreamers building the <span className="text-gradient">next era of software</span>
           </>
         }
-        subtitle="AIXIS is a global AI-first software studio. We help ambitious teams design, build and scale intelligent digital products that move the needle."
+        subtitle="ALStreamTech is a global AI-first software studio. We help ambitious teams design, build and scale intelligent digital products that move the needle."
       />
 
       <section className="mx-auto max-w-7xl px-6 py-24">

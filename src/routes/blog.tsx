@@ -6,10 +6,10 @@ import { CTASection } from "../components/CTASection";
 export const Route = createFileRoute("/blog")({
   head: () => ({
     meta: [
-      { title: "Blog — AI, Software & Digital Transformation | AIXIS" },
-      { name: "description", content: "Insights on AI, software architecture, product strategy and digital transformation from the AIXIS team." },
-      { property: "og:title", content: "AIXIS Blog" },
-      { property: "og:description", content: "Ideas from the AIXIS team." },
+      { title: "Blog — AI, Software & Digital Transformation | ALStreamTech" },
+      { name: "description", content: "Insights on AI, software architecture, product strategy and digital transformation from the ALStreamTech team." },
+      { property: "og:title", content: "ALStreamTech Blog" },
+      { property: "og:description", content: "Ideas from the ALStreamTech team." },
     ],
   }),
   component: Blog,
@@ -29,7 +29,7 @@ function Blog() {
     <>
       <PageHero
         eyebrow="Blog"
-        title={<>Ideas from the <span className="text-gradient">AIXIS team</span></>}
+        title={<>Ideas from the <span className="text-gradient">ALStreamTech team</span></>}
         subtitle="Field notes on AI, engineering, product strategy and digital transformation — written by the people building it."
       />
 
