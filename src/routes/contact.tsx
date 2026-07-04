@@ -432,58 +432,59 @@ function Contact() {
   );
 }
 
-function InfoCard({
+function ContactInfoItem({
   icon: Icon,
   title,
   value,
   href,
   external,
-  delay = 0,
 }: {
   icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
   title: string;
   value: React.ReactNode;
   href?: string;
   external?: boolean;
-  delay?: number;
 }) {
-  const inner = (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay }}
-      whileHover={{ y: -4 }}
-      className="group relative h-full overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-xl transition-all duration-300 hover:border-[color:var(--brand)]/60 hover:bg-white/[0.06] hover:shadow-[0_10px_40px_-10px_rgba(21,171,230,0.5)]"
-      style={{ ["--brand" as string]: BRAND }}
-    >
+  const cardClass =
+    "group relative flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-xl transition-all duration-300 hover:border-[color:var(--brand)]/60 hover:bg-white/[0.06] hover:shadow-[0_10px_40px_-10px_rgba(21,171,230,0.5)]";
+  const content = (
+    <>
       <div
         className="pointer-events-none absolute -inset-1 rounded-2xl opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-30"
         style={{ background: BRAND }}
       />
       <div
-        className="relative mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110"
+        className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-110"
         style={{ background: `${BRAND}1F` }}
       >
         <Icon className="h-5 w-5" style={{ color: BRAND }} />
       </div>
-      <div className="relative text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-        {title}
+      <div className="relative min-w-0">
+        <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          {title}
+        </div>
+        <div className="mt-1 text-sm font-medium leading-relaxed text-foreground break-words">
+          {value}
+        </div>
       </div>
-      <div className="relative mt-1.5 text-sm font-medium leading-relaxed text-foreground break-words">
-        {value}
-      </div>
-    </motion.div>
+    </>
   );
-  if (!href) return inner;
+  if (!href) {
+    return (
+      <div className={cardClass} style={{ ["--brand" as string]: BRAND }}>
+        {content}
+      </div>
+    );
+  }
   return (
     <a
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
-      className="block h-full"
+      className={cardClass}
+      style={{ ["--brand" as string]: BRAND }}
     >
-      {inner}
+      {content}
     </a>
   );
 }
