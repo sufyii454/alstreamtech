@@ -13,8 +13,7 @@ export function CTASection() {
               Ready to contact
             </div>
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight md:text-5xl">
-              Ready to Build the <span className="text-gradient">Future with </span>
-              <br /> AI?
+              Ready to Build the <span className="text-gradient">Future with AI?</span>{" "}
             </h2>
             <p className="mt-4 max-w-xl text-muted-foreground">
               Discuss your project with our experts and discover how intelligent software can transform your business.
