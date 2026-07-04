@@ -250,11 +250,20 @@ function Blog() {
           {filtered.map((p) => (
             <article
               key={p.title}
-              className="glass group relative flex flex-col overflow-hidden rounded-2xl p-6 transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow"
+              className="glass group relative flex flex-col overflow-hidden rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow"
             >
-              <div className="relative mb-4 h-[280px] overflow-hidden rounded-2xl bg-[#0D1628] p-2">
-                <img src={p.image} alt={p.title} className="h-full w-full object-contain transition duration-500 group-hover:scale-105" loading="lazy" />
-                <div className="absolute left-3 top-3 glass rounded-full px-3 py-1 text-xs font-semibold text-primary">{p.category}</div>
+              <div className="relative mb-4 aspect-[4/3] overflow-hidden rounded-2xl bg-surface p-3">
+                <div className="relative flex h-full w-full items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-primary/5 via-transparent to-accent/5">
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    className="h-full w-full object-contain transition duration-500 group-hover:scale-[1.02]"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="absolute left-3 top-3 glass rounded-full px-3 py-1 text-xs font-semibold text-primary">
+                  {p.category}
+                </div>
               </div>
               <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
                 <span className="flex items-center gap-1"><User className="h-3 w-3" /> {p.author}</span>
