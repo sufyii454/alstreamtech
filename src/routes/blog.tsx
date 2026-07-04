@@ -158,8 +158,9 @@ function Blog() {
           <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 via-transparent to-accent/20 opacity-60" />
           <div className="pointer-events-none absolute -top-32 -right-32 h-72 w-72 rounded-full bg-primary/25 blur-3xl" />
           <div className="relative grid gap-0 lg:grid-cols-2">
-            <div className="relative min-h-[280px] lg:min-h-[420px]">
-              <CategoryVisual label={featured.category} />
+            <div className="relative min-h-[280px] overflow-hidden lg:min-h-[420px]">
+              <img src={featuredImg.url} alt={featured.title} className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+              <div className="absolute left-4 top-4 glass rounded-full px-3 py-1 text-xs font-semibold text-primary">{featured.category}</div>
             </div>
             <div className="flex flex-col justify-center p-8 md:p-12">
               <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
