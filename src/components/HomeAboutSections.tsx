@@ -8,6 +8,8 @@ import {
 } from "lucide-react";
 import missionTarget from "../assets/mission-target.jpg";
 import missionGlobe from "../assets/mission-ai-globe.jpg";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 /* ---------------- Section 1 — Who We Are ---------------- */
 
@@ -432,27 +434,30 @@ const industries = [
 ];
 
 function IndustriesSlider() {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [paused, setPaused] = useState(false);
-
-  const scrollBy = (dir: number) => {
-    const el = trackRef.current;
-    if (!el) return;
-    el.scrollBy({ left: dir * (el.clientWidth * 0.8), behavior: "smooth" });
-  };
+  const autoplay = useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true }),
+  );
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: "start", slidesToScroll: 1 },
+    [autoplay.current],
+  );
+  const [selected, setSelected] = useState(0);
+  const [snapCount, setSnapCount] = useState(0);
 
   useEffect(() => {
-    if (paused) return;
-    const el = trackRef.current;
-    if (!el) return;
-    const id = setInterval(() => {
-      if (!el) return;
-      const nearEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 8;
-      if (nearEnd) el.scrollTo({ left: 0, behavior: "smooth" });
-      else el.scrollBy({ left: 320, behavior: "smooth" });
-    }, 3500);
-    return () => clearInterval(id);
-  }, [paused]);
+    if (!emblaApi) return;
+    const update = () => {
+      setSelected(emblaApi.selectedScrollSnap());
+      setSnapCount(emblaApi.scrollSnapList().length);
+    };
+    update();
+    emblaApi.on("select", update);
+    emblaApi.on("reInit", update);
+    return () => {
+      emblaApi.off("select", update);
+      emblaApi.off("reInit", update);
+    };
+  }, [emblaApi]);
 
   return (
     <section className="relative overflow-hidden py-20 md:py-24">
@@ -460,11 +465,11 @@ function IndustriesSlider() {
         <div
           className="relative overflow-hidden rounded-3xl border border-slate-200/60 px-4 py-14 md:px-10 md:py-16"
           style={{
-            background:
-              "linear-gradient(180deg, #f6f9fc 0%, #eef4f9 100%)",
+            background: "linear-gradient(180deg, #f6f9fc 0%, #eef4f9 100%)",
           }}
         >
-          <div className="pointer-events-none absolute inset-0 opacity-40"
+          <div
+            className="pointer-events-none absolute inset-0 opacity-40"
             style={{
               backgroundImage:
                 "radial-gradient(circle, rgba(21,171,230,0.18) 1px, transparent 1px)",
@@ -479,8 +484,10 @@ function IndustriesSlider() {
             transition={{ duration: 0.6 }}
             className="relative mx-auto mb-10 max-w-2xl text-center"
           >
-            <div className="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.35em]"
-              style={{ color: "#15ABE6" }}>
+            <div
+              className="inline-flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.35em]"
+              style={{ color: "#15ABE6" }}
+            >
               <span className="h-px w-8" style={{ background: "#15ABE6" }} />
               <span className="h-1.5 w-1.5 rounded-full" style={{ background: "#15ABE6" }} />
               Industries
@@ -496,57 +503,62 @@ function IndustriesSlider() {
           </motion.div>
 
           <div className="relative">
-            {/* arrows */}
             <button
               aria-label="Previous"
-              onClick={() => scrollBy(-1)}
+              onClick={() => emblaApi?.scrollPrev()}
               className="absolute -left-2 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white text-slate-600 shadow-lg ring-1 ring-slate-200 transition hover:text-[#15ABE6] hover:ring-[#15ABE6]/40 md:-left-4"
             >
               <ArrowLeft className="h-4 w-4" />
             </button>
             <button
               aria-label="Next"
-              onClick={() => scrollBy(1)}
+              onClick={() => emblaApi?.scrollNext()}
               className="absolute -right-2 top-1/2 z-10 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full bg-white text-slate-600 shadow-lg ring-1 ring-slate-200 transition hover:text-[#15ABE6] hover:ring-[#15ABE6]/40 md:-right-4"
             >
               <ArrowRight className="h-4 w-4" />
             </button>
 
-            <div
-              ref={trackRef}
-              onMouseEnter={() => setPaused(true)}
-              onMouseLeave={() => setPaused(false)}
-              className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-            >
-              {industries.map(({ icon: Icon, title, desc }) => (
-                <motion.div
-                  key={title}
-                  whileHover={{ y: -6 }}
-                  className="group relative flex min-w-[220px] max-w-[240px] shrink-0 snap-start flex-col items-center rounded-2xl border border-slate-200/70 bg-white p-6 text-center shadow-sm transition hover:border-[#15ABE6]/60 hover:shadow-[0_20px_40px_-15px_rgba(21,171,230,0.4)] sm:min-w-[240px]"
-                >
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex touch-pan-y -ml-5">
+                {industries.map(({ icon: Icon, title, desc }) => (
                   <div
-                    className="mb-4 flex h-14 w-14 items-center justify-center rounded-full transition group-hover:scale-110"
-                    style={{
-                      background: "rgba(21,171,230,0.12)",
-                      color: "#15ABE6",
-                    }}
+                    key={title}
+                    className="min-w-0 shrink-0 grow-0 basis-full pl-5 sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
                   >
-                    <Icon className="h-7 w-7" />
+                    <motion.div
+                      whileHover={{ y: -6 }}
+                      className="group relative flex h-full flex-col items-center rounded-2xl border border-slate-200/70 bg-white p-6 text-center shadow-sm transition hover:border-[#15ABE6]/60 hover:shadow-[0_20px_40px_-15px_rgba(21,171,230,0.5)]"
+                    >
+                      <div
+                        className="mb-4 flex h-14 w-14 items-center justify-center rounded-full transition group-hover:scale-110"
+                        style={{ background: "rgba(21,171,230,0.12)", color: "#15ABE6" }}
+                      >
+                        <Icon className="h-7 w-7" />
+                      </div>
+                      <div className="font-display text-base font-bold text-slate-900">{title}</div>
+                      <div
+                        className="mx-auto mt-2 h-0.5 w-8 rounded-full"
+                        style={{ background: "#15ABE6" }}
+                      />
+                      <p className="mt-4 text-sm leading-relaxed text-slate-500">{desc}</p>
+                    </motion.div>
                   </div>
-                  <div className="font-display text-base font-bold text-slate-900">{title}</div>
-                  <div className="mx-auto mt-2 h-0.5 w-8 rounded-full" style={{ background: "#15ABE6" }} />
-                  <p className="mt-4 text-sm leading-relaxed text-slate-500">{desc}</p>
-                </motion.div>
-              ))}
+                ))}
+              </div>
             </div>
 
             {/* Dots */}
             <div className="mt-8 flex justify-center gap-2">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <span
+              {Array.from({ length: snapCount }).map((_, i) => (
+                <button
                   key={i}
-                  className="h-1.5 w-1.5 rounded-full"
-                  style={{ background: i === 2 ? "#15ABE6" : "rgba(21,171,230,0.25)" }}
+                  aria-label={`Go to slide ${i + 1}`}
+                  onClick={() => emblaApi?.scrollTo(i)}
+                  className="h-2 rounded-full transition-all"
+                  style={{
+                    width: i === selected ? 24 : 8,
+                    background: i === selected ? "#15ABE6" : "rgba(21,171,230,0.25)",
+                  }}
                 />
               ))}
             </div>
@@ -556,6 +568,7 @@ function IndustriesSlider() {
     </section>
   );
 }
+
 
 
 /* ---------------- Export composed sections ---------------- */
