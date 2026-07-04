@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin, Linkedin, Twitter, Github, ArrowRight } from "lucide-react";
-import logoAsset from "../assets/alstream-logo.jpeg.asset.json";
+import logoAsset from "../assets/alstream-logo.png.asset.json";
 
 export function SiteFooter() {
   return (
