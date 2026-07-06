@@ -174,3 +174,33 @@ body.modal-open header { display: none; }
 /* Remove the footer top spacing on the AI Solutions page so the final CTA sits flush */
 body.page-ai-solutions footer { margin-top: 0; }
 
+/* Industry section image card — glassmorphic premium container */
+@keyframes industry-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes industry-reveal {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.industry-image-card {
+  border: 1px solid rgba(21, 171, 230, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(21, 171, 230, 0.15),
+    0 20px 60px -20px rgba(21, 171, 230, 0.45),
+    0 8px 30px -12px rgba(0, 0, 0, 0.5);
+  animation:
+    industry-reveal 0.9s ease-out both,
+    industry-float 7s ease-in-out 0.9s infinite;
+  transition: box-shadow 0.5s ease, border-color 0.5s ease;
+}
+.industry-image-card:hover {
+  border-color: rgba(21, 171, 230, 0.6);
+  box-shadow:
+    0 0 0 1px rgba(21, 171, 230, 0.35),
+    0 25px 80px -20px rgba(21, 171, 230, 0.7),
+    0 10px 40px -10px rgba(0, 0, 0, 0.6);
+}
+
+
+
