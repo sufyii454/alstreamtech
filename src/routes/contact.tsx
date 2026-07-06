@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, animate, useInView, useMotionValue, useTransform } from "framer-motion";
 import {
   Mail,
   Phone,
@@ -11,9 +11,17 @@ import {
   MessageCircle,
   Loader2,
   Sparkles,
+  HelpCircle,
 } from "lucide-react";
 import { toast } from "sonner";
 import { PageHero } from "../components/PageHero";
+import { CTASection } from "../components/CTASection";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -83,6 +91,66 @@ const BUDGETS = [
   "$25,000–$50,000",
   "$50,000+",
 ];
+
+const FAQS = [
+  {
+    q: "How quickly do you respond?",
+    a: "We typically respond to all enquiries within 24 hours on business days. For urgent requests, we aim to get back to you even sooner.",
+  },
+  {
+    q: "Do consultations cost anything?",
+    a: "Our initial consultation is completely free. We'll discuss your requirements, goals, and recommend the best approach for your project.",
+  },
+  {
+    q: "Can we discuss confidential projects?",
+    a: "Absolutely. We treat every client discussion with complete confidentiality and are happy to sign an NDA before discussing sensitive project details.",
+  },
+  {
+    q: "Do you work internationally?",
+    a: "Yes. We work with clients across different countries and time zones through online meetings and collaborative project management.",
+  },
+  {
+    q: "How long do projects usually take?",
+    a: "Project timelines vary depending on complexity. Small projects may take 2–4 weeks, while larger AI and software solutions typically require 6–16 weeks.",
+  },
+];
+
+const STATS = [
+  { value: 100, suffix: "+", label: "Projects Delivered" },
+  { value: 75, suffix: "+", label: "Happy Clients" },
+  { value: 50, suffix: "+", label: "AI Solutions Built" },
+  { value: 98, suffix: "%", label: "Client Satisfaction" },
+  { value: 20, suffix: "+", label: "Industries Served" },
+];
+
+function Counter({
+  value,
+  suffix,
+  duration = 2,
+}: {
+  value: number;
+  suffix: string;
+  duration?: number;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(count, value, { duration, ease: "easeOut" });
+      return controls.stop;
+    }
+  }, [isInView, value, count, duration]);
+
+  return (
+    <span ref={ref}>
+      <motion.span>{rounded}</motion.span>
+      {suffix}
+    </span>
+  );
+}
 
 function Contact() {
   const [form, setForm] = useState<FormState>(INITIAL);
@@ -422,6 +490,87 @@ function Contact() {
           </motion.div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <section className="relative mx-auto max-w-4xl px-6 py-24">
+        <div className="mb-12 text-center">
+          <div className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs uppercase tracking-widest text-primary">
+            <HelpCircle className="h-3.5 w-3.5" />
+            FAQ
+          </div>
+          <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">
+            Frequently Asked Questions
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground">
+            Find quick answers to the most common questions about our consultation process, project delivery, and services.
+          </p>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
+          className="glass-strong rounded-3xl p-2 md:p-4"
+        >
+          <Accordion type="single" collapsible className="w-full">
+            {FAQS.map((item, i) => (
+              <AccordionItem
+                key={i}
+                value={`item-${i}`}
+                className="border-white/10 px-4 last:border-b-0"
+              >
+                <AccordionTrigger className="py-5 text-left text-base font-semibold hover:text-primary hover:no-underline">
+                  {item.q}
+                </AccordionTrigger>
+                <AccordionContent className="leading-relaxed text-muted-foreground">
+                  {item.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </motion.div>
+      </section>
+
+      {/* Trust Indicators */}
+      <section className="relative mx-auto max-w-7xl px-6 py-24">
+        <div className="mb-12 text-center">
+          <div className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs uppercase tracking-widest text-primary">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            Trust
+          </div>
+          <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">
+            Trusted by Businesses Across Industries
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground">
+            Delivering innovative AI, automation, and software solutions with measurable results.
+          </p>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          {STATS.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              whileHover={{ y: -4 }}
+              className="glass-strong group relative overflow-hidden rounded-2xl p-6 text-center transition-all duration-300 hover:border-primary/60 hover:shadow-glow"
+            >
+              <div className="pointer-events-none absolute -inset-1 rounded-2xl bg-primary opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-30" />
+              <div className="relative font-display text-4xl font-bold text-gradient md:text-5xl">
+                <Counter value={stat.value} suffix={stat.suffix} />
+              </div>
+              <div className="relative mt-2 text-sm font-medium text-muted-foreground">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <CTASection />
     </>
   );
 }
