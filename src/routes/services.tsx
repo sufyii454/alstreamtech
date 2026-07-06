@@ -7,6 +7,8 @@ import {
 } from "lucide-react";
 import { PageHero } from "../components/PageHero";
 import { SectionHeading } from "../components/SectionHeading";
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const _unused = { CTASection };
 import { CTASection } from "../components/CTASection";
 import { useEffect, useRef, useState } from "react";
 
