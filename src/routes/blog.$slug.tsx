@@ -7,7 +7,7 @@ export const Route = createFileRoute("/blog/$slug")({
     if (!loaderData) {
       return { meta: [{ title: "Article not found | ALStreamTech" }, { name: "robots", content: "noindex" }] };
     }
-    const p = loaderData.post;
+    const p = (loaderData as { post: (typeof import("../lib/blog-posts").posts)[number] }).post;
     return {
       meta: [
         { title: `${p.title} | ALStreamTech Blog` },
@@ -60,7 +60,7 @@ function BlogPost() {
       <img src={post.image} alt={post.title} className="mt-8 aspect-video w-full rounded-2xl object-cover" />
       <div className="prose prose-invert mt-10 max-w-none">
         <p className="text-lg text-muted-foreground">{post.summary}</p>
-        {post.body.map((para, i) => (
+        {post.body.map((para: string, i: number) => (
           <p key={i} className="mt-6 text-foreground/90 leading-relaxed">{para}</p>
         ))}
       </div>
