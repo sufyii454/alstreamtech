@@ -665,6 +665,16 @@ function QuickPanel({ service, onClose }: { service: Service | null; onClose: ()
     return () => document.removeEventListener("keydown", onKey);
   }, [onClose]);
 
+  useEffect(() => {
+    if (!service) return;
+    document.body.style.overflow = "hidden";
+    document.body.classList.add("modal-open");
+    return () => {
+      document.body.style.overflow = "";
+      document.body.classList.remove("modal-open");
+    };
+  }, [service]);
+
   if (!service) return null;
   const Icon = service.icon;
   return (
