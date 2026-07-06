@@ -733,7 +733,12 @@ function DetailModal({ ind, onClose }: { ind: Industry | null; onClose: () => vo
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
-    return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+    document.body.classList.add("modal-open");
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+      document.body.classList.remove("modal-open");
+    };
   }, [ind, onClose]);
   if (!ind) return null;
   const Icon = ind.icon;
@@ -833,6 +838,7 @@ function AISolutions() {
         @keyframes float { 0%,100%{transform:translate(-50%,-50%)} 50%{transform:translate(-50%,calc(-50% - 6px))} }
         @keyframes spin { to { transform: rotate(360deg); } }
         @keyframes grow { from { width: 0 } }
+        body.modal-open header { display: none; }
       `}</style>
 
       <Hero />
