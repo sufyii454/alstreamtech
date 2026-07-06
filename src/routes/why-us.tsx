@@ -7,6 +7,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { ParticleNetwork } from "../components/ParticleNetwork";
+import whyusHero from "../assets/whyus/whyus-hero.jpg.asset.json";
 
 export const Route = createFileRoute("/why-us")({
   head: () => ({
