@@ -738,39 +738,49 @@ function DetailModal({ ind, onClose }: { ind: Industry | null; onClose: () => vo
   if (!ind) return null;
   const Icon = ind.icon;
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/70 backdrop-blur-sm md:items-center" onClick={onClose}>
-      <div className="glass-strong m-4 max-h-[85vh] w-full max-w-2xl overflow-auto rounded-3xl p-8 animate-scale-in" onClick={e => e.stopPropagation()}>
-        <div className="flex items-start gap-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-brand shadow-glow">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm" onClick={onClose}>
+      <div className="glass-strong relative flex max-h-[90vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl animate-scale-in" onClick={e => e.stopPropagation()}>
+        <div className="sticky top-0 z-10 flex items-start gap-4 border-b border-white/10 bg-background/80 p-6 backdrop-blur-md">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-brand shadow-glow">
             <Icon className="h-6 w-6 text-primary-foreground" />
           </div>
-          <div className="flex-1">
+          <div className="min-w-0 flex-1">
             <div className="text-xs uppercase tracking-widest text-primary">{ind.title}</div>
-            <h3 className="font-display text-2xl font-bold">{ind.heading}</h3>
+            <h3 className="font-display text-xl font-bold md:text-2xl">{ind.heading}</h3>
           </div>
-          <button onClick={onClose} className="text-muted-foreground hover:text-foreground">✕</button>
+          <button
+            onClick={onClose}
+            aria-label="Close"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/5 text-muted-foreground transition hover:bg-white/10 hover:text-foreground"
+          >
+            ✕
+          </button>
         </div>
-        <div className="mt-6 grid gap-6 md:grid-cols-2">
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Problems Solved</div>
-            <ul className="mt-2 space-y-1 text-sm">{ind.problems.map(p => <li key={p} className="flex gap-2"><ShieldCheck className="h-4 w-4 shrink-0 text-primary" />{p}</li>)}</ul>
-          </div>
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">AI Capabilities</div>
-            <ul className="mt-2 space-y-1 text-sm">{ind.capabilities.map(c => <li key={c} className="flex gap-2"><Check className="h-4 w-4 shrink-0 text-primary" />{c}</li>)}</ul>
-          </div>
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Benefits</div>
-            <ul className="mt-2 space-y-1 text-sm">{ind.benefits.map(b => <li key={b} className="flex gap-2"><Zap className="h-4 w-4 shrink-0 text-primary" />{b}</li>)}</ul>
-          </div>
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Example Use Cases</div>
-            <ul className="mt-2 space-y-1 text-sm">{ind.useCases.map(u => <li key={u} className="flex gap-2"><LineChart className="h-4 w-4 shrink-0 text-primary" />{u}</li>)}</ul>
+
+        <div className="flex-1 overflow-auto p-6">
+          <div className="grid gap-6 md:grid-cols-2">
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Problems Solved</div>
+              <ul className="mt-2 space-y-1 text-sm">{ind.problems.map(p => <li key={p} className="flex gap-2"><ShieldCheck className="h-4 w-4 shrink-0 text-primary" />{p}</li>)}</ul>
+            </div>
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">AI Capabilities</div>
+              <ul className="mt-2 space-y-1 text-sm">{ind.capabilities.map(c => <li key={c} className="flex gap-2"><Check className="h-4 w-4 shrink-0 text-primary" />{c}</li>)}</ul>
+            </div>
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Benefits</div>
+              <ul className="mt-2 space-y-1 text-sm">{ind.benefits.map(b => <li key={b} className="flex gap-2"><Zap className="h-4 w-4 shrink-0 text-primary" />{b}</li>)}</ul>
+            </div>
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Example Use Cases</div>
+              <ul className="mt-2 space-y-1 text-sm">{ind.useCases.map(u => <li key={u} className="flex gap-2"><LineChart className="h-4 w-4 shrink-0 text-primary" />{u}</li>)}</ul>
+            </div>
           </div>
         </div>
-        <div className="mt-6 flex gap-3">
-          <Link to="/contact" className="flex-1 rounded-2xl bg-gradient-brand px-5 py-3 text-center font-semibold text-primary-foreground shadow-glow hover:scale-[1.02] transition">Discuss This Solution</Link>
-          <a href={`#${ind.id}`} onClick={(e) => { e.preventDefault(); onClose(); setTimeout(() => scrollToId(ind.id), 50); }} className="glass rounded-2xl px-5 py-3 font-semibold hover:bg-white/10">View Section</a>
+
+        <div className="sticky bottom-0 flex flex-col gap-3 border-t border-white/10 bg-background/80 p-6 backdrop-blur-md sm:flex-row">
+          <Link to="/contact" className="flex-1 rounded-2xl bg-gradient-brand px-5 py-3 text-center text-sm font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.02]">Discuss This Solution</Link>
+          <a href={`#${ind.id}`} onClick={(e) => { e.preventDefault(); onClose(); setTimeout(() => scrollToId(ind.id), 50); }} className="glass rounded-2xl px-5 py-3 text-center text-sm font-semibold hover:bg-white/10">View Section</a>
         </div>
       </div>
     </div>
