@@ -7,6 +7,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { ParticleNetwork } from "../components/ParticleNetwork";
+import whyusHero from "../assets/whyus/whyus-hero.jpg.asset.json";
 
 export const Route = createFileRoute("/why-us")({
   head: () => ({
@@ -257,7 +258,17 @@ function WhyUs() {
             </div>
           </div>
           <div className="relative animate-fade-up">
-            <AICore />
+            <div className="relative mx-auto aspect-square w-full max-w-[520px]">
+              <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-gradient-brand opacity-30 blur-3xl" />
+              <div className="relative overflow-hidden rounded-[2rem] glass-strong p-2 shadow-glow">
+                <img
+                  src={whyusHero.url}
+                  alt="AI-powered enterprise ecosystem"
+                  className="h-full w-full rounded-[1.6rem] object-cover"
+                  loading="eager"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
