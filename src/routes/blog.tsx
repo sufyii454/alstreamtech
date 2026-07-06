@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, Calendar, Clock, User, Sparkles, MessageSquare } from "lucide-react";
 import { PageHero } from "../components/PageHero";
+import { posts } from "../lib/blog-posts";
 
 export const Route = createFileRoute("/blog")({
   head: () => ({
@@ -41,25 +42,7 @@ const featured = {
     "Artificial Intelligence is transforming how businesses operate by automating repetitive tasks, reducing operational costs, and improving overall efficiency. From customer support to workflow management, AI enables companies to scale faster and smarter.",
 };
 
-const posts = [
-  {
-    category: "Artificial Intelligence",
-    title: "Benefits of AI Chatbots for Modern Businesses",
-    author: "ALStreamTech Team",
-    date: "July 2, 2026",
-    read: "6 min read",
-    summary:
-      "AI chatbots help businesses improve customer support, generate leads, automate sales, and provide instant assistance 24/7.",
-  },
-  {
-    category: "Automation",
-    title: "AI Agents for Companies: The Future of Smart Workflows",
-    author: "ALStreamTech Team",
-    date: "June 30, 2026",
-    read: "7 min read",
-    summary:
-      "AI agents are revolutionizing business operations by acting as smart assistants for workflow automation, decision-making, and productivity enhancement.",
-  },
+// posts imported from ../lib/blog-posts
   {
     category: "Software Development",
     title: "Custom Software vs Ready-Made Tools",
