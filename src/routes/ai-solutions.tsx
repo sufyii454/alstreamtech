@@ -840,7 +840,7 @@ function AISolutions() {
             <MessageSquare className="h-4 w-4 shrink-0 text-primary" />
             <span className="shrink-0 pr-2 font-semibold uppercase tracking-widest text-muted-foreground">Jump to:</span>
             {INDUSTRIES.map(i => (
-              <a key={i.id} href={`#${i.id}`} className="glass shrink-0 rounded-full px-3 py-1 hover:bg-primary/20 hover:text-primary">{i.title}</a>
+              <a key={i.id} href={`#${i.id}`} onClick={(e) => { e.preventDefault(); scrollToId(i.id); }} className="glass shrink-0 rounded-full px-3 py-1 hover:bg-primary/20 hover:text-primary">{i.title}</a>
             ))}
           </div>
         </div>
