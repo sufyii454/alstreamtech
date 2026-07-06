@@ -171,3 +171,6 @@
 /* Hide the sticky site header whenever a modal panel is open */
 body.modal-open header { display: none; }
 
+/* Remove the footer top spacing on the AI Solutions page so the final CTA sits flush */
+body.page-ai-solutions footer { margin-top: 0; }
+

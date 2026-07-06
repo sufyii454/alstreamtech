@@ -795,7 +795,7 @@ function DetailModal({ ind, onClose }: { ind: Industry | null; onClose: () => vo
 
 function FinalCTA() {
   return (
-    <section className="relative mx-auto my-24 max-w-7xl px-6">
+    <section className="relative mx-auto mt-24 max-w-7xl px-6">
       <div className="glass-strong relative overflow-hidden rounded-3xl px-8 py-16 md:px-16 md:py-20">
         <div className="pointer-events-none absolute -top-32 -right-32 h-72 w-72 rounded-full bg-primary/30 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-32 -left-32 h-72 w-72 rounded-full bg-accent/30 blur-3xl" />
@@ -831,6 +831,11 @@ function FinalCTA() {
 
 function AISolutions() {
   const [detail, setDetail] = useState<Industry | null>(null);
+  useEffect(() => {
+    document.body.classList.add("page-ai-solutions");
+    return () => document.body.classList.remove("page-ai-solutions");
+  }, []);
+
   return (
     <>
       <style>{`
