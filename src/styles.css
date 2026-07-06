@@ -168,3 +168,6 @@
   .text-sm { font-size: 0.9375rem; line-height: 1.4rem; }
 }
 
+/* Hide the sticky site header whenever a modal panel is open */
+body.modal-open header { display: none; }
+

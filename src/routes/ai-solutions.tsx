@@ -838,7 +838,6 @@ function AISolutions() {
         @keyframes float { 0%,100%{transform:translate(-50%,-50%)} 50%{transform:translate(-50%,calc(-50% - 6px))} }
         @keyframes spin { to { transform: rotate(360deg); } }
         @keyframes grow { from { width: 0 } }
-        body.modal-open header { display: none; }
       `}</style>
 
       <Hero />
