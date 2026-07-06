@@ -556,7 +556,7 @@ function Technologies() {
             </div>
             <div className="flex flex-wrap gap-2">
               {g.items.map((t, i) => (
-                <span key={t} className="glass rounded-xl px-3 py-1.5 text-sm transition hover:bg-primary/20 hover:text-primary" style={{ animation: `float 5s ease-in-out ${(gi + i) * 0.3}s infinite` }}>
+                <span key={t} className="glass inline-flex rounded-xl px-3 py-1.5 text-sm transition hover:bg-primary/20 hover:text-primary" style={{ animation: `float-tag 5s ease-in-out ${(gi + i) * 0.3}s infinite` }}>
                   {t}
                 </span>
               ))}
