@@ -733,7 +733,12 @@ function DetailModal({ ind, onClose }: { ind: Industry | null; onClose: () => vo
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     window.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
-    return () => { window.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+    document.body.classList.add("modal-open");
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+      document.body.classList.remove("modal-open");
+    };
   }, [ind, onClose]);
   if (!ind) return null;
   const Icon = ind.icon;
