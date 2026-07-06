@@ -152,12 +152,12 @@ const METRICS = [
   { v: 500, suffix: "+", l: "Automation Workflows" },
 ];
 
-const TECH_STACK: { group: string; items: string[] }[] = [
-  { group: "AI", items: ["OpenAI", "Gemini", "LangChain"] },
-  { group: "Frontend", items: ["React", "Next.js", "Angular"] },
-  { group: "Backend", items: ["Node.js", "Python", ".NET"] },
-  { group: "Cloud", items: ["AWS", "Azure"] },
-  { group: "DevOps", items: ["Docker", "Kubernetes"] },
+const TECH_STACK: { group: string; icon: React.ComponentType<{ className?: string }>; tagline: string; items: string[] }[] = [
+  { group: "AI & ML", icon: Brain, tagline: "Intelligence layer", items: ["OpenAI", "Gemini", "LangChain", "Claude"] },
+  { group: "Frontend", icon: Code2, tagline: "User experience", items: ["React", "Next.js", "Angular", "TypeScript"] },
+  { group: "Backend", icon: Server, tagline: "Business logic", items: ["Node.js", "Python", ".NET", "GraphQL"] },
+  { group: "Cloud", icon: Cloud, tagline: "Infrastructure", items: ["AWS", "Azure", "GCP", "Vercel"] },
+  { group: "DevOps", icon: Wrench, tagline: "Delivery pipeline", items: ["Docker", "Kubernetes", "GitHub Actions", "Terraform"] },
 ];
 
 const COMPARE = [
