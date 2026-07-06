@@ -7,7 +7,6 @@ import {
 } from "lucide-react";
 import { ParticleNetwork } from "../components/ParticleNetwork";
 import { SectionHeading } from "../components/SectionHeading";
-import { CTASection } from "../components/CTASection";
 
 export const Route = createFileRoute("/ai-solutions")({
   head: () => ({
@@ -873,7 +872,6 @@ function AISolutions() {
       <FinalCTA />
 
       <DetailModal ind={detail} onClose={() => setDetail(null)} />
-      <CTASection />
     </>
   );
 }
