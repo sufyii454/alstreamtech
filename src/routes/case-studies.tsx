@@ -986,5 +986,3 @@ function CaseStudyDrawer({ project: p, onClose }: { project: Project; onClose: (
   );
 }
 
-// Keep CTASection import used to preserve tree-shaking parity
-void CTASection;
