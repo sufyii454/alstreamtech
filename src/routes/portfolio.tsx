@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowRight, ArrowUpRight, Bot, LayoutDashboard, BarChart3, Workflow,
   Users, Cloud, Smartphone, Sparkles, Check, X, Calendar, MessageSquare,
-  FileText, Quote, TrendingUp, Zap, Filter,
+  FileText, Quote, TrendingUp, Zap, Filter, Brain, Code2, Server, Wrench,
 } from "lucide-react";
 import { ParticleNetwork } from "../components/ParticleNetwork";
 
@@ -152,12 +152,12 @@ const METRICS = [
   { v: 500, suffix: "+", l: "Automation Workflows" },
 ];
 
-const TECH_STACK: { group: string; items: string[] }[] = [
-  { group: "AI", items: ["OpenAI", "Gemini", "LangChain"] },
-  { group: "Frontend", items: ["React", "Next.js", "Angular"] },
-  { group: "Backend", items: ["Node.js", "Python", ".NET"] },
-  { group: "Cloud", items: ["AWS", "Azure"] },
-  { group: "DevOps", items: ["Docker", "Kubernetes"] },
+const TECH_STACK: { group: string; icon: React.ComponentType<{ className?: string }>; tagline: string; items: string[] }[] = [
+  { group: "AI & ML", icon: Brain, tagline: "Intelligence layer", items: ["OpenAI", "Gemini", "LangChain", "Claude"] },
+  { group: "Frontend", icon: Code2, tagline: "User experience", items: ["React", "Next.js", "Angular", "TypeScript"] },
+  { group: "Backend", icon: Server, tagline: "Business logic", items: ["Node.js", "Python", ".NET", "GraphQL"] },
+  { group: "Cloud", icon: Cloud, tagline: "Infrastructure", items: ["AWS", "Azure", "GCP", "Vercel"] },
+  { group: "DevOps", icon: Wrench, tagline: "Delivery pipeline", items: ["Docker", "Kubernetes", "GitHub Actions", "Terraform"] },
 ];
 
 const COMPARE = [
@@ -370,31 +370,53 @@ function Portfolio() {
 
       {/* TECH SHOWCASE */}
       <section className="mx-auto max-w-7xl px-6 py-16">
-        <div className="mx-auto mb-10 max-w-3xl text-center">
+        <div className="mx-auto mb-12 max-w-3xl text-center">
           <div className="glass inline-flex rounded-full px-4 py-1.5 text-xs uppercase tracking-widest text-primary">Technology Stack</div>
-          <h2 className="mt-4 font-display text-2xl font-bold md:text-4xl">A modern, enterprise-grade stack</h2>
+          <h2 className="mt-4 font-display text-3xl font-bold md:text-5xl">A modern, <span className="text-gradient">enterprise-grade</span> stack</h2>
+          <p className="mt-4 text-muted-foreground md:text-lg">Battle-tested tools across every layer — from intelligence to infrastructure — engineered for scale, security, and speed.</p>
         </div>
-        <div className="glass-strong rounded-3xl p-8 md:p-10">
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
-            {TECH_STACK.map((g, gi) => (
-              <div key={g.group}>
-                <div className="mb-4 text-xs uppercase tracking-widest text-primary/80">{g.group}</div>
-                <div className="flex flex-wrap gap-2">
-                  {g.items.map((t, i) => (
-                    <div key={t}
-                      className="glass group flex items-center gap-2 rounded-2xl px-4 py-2 text-sm font-medium transition hover:-translate-y-1 hover:border-primary/50 hover:shadow-glow"
-                      style={{ animation: `whyus-float ${5 + ((i + gi) % 4)}s ease-in-out ${(i + gi) * 0.2}s infinite` }}
+
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+          {TECH_STACK.map((g, gi) => {
+            const Icon = g.icon;
+            return (
+              <div
+                key={g.group}
+                className="glass-strong group relative flex flex-col overflow-hidden rounded-3xl border border-primary/15 p-6 transition-all duration-500 hover:-translate-y-1 hover:border-primary/60 hover:shadow-glow"
+                style={{ animation: `whyus-float ${6 + (gi % 3)}s ease-in-out ${gi * 0.3}s infinite` }}
+              >
+                <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-primary/15 opacity-0 blur-3xl transition group-hover:opacity-100" />
+
+                <div className="relative mb-5 flex items-center gap-3">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-brand shadow-glow">
+                    <Icon className="h-5 w-5 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <div className="font-display text-lg font-semibold leading-tight">{g.group}</div>
+                    <div className="text-[11px] uppercase tracking-widest text-primary/70">{g.tagline}</div>
+                  </div>
+                </div>
+
+                <div className="relative flex flex-col gap-2">
+                  {g.items.map((t) => (
+                    <div
+                      key={t}
+                      className="flex items-center justify-between rounded-xl border border-white/5 bg-white/[0.03] px-3.5 py-2 text-sm font-medium transition hover:border-primary/40 hover:bg-primary/10"
                     >
-                      <span className="h-1.5 w-1.5 rounded-full bg-primary group-hover:animate-pulse" />
-                      {t}
+                      <span className="flex items-center gap-2">
+                        <span className="h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_8px_rgba(21,171,230,0.8)]" />
+                        {t}
+                      </span>
+                      <Check className="h-3.5 w-3.5 text-primary/60" />
                     </div>
                   ))}
                 </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </section>
+
 
       {/* BEFORE / AFTER */}
       <section className="mx-auto max-w-7xl px-6 py-16">
