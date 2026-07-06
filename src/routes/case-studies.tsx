@@ -31,7 +31,10 @@ export const Route = createFileRoute("/case-studies")({
           "Explore ALStreamTech's premium AI, automation, and software case studies delivering measurable enterprise outcomes across industries.",
       },
       { property: "og:title", content: "ALStreamTech Case Studies" },
-      { property: "og:description", content: "Real AI, automation & software projects with measurable business impact." },
+      {
+        property: "og:description",
+        content: "Real AI, automation & software projects with measurable business impact.",
+      },
     ],
   }),
   component: CaseStudies,
@@ -153,8 +156,7 @@ const projects: Project[] = [
     icon: Workflow,
     visual: "workflow",
     testimonial: {
-      quote:
-        "It feels like we hired an invisible operations team. Approvals, reports and handoffs just… happen.",
+      quote: "It feels like we hired an invisible operations team. Approvals, reports and handoffs just… happen.",
       author: "Priya Sharma",
       role: "COO",
       company: "Helix Global",
@@ -229,8 +231,7 @@ const projects: Project[] = [
     icon: Users,
     visual: "recruit",
     testimonial: {
-      quote:
-        "Our recruiters finally spend their time talking to great candidates instead of scanning PDFs.",
+      quote: "Our recruiters finally spend their time talking to great candidates instead of scanning PDFs.",
       author: "Sofia Martinez",
       role: "Head of Talent",
       company: "Brightpath HR",
@@ -267,8 +268,7 @@ const projects: Project[] = [
     icon: Cpu,
     visual: "saas",
     testimonial: {
-      quote:
-        "One login, one source of truth. ALStreamTech gave us the operating system we didn't know we needed.",
+      quote: "One login, one source of truth. ALStreamTech gave us the operating system we didn't know we needed.",
       author: "James O'Connor",
       role: "CTO",
       company: "Vantage Enterprise",
@@ -298,8 +298,16 @@ const impactStats = [
 ];
 
 const techEcosystem = [
-  "OpenAI", "Gemini", "Python", "React", "AWS",
-  "Azure", "Docker", "Node.js", "Kubernetes", "PostgreSQL",
+  "OpenAI",
+  "Gemini",
+  "Python",
+  "React",
+  "AWS",
+  "Azure",
+  "Docker",
+  "Node.js",
+  "Kubernetes",
+  "PostgreSQL",
 ];
 
 function CaseStudies() {
@@ -323,7 +331,7 @@ function CaseStudies() {
         eyebrow="Case Studies"
         title={
           <>
-            Transforming ideas into <span className="text-gradient">successful digital solutions</span>
+            Transforming ideas into <span className="text-gradient">Successful Digital Solutions</span>
           </>
         }
         subtitle="Explore how we help businesses leverage AI, automation, and custom software to improve efficiency, enhance customer experiences and accelerate growth."
@@ -411,11 +419,10 @@ function FeaturedCarousel({ onOpen }: { onOpen: (p: Project) => void }) {
         </div>
       </div>
 
-      <article
-        key={p.id}
-        className="glass-strong relative overflow-hidden rounded-3xl p-6 md:p-10 animate-fade-up"
-      >
-        <div className={`pointer-events-none absolute -right-40 -top-40 h-96 w-96 rounded-full bg-gradient-to-br ${p.gradient} blur-3xl opacity-60`} />
+      <article key={p.id} className="glass-strong relative overflow-hidden rounded-3xl p-6 md:p-10 animate-fade-up">
+        <div
+          className={`pointer-events-none absolute -right-40 -top-40 h-96 w-96 rounded-full bg-gradient-to-br ${p.gradient} blur-3xl opacity-60`}
+        />
         <div className="pointer-events-none absolute inset-0 ai-grid opacity-10" />
         <div className="relative grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <ProjectVisual visual={p.visual} gradient={p.gradient} icon={p.icon} />
@@ -425,7 +432,10 @@ function FeaturedCarousel({ onOpen }: { onOpen: (p: Project) => void }) {
                 {p.industry}
               </span>
               {p.services.slice(0, 2).map((s) => (
-                <span key={s} className="rounded-full border border-white/10 px-3 py-1 text-[10px] uppercase tracking-widest text-muted-foreground">
+                <span
+                  key={s}
+                  className="rounded-full border border-white/10 px-3 py-1 text-[10px] uppercase tracking-widest text-muted-foreground"
+                >
                   {s}
                 </span>
               ))}
@@ -435,7 +445,10 @@ function FeaturedCarousel({ onOpen }: { onOpen: (p: Project) => void }) {
 
             <div className="mt-5 flex flex-wrap gap-2">
               {p.technologies.map((t) => (
-                <span key={t} className="rounded-md border border-primary/30 bg-primary/10 px-2.5 py-1 text-xs text-primary">
+                <span
+                  key={t}
+                  className="rounded-md border border-primary/30 bg-primary/10 px-2.5 py-1 text-xs text-primary"
+                >
                   {t}
                 </span>
               ))}
@@ -489,7 +502,9 @@ function ProjectVisual({
   icon: React.ComponentType<{ className?: string }>;
 }) {
   return (
-    <div className={`relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br ${gradient} p-4`}>
+    <div
+      className={`relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br ${gradient} p-4`}
+    >
       <div className="absolute inset-0 ai-grid opacity-30" />
       <div className="pointer-events-none absolute -left-16 -top-16 h-56 w-56 rounded-full bg-primary/30 blur-3xl" />
 
@@ -611,7 +626,10 @@ function RecruitMock() {
     <DeviceFrame>
       <div className="space-y-1.5">
         {["Alex Kim — 94%", "Priya Rao — 91%", "Diego M. — 87%", "Sara J. — 83%"].map((r, i) => (
-          <div key={i} className="flex items-center gap-2 rounded border border-white/10 bg-white/5 px-2 py-1.5 text-[10px]">
+          <div
+            key={i}
+            className="flex items-center gap-2 rounded border border-white/10 bg-white/5 px-2 py-1.5 text-[10px]"
+          >
             <div className="h-5 w-5 rounded-full bg-gradient-brand" />
             <div className="flex-1">{r}</div>
             <Check className="h-3 w-3 text-primary" />
@@ -627,7 +645,10 @@ function SaasMock() {
     <DeviceFrame>
       <div className="grid grid-cols-4 gap-1.5">
         {["Sales", "Ops", "HR", "Fin"].map((m) => (
-          <div key={m} className="rounded border border-primary/30 bg-primary/10 px-1.5 py-1 text-center text-[9px] text-primary">
+          <div
+            key={m}
+            className="rounded border border-primary/30 bg-primary/10 px-1.5 py-1 text-center text-[9px] text-primary"
+          >
             {m}
           </div>
         ))}
@@ -672,7 +693,7 @@ function FiltersAndGrid({
           Explore all projects
         </div>
         <h2 className="mt-3 font-display text-3xl font-bold md:text-4xl">
-          Filter by <span className="text-gradient">service, industry & technology</span>
+          Filter by <span className="text-gradient">Service, Industry & Technology</span>
         </h2>
       </div>
 
@@ -695,7 +716,9 @@ function FiltersAndGrid({
             style={{ animationDelay: `${i * 80}ms` }}
             className="group animate-fade-up relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-card p-6 text-left transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow"
           >
-            <div className={`pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-gradient-to-br ${p.gradient} opacity-50 blur-3xl transition group-hover:opacity-80`} />
+            <div
+              className={`pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-gradient-to-br ${p.gradient} opacity-50 blur-3xl transition group-hover:opacity-80`}
+            />
             <div className="relative">
               <div className="flex items-center justify-between">
                 <div className="rounded-lg bg-primary/15 p-2 text-primary">
@@ -708,7 +731,10 @@ function FiltersAndGrid({
               <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{p.overview}</p>
               <div className="mt-4 flex flex-wrap gap-1.5">
                 {p.technologies.slice(0, 4).map((t) => (
-                  <span key={t} className="rounded border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] text-muted-foreground">
+                  <span
+                    key={t}
+                    className="rounded border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] text-muted-foreground"
+                  >
                     {t}
                   </span>
                 ))}
@@ -742,7 +768,9 @@ function FilterRow({
 }) {
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <span className="mr-2 min-w-20 text-xs font-semibold uppercase tracking-widest text-muted-foreground">{label}</span>
+      <span className="mr-2 min-w-20 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+        {label}
+      </span>
       <button
         onClick={() => setActive(null)}
         className={`rounded-full border px-3 py-1 text-xs transition ${active === null ? "border-primary bg-primary/20 text-primary" : "border-white/10 text-muted-foreground hover:border-white/25"}`}
@@ -770,14 +798,20 @@ function ImpactStats() {
         <div className="glass inline-flex rounded-full px-3 py-1 text-xs uppercase tracking-widest text-primary">
           Business Impact
         </div>
-        <h2 className="mt-3 font-display text-3xl font-bold md:text-4xl">Numbers that <span className="text-gradient">move the business</span></h2>
+        <h2 className="mt-3 font-display text-3xl font-bold md:text-4xl">
+          Numbers that <span className="text-gradient">Move the Business</span>
+        </h2>
       </div>
       <div className="grid gap-5 md:grid-cols-3 lg:grid-cols-5">
         {impactStats.map((s) => (
-          <div key={s.label} className="glass-strong group relative overflow-hidden rounded-2xl p-6 text-center transition hover:shadow-glow">
+          <div
+            key={s.label}
+            className="glass-strong group relative overflow-hidden rounded-2xl p-6 text-center transition hover:shadow-glow"
+          >
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 transition group-hover:opacity-100" />
             <div className="relative font-display text-4xl font-bold text-gradient">
-              <Counter value={s.value} />{s.suffix}
+              <Counter value={s.value} />
+              {s.suffix}
             </div>
             <div className="relative mt-2 text-xs uppercase tracking-widest text-muted-foreground">{s.label}</div>
           </div>
@@ -823,7 +857,9 @@ function TechEcosystem() {
         <div className="glass inline-flex rounded-full px-3 py-1 text-xs uppercase tracking-widest text-primary">
           Ecosystem
         </div>
-        <h2 className="mt-3 font-display text-3xl font-bold md:text-4xl">Technologies Behind <span className="text-gradient">Our Success</span></h2>
+        <h2 className="mt-3 font-display text-3xl font-bold md:text-4xl">
+          Technologies Behind <span className="text-gradient">Our Success</span>
+        </h2>
       </div>
 
       <div className="glass-strong relative overflow-hidden rounded-3xl p-10">
@@ -862,23 +898,37 @@ function FinalCTA() {
               Let's build together
             </div>
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight md:text-5xl">
-              Ready to build the <span className="text-gradient">next success story?</span>
+              Ready to build the <span className="text-gradient">Next Success Story?</span>
             </h2>
             <p className="mt-4 max-w-xl text-muted-foreground">
-              Let's discuss how AI, automation, and custom software can help transform your business and deliver measurable results.
+              Let's discuss how AI, automation, and custom software can help transform your business and deliver
+              measurable results.
             </p>
           </div>
           <div className="flex flex-col gap-3">
-            <a href="/contact" className="group flex items-center justify-between rounded-2xl bg-gradient-brand px-6 py-5 font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.02]">
-              <span className="flex items-center gap-3"><Calendar className="h-5 w-5" /> Schedule a Consultation</span>
+            <a
+              href="/contact"
+              className="group flex items-center justify-between rounded-2xl bg-gradient-brand px-6 py-5 font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.02]"
+            >
+              <span className="flex items-center gap-3">
+                <Calendar className="h-5 w-5" /> Schedule a Consultation
+              </span>
               <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
             </a>
-            <a href="/portfolio" className="glass group flex items-center justify-between rounded-2xl px-6 py-5 font-semibold transition hover:bg-white/10">
+            <a
+              href="/portfolio"
+              className="glass group flex items-center justify-between rounded-2xl px-6 py-5 font-semibold transition hover:bg-white/10"
+            >
               <span>View More Projects</span>
               <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
             </a>
-            <a href="/contact" className="glass group flex items-center justify-between rounded-2xl px-6 py-5 font-semibold transition hover:bg-white/10">
-              <span className="flex items-center gap-3"><Rocket className="h-5 w-5 text-primary" /> Start Your Project</span>
+            <a
+              href="/contact"
+              className="glass group flex items-center justify-between rounded-2xl px-6 py-5 font-semibold transition hover:bg-white/10"
+            >
+              <span className="flex items-center gap-3">
+                <Rocket className="h-5 w-5 text-primary" /> Start Your Project
+              </span>
               <ArrowRight className="h-5 w-5 transition group-hover:translate-x-1" />
             </a>
           </div>
@@ -915,15 +965,27 @@ function CaseStudyDrawer({ project: p, onClose }: { project: Project; onClose: (
           </button>
           <div className="relative">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="glass rounded-full px-3 py-1 text-[10px] uppercase tracking-widest text-primary">{p.industry}</span>
+              <span className="glass rounded-full px-3 py-1 text-[10px] uppercase tracking-widest text-primary">
+                {p.industry}
+              </span>
               {p.services.map((s) => (
-                <span key={s} className="rounded-full border border-white/15 px-3 py-1 text-[10px] uppercase tracking-widest">{s}</span>
+                <span
+                  key={s}
+                  className="rounded-full border border-white/15 px-3 py-1 text-[10px] uppercase tracking-widest"
+                >
+                  {s}
+                </span>
               ))}
             </div>
             <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">{p.title}</h2>
             <div className="mt-4 flex flex-wrap gap-2">
               {p.technologies.map((t) => (
-                <span key={t} className="rounded-md border border-primary/30 bg-primary/10 px-2.5 py-1 text-xs text-primary">{t}</span>
+                <span
+                  key={t}
+                  className="rounded-md border border-primary/30 bg-primary/10 px-2.5 py-1 text-xs text-primary"
+                >
+                  {t}
+                </span>
               ))}
             </div>
           </div>
@@ -972,12 +1034,17 @@ function CaseStudyDrawer({ project: p, onClose }: { project: Project; onClose: (
               <div className="h-10 w-10 rounded-full bg-gradient-brand" />
               <div>
                 <div className="font-semibold">{p.testimonial.author}</div>
-                <div className="text-xs text-muted-foreground">{p.testimonial.role} · {p.testimonial.company}</div>
+                <div className="text-xs text-muted-foreground">
+                  {p.testimonial.role} · {p.testimonial.company}
+                </div>
               </div>
             </div>
           </div>
 
-          <a href="/contact" className="group flex items-center justify-center gap-2 rounded-2xl bg-gradient-brand px-6 py-4 font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.02]">
+          <a
+            href="/contact"
+            className="group flex items-center justify-center gap-2 rounded-2xl bg-gradient-brand px-6 py-4 font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.02]"
+          >
             Start a Similar Project <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
           </a>
         </div>
@@ -985,4 +1052,3 @@ function CaseStudyDrawer({ project: p, onClose }: { project: Project; onClose: (
     </div>
   );
 }
-
