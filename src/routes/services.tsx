@@ -1,14 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  Brain, Bot, Zap, Cloud, Code2, Smartphone, BarChart3, ShieldCheck,
+  Brain, Bot, Zap, Cloud, Code2, Smartphone, BarChart3,
   Sparkles, Building2, Stethoscope, Landmark, ShoppingBag, Truck, GraduationCap,
   ArrowRight, Cpu, Database, LineChart, Network, Server, Layers, Rocket,
   Workflow, MessageSquare, Globe, Settings, X, CheckCircle2, TrendingUp,
 } from "lucide-react";
 import { PageHero } from "../components/PageHero";
 import { SectionHeading } from "../components/SectionHeading";
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const _unused = { CTASection };
+import { useEffect, useState } from "react";
 import { CTASection } from "../components/CTASection";
 import { useEffect, useRef, useState } from "react";
 
