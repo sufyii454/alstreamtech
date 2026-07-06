@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowRight, ArrowUpRight, Bot, LayoutDashboard, BarChart3, Workflow,
   Users, Cloud, Smartphone, Sparkles, Check, X, Calendar, MessageSquare,
-  FileText, Quote, TrendingUp, Zap, Filter,
+  FileText, Quote, TrendingUp, Zap, Filter, Brain, Code2, Server, Wrench,
 } from "lucide-react";
 import { ParticleNetwork } from "../components/ParticleNetwork";
 
