@@ -25,14 +25,6 @@ export const Route = createFileRoute("/why-us")({
 
 /* ------------------------------- Data ------------------------------- */
 
-const ORBIT = [
-  { icon: Cpu, label: "AI Development", tip: "LLMs, agents, ML pipelines" },
-  { icon: Workflow, label: "Automation", tip: "Intelligent workflow automation" },
-  { icon: Cloud, label: "Cloud", tip: "AWS, Azure, GCP architectures" },
-  { icon: BarChart3, label: "Analytics", tip: "Data platforms & insights" },
-  { icon: Smartphone, label: "Mobile Apps", tip: "iOS, Android, cross-platform" },
-  { icon: Code2, label: "Software Engineering", tip: "Scalable, maintainable code" },
-];
 
 const VALUE_CARDS = [
   {
