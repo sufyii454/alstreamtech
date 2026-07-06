@@ -257,8 +257,15 @@ function WhyUs() {
               </Link>
             </div>
           </div>
-          <div className="relative animate-fade-up">
-            <AICore />
+          <div className="relative flex items-center justify-center">
+            <div className="relative aspect-square w-full max-w-[520px] overflow-hidden rounded-[24px] glass-strong shadow-glow">
+              <div className="absolute inset-0 rounded-[24px] bg-gradient-to-br from-primary/20 via-transparent to-primary/10" />
+              <img
+                src={whyUsHeroAi.url}
+                alt="AI-powered digital assistant connecting business systems"
+                className="relative h-full w-full object-contain p-4"
+              />
+            </div>
           </div>
         </div>
       </section>
