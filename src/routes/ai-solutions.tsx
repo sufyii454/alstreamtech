@@ -212,10 +212,22 @@ const INDUSTRIES: Industry[] = [
     demo: "kb" },
 ];
 
+function scrollToId(id: string) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 function SolutionCard({ ind, onOpen }: { ind: Industry; onOpen: () => void }) {
   const Icon = ind.icon;
+  const go = () => scrollToId(ind.id);
   return (
-    <div className="glass-strong group relative overflow-hidden rounded-3xl p-6 transition hover:-translate-y-1 hover:border-primary/40">
+    <div
+      role="link"
+      tabIndex={0}
+      onClick={go}
+      onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } }}
+      className="glass-strong group relative cursor-pointer overflow-hidden rounded-3xl p-6 transition hover:-translate-y-1 hover:border-primary/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+    >
       <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-primary/20 blur-3xl transition group-hover:bg-primary/40" />
       <div className="relative">
         <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-brand shadow-glow">
@@ -241,9 +253,20 @@ function SolutionCard({ ind, onOpen }: { ind: Industry; onOpen: () => void }) {
           </div>
         </div>
 
-        <button onClick={onOpen} className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
-          Learn More <ArrowRight className="h-3 w-3" />
-        </button>
+        <div className="mt-4 flex items-center gap-4">
+          <button
+            onClick={(e) => { e.stopPropagation(); go(); }}
+            className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
+          >
+            Learn More <ArrowRight className="h-3 w-3" />
+          </button>
+          <button
+            onClick={(e) => { e.stopPropagation(); onOpen(); }}
+            className="text-xs font-medium text-muted-foreground hover:text-foreground"
+          >
+            Quick view
+          </button>
+        </div>
       </div>
     </div>
   );
