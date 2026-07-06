@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, Calendar, Clock, User, Sparkles, MessageSquare } from "lucide-react";
 import { PageHero } from "../components/PageHero";
+import { posts } from "../lib/blog-posts";
 
 export const Route = createFileRoute("/blog")({
   head: () => ({
@@ -41,62 +42,7 @@ const featured = {
     "Artificial Intelligence is transforming how businesses operate by automating repetitive tasks, reducing operational costs, and improving overall efficiency. From customer support to workflow management, AI enables companies to scale faster and smarter.",
 };
 
-const posts = [
-  {
-    category: "Artificial Intelligence",
-    title: "Benefits of AI Chatbots for Modern Businesses",
-    author: "ALStreamTech Team",
-    date: "July 2, 2026",
-    read: "6 min read",
-    summary:
-      "AI chatbots help businesses improve customer support, generate leads, automate sales, and provide instant assistance 24/7.",
-  },
-  {
-    category: "Automation",
-    title: "AI Agents for Companies: The Future of Smart Workflows",
-    author: "ALStreamTech Team",
-    date: "June 30, 2026",
-    read: "7 min read",
-    summary:
-      "AI agents are revolutionizing business operations by acting as smart assistants for workflow automation, decision-making, and productivity enhancement.",
-  },
-  {
-    category: "Software Development",
-    title: "Custom Software vs Ready-Made Tools",
-    author: "ALStreamTech Team",
-    date: "June 28, 2026",
-    read: "9 min read",
-    summary:
-      "Choosing between custom software and ready-made tools depends on scalability, budget, and long-term business goals.",
-  },
-  {
-    category: "Artificial Intelligence",
-    title: "How Small Businesses Can Use AI",
-    author: "ALStreamTech Team",
-    date: "June 25, 2026",
-    read: "5 min read",
-    summary:
-      "AI is no longer just for large enterprises. Small businesses can now leverage affordable AI tools for automation, analytics, and customer engagement.",
-  },
-  {
-    category: "Automation",
-    title: "Future of AI Automation",
-    author: "ALStreamTech Team",
-    date: "June 21, 2026",
-    read: "8 min read",
-    summary:
-      "The future of automation lies in autonomous AI systems capable of managing workflows with minimal human intervention.",
-  },
-  {
-    category: "Customer Support",
-    title: "AI in Customer Support",
-    author: "ALStreamTech Team",
-    date: "June 18, 2026",
-    read: "6 min read",
-    summary:
-      "AI-powered support systems are enhancing customer experiences through chatbots, ticket automation, and intelligent response systems.",
-  },
-];
+// posts imported from ../lib/blog-posts
 
 function CategoryVisual({ label }: { label: string }) {
   return (
@@ -207,8 +153,9 @@ function Blog() {
               key={p.title}
               className="glass group relative flex flex-col overflow-hidden rounded-2xl p-6 transition hover:-translate-y-1 hover:border-primary/40 hover:shadow-glow"
             >
-              <div className="mb-4 aspect-video overflow-hidden rounded-xl">
-                <CategoryVisual label={p.category} />
+              <div className="mb-4 aspect-video overflow-hidden rounded-xl relative">
+                <img src={p.image} alt={p.title} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                <span className="glass absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-semibold text-primary">{p.category}</span>
               </div>
               <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
                 <span className="flex items-center gap-1"><User className="h-3 w-3" /> {p.author}</span>
@@ -219,7 +166,11 @@ function Blog() {
                 {p.title}
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">{p.summary}</p>
-              <Link to="/blog" className="mt-auto pt-4 text-sm font-semibold text-primary flex items-center gap-1">
+              <Link
+                to="/blog/$slug"
+                params={{ slug: p.slug }}
+                className="mt-auto pt-4 text-sm font-semibold text-primary flex items-center gap-1"
+              >
                 Read article <ArrowRight className="h-3 w-3 transition group-hover:translate-x-1" />
               </Link>
             </article>
