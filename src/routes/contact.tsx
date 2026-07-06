@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, animate, useInView, useMotionValue, useTransform } from "framer-motion";
 import {
   Mail,
   Phone,
@@ -11,9 +11,17 @@ import {
   MessageCircle,
   Loader2,
   Sparkles,
+  HelpCircle,
 } from "lucide-react";
 import { toast } from "sonner";
 import { PageHero } from "../components/PageHero";
+import { CTASection } from "../components/CTASection";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
