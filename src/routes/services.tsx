@@ -8,8 +8,6 @@ import {
 import { PageHero } from "../components/PageHero";
 import { SectionHeading } from "../components/SectionHeading";
 import { useEffect, useState } from "react";
-import { CTASection } from "../components/CTASection";
-import { useEffect, useRef, useState } from "react";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
