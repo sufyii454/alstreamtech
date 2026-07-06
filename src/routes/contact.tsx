@@ -92,6 +92,66 @@ const BUDGETS = [
   "$50,000+",
 ];
 
+const FAQS = [
+  {
+    q: "How quickly do you respond?",
+    a: "We typically respond to all enquiries within 24 hours on business days. For urgent requests, we aim to get back to you even sooner.",
+  },
+  {
+    q: "Do consultations cost anything?",
+    a: "Our initial consultation is completely free. We'll discuss your requirements, goals, and recommend the best approach for your project.",
+  },
+  {
+    q: "Can we discuss confidential projects?",
+    a: "Absolutely. We treat every client discussion with complete confidentiality and are happy to sign an NDA before discussing sensitive project details.",
+  },
+  {
+    q: "Do you work internationally?",
+    a: "Yes. We work with clients across different countries and time zones through online meetings and collaborative project management.",
+  },
+  {
+    q: "How long do projects usually take?",
+    a: "Project timelines vary depending on complexity. Small projects may take 2–4 weeks, while larger AI and software solutions typically require 6–16 weeks.",
+  },
+];
+
+const STATS = [
+  { value: 100, suffix: "+", label: "Projects Delivered" },
+  { value: 75, suffix: "+", label: "Happy Clients" },
+  { value: 50, suffix: "+", label: "AI Solutions Built" },
+  { value: 98, suffix: "%", label: "Client Satisfaction" },
+  { value: 20, suffix: "+", label: "Industries Served" },
+];
+
+function Counter({
+  value,
+  suffix,
+  duration = 2,
+}: {
+  value: number;
+  suffix: string;
+  duration?: number;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.round(latest));
+
+  useEffect(() => {
+    if (isInView) {
+      const controls = animate(count, value, { duration, ease: "easeOut" });
+      return controls.stop;
+    }
+  }, [isInView, value, count, duration]);
+
+  return (
+    <span ref={ref}>
+      <motion.span>{rounded}</motion.span>
+      {suffix}
+    </span>
+  );
+}
+
 function Contact() {
   const [form, setForm] = useState<FormState>(INITIAL);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
