@@ -202,5 +202,23 @@ body.page-ai-solutions footer { margin-top: 0; }
     0 10px 40px -10px rgba(0, 0, 0, 0.6);
 }
 
+/* Why Us page animations */
+@keyframes whyus-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes whyus-spin-rev {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+@keyframes whyus-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.whyus-card {
+  animation: fade-up 0.7s ease-out both;
+}
+
+
 
 
