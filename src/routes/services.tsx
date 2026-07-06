@@ -237,7 +237,45 @@ function Services() {
   );
 }
 
+/* ---------------- Team Showcase ---------------- */
+
+import teamImg1 from "@/assets/services/service_img_1.jpg.asset.json";
+import teamImg2 from "@/assets/services/service_img_2.jpg.asset.json";
+import teamImg3 from "@/assets/services/service_img_3.jpg.asset.json";
+
+function TeamShowcase() {
+  const items = [
+    { src: teamImg1.url, alt: "Collaborative engineering team building AI solutions", caption: "Collaborative Engineering" },
+    { src: teamImg2.url, alt: "AI assistant analyzing real-time data with our team", caption: "AI-Powered Delivery" },
+    { src: teamImg3.url, alt: "Data-driven growth and measurable business outcomes", caption: "Measurable Growth" },
+  ];
+  return (
+    <div className="mt-20 grid gap-6 md:grid-cols-3">
+      {items.map((it, i) => (
+        <div
+          key={i}
+          className="group relative overflow-hidden rounded-2xl glass border border-white/10 shadow-glow"
+        >
+          <div className="aspect-[5/3] overflow-hidden">
+            <img
+              src={it.src}
+              alt={it.alt}
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+          </div>
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 p-5">
+            <p className="text-sm font-semibold text-foreground">{it.caption}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 /* ---------------- Hero ---------------- */
+
 
 function ServicesHero() {
   return (
