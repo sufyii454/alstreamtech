@@ -40,10 +40,12 @@ function About() {
         eyebrow="About Us"
         title={
           <>
-            Engineers and dreamers building the <span className="text-gradient">next era of software</span>
+            Building Intelligent <span className="text-gradient">Digital Solutions for the Future </span>
           </>
         }
-        subtitle="ALStreamTech is a global AI-first software studio. We help ambitious teams design, build and scale intelligent digital products that move the needle."
+        subtitle="We help businesses use AI and modern software to automate operations, improve 
+customer experiences, optimize workflows, and create scalable digital products that 
+drive growth."
       />
 
       <section className="mx-auto max-w-7xl px-6 py-24">
