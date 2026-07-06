@@ -2,11 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
   Brain, Puzzle, TrendingUp, Shield, Rocket, HeartHandshake,
+  Cpu, Cloud, BarChart3, Smartphone, Code2, Workflow,
   ArrowRight, Calendar, MessageSquare, FileText, Check, X,
   Sparkles,
 } from "lucide-react";
 import { ParticleNetwork } from "../components/ParticleNetwork";
-import whyUsHeroAi from "../assets/why-us-hero-ai.png.asset.json";
 
 export const Route = createFileRoute("/why-us")({
   head: () => ({
@@ -24,6 +24,14 @@ export const Route = createFileRoute("/why-us")({
 
 /* ------------------------------- Data ------------------------------- */
 
+const ORBIT = [
+  { icon: Cpu, label: "AI Development", tip: "LLMs, agents, ML pipelines" },
+  { icon: Workflow, label: "Automation", tip: "Intelligent workflow automation" },
+  { icon: Cloud, label: "Cloud", tip: "AWS, Azure, GCP architectures" },
+  { icon: BarChart3, label: "Analytics", tip: "Data platforms & insights" },
+  { icon: Smartphone, label: "Mobile Apps", tip: "iOS, Android, cross-platform" },
+  { icon: Code2, label: "Software Engineering", tip: "Scalable, maintainable code" },
+];
 
 const VALUE_CARDS = [
   {
@@ -134,6 +142,90 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   );
 }
 
+/* ------------------------ AI Intelligence Core ---------------------- */
+
+function AICore() {
+  const [hover, setHover] = useState<number | null>(null);
+  const radius = 44; // percent-ish
+  return (
+    <div className="relative mx-auto aspect-square w-full max-w-[520px]">
+      {/* outer rings */}
+      <div className="absolute inset-0 rounded-full border border-primary/20 animate-[whyus-spin_40s_linear_infinite]" />
+      <div className="absolute inset-[8%] rounded-full border border-primary/15 animate-[whyus-spin-rev_60s_linear_infinite]" />
+      <div className="absolute inset-[18%] rounded-full border border-primary/10" />
+
+      {/* connection lines (SVG) */}
+      <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" aria-hidden>
+        {ORBIT.map((_, i) => {
+          const a = (i / ORBIT.length) * Math.PI * 2 - Math.PI / 2;
+          const x = 50 + Math.cos(a) * radius;
+          const y = 50 + Math.sin(a) * radius;
+          return (
+            <line key={i} x1="50" y1="50" x2={x} y2={y}
+              stroke="rgba(21,171,230,0.25)" strokeWidth="0.3" strokeDasharray="1 2" />
+          );
+        })}
+      </svg>
+
+      {/* core sphere */}
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="relative grid h-28 w-28 place-items-center rounded-full bg-gradient-brand shadow-glow animate-pulse-glow md:h-32 md:w-32">
+          <div className="absolute inset-0 rounded-full bg-primary/20 blur-2xl" />
+          <Sparkles className="relative h-10 w-10 text-primary-foreground" />
+        </div>
+        <div className="mt-3 text-center text-xs uppercase tracking-widest text-primary/80">AI Core</div>
+      </div>
+
+      {/* orbiting items */}
+      {ORBIT.map((o, i) => {
+        const a = (i / ORBIT.length) * 360;
+        const Icon = o.icon;
+        return (
+          <div
+            key={o.label}
+            className="absolute left-1/2 top-1/2 h-0 w-0 animate-[whyus-spin_40s_linear_infinite]"
+            style={{ transform: `rotate(${a}deg) translateX(min(44%,220px))` }}
+          >
+            <div
+              className="absolute -translate-x-1/2 -translate-y-1/2 animate-[whyus-spin-rev_40s_linear_infinite]"
+              onMouseEnter={() => setHover(i)}
+              onMouseLeave={() => setHover(null)}
+            >
+              <div className="group relative flex flex-col items-center">
+                <div className="grid h-12 w-12 place-items-center rounded-xl glass-strong shadow-glow transition group-hover:scale-110 group-hover:border-primary/60">
+                  <Icon className="h-5 w-5 text-primary" />
+                </div>
+                <div className="mt-2 whitespace-nowrap text-[11px] font-medium text-foreground/90">{o.label}</div>
+                {hover === i && (
+                  <div className="absolute -bottom-9 z-10 whitespace-nowrap rounded-lg glass-strong px-3 py-1.5 text-[11px] text-muted-foreground shadow-glow">
+                    {o.tip}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+
+      {/* soft particles */}
+      <div className="pointer-events-none absolute inset-0">
+        {Array.from({ length: 12 }).map((_, i) => (
+          <span
+            key={i}
+            className="absolute h-1 w-1 rounded-full bg-primary/60"
+            style={{
+              left: `${(i * 83) % 100}%`,
+              top: `${(i * 47) % 100}%`,
+              animation: `whyus-float ${5 + (i % 5)}s ease-in-out ${i * 0.3}s infinite`,
+              opacity: 0.5,
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* -------------------------------- Page ------------------------------ */
 
 function WhyUs() {
@@ -164,15 +256,8 @@ function WhyUs() {
               </Link>
             </div>
           </div>
-          <div className="relative flex items-center justify-center">
-            <div className="relative aspect-square w-full max-w-[520px] overflow-hidden rounded-[24px] glass-strong shadow-glow">
-              <div className="absolute inset-0 rounded-[24px] bg-gradient-to-br from-primary/20 via-transparent to-primary/10" />
-              <img
-                src={whyUsHeroAi.url}
-                alt="AI-powered digital assistant connecting business systems"
-                className="relative h-full w-full object-contain p-4"
-              />
-            </div>
+          <div className="relative animate-fade-up">
+            <AICore />
           </div>
         </div>
       </section>
