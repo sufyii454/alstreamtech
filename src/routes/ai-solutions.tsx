@@ -770,7 +770,7 @@ function DetailModal({ ind, onClose }: { ind: Industry | null; onClose: () => vo
         </div>
         <div className="mt-6 flex gap-3">
           <Link to="/contact" className="flex-1 rounded-2xl bg-gradient-brand px-5 py-3 text-center font-semibold text-primary-foreground shadow-glow hover:scale-[1.02] transition">Discuss This Solution</Link>
-          <a href={`#${ind.id}`} onClick={onClose} className="glass rounded-2xl px-5 py-3 font-semibold hover:bg-white/10">View Section</a>
+          <a href={`#${ind.id}`} onClick={(e) => { e.preventDefault(); onClose(); setTimeout(() => scrollToId(ind.id), 50); }} className="glass rounded-2xl px-5 py-3 font-semibold hover:bg-white/10">View Section</a>
         </div>
       </div>
     </div>
