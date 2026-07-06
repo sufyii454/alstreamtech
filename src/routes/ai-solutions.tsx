@@ -7,6 +7,27 @@ import {
 } from "lucide-react";
 import { ParticleNetwork } from "../components/ParticleNetwork";
 import { SectionHeading } from "../components/SectionHeading";
+import supportImg from "../assets/industries/support.jpg.asset.json";
+import salesImg from "../assets/industries/sales.jpg.asset.json";
+import healthcareImg from "../assets/industries/healthcare.jpg.asset.json";
+import realestateImg from "../assets/industries/realestate.jpg.asset.json";
+import financeImg from "../assets/industries/finance.jpg.asset.json";
+import ecomImg from "../assets/industries/ecom.jpg.asset.json";
+import educationImg from "../assets/industries/education.jpg.asset.json";
+import documentsImg from "../assets/industries/documents.jpg.asset.json";
+import knowledgeImg from "../assets/industries/knowledge.jpg.asset.json";
+
+const INDUSTRY_IMAGES: Record<string, string> = {
+  support: supportImg.url,
+  sales: salesImg.url,
+  healthcare: healthcareImg.url,
+  realestate: realestateImg.url,
+  finance: financeImg.url,
+  ecom: ecomImg.url,
+  education: educationImg.url,
+  documents: documentsImg.url,
+  knowledge: knowledgeImg.url,
+};
 
 export const Route = createFileRoute("/ai-solutions")({
   head: () => ({
@@ -486,9 +507,19 @@ function IndustrySection({ ind, index }: { ind: Industry; index: number }) {
           )}
         </div>
 
-        <div className="relative">
-          <div className="absolute -inset-6 rounded-3xl bg-primary/10 blur-3xl" />
-          <div className="relative"><Demo kind={ind.demo} /></div>
+        <div className="relative group">
+          <div className="absolute -inset-6 rounded-3xl bg-primary/20 blur-3xl transition-opacity duration-500 group-hover:opacity-90 opacity-60" />
+          <div className="industry-image-card relative overflow-hidden rounded-[20px] p-2 glass-strong shadow-glow">
+            <div className="overflow-hidden rounded-[14px] aspect-[16/10]">
+              <img
+                src={INDUSTRY_IMAGES[ind.id]}
+                alt={ind.heading}
+                loading="lazy"
+                decoding="async"
+                className="industry-image h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
