@@ -43,43 +43,6 @@ const featured = {
 };
 
 // posts imported from ../lib/blog-posts
-  {
-    category: "Software Development",
-    title: "Custom Software vs Ready-Made Tools",
-    author: "ALStreamTech Team",
-    date: "June 28, 2026",
-    read: "9 min read",
-    summary:
-      "Choosing between custom software and ready-made tools depends on scalability, budget, and long-term business goals.",
-  },
-  {
-    category: "Artificial Intelligence",
-    title: "How Small Businesses Can Use AI",
-    author: "ALStreamTech Team",
-    date: "June 25, 2026",
-    read: "5 min read",
-    summary:
-      "AI is no longer just for large enterprises. Small businesses can now leverage affordable AI tools for automation, analytics, and customer engagement.",
-  },
-  {
-    category: "Automation",
-    title: "Future of AI Automation",
-    author: "ALStreamTech Team",
-    date: "June 21, 2026",
-    read: "8 min read",
-    summary:
-      "The future of automation lies in autonomous AI systems capable of managing workflows with minimal human intervention.",
-  },
-  {
-    category: "Customer Support",
-    title: "AI in Customer Support",
-    author: "ALStreamTech Team",
-    date: "June 18, 2026",
-    read: "6 min read",
-    summary:
-      "AI-powered support systems are enhancing customer experiences through chatbots, ticket automation, and intelligent response systems.",
-  },
-];
 
 function CategoryVisual({ label }: { label: string }) {
   return (
