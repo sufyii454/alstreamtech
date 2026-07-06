@@ -222,7 +222,9 @@ function Services() {
             <ServiceCard key={s.slug} service={s} index={i} onOpen={() => setActive(s)} />
           ))}
         </div>
+        <TeamShowcase />
       </section>
+
 
       <ComparisonSection />
       <IndustriesSection />
