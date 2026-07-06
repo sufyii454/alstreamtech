@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
   Brain, Puzzle, TrendingUp, Shield, Rocket, HeartHandshake,
-  Cpu, Cloud, BarChart3, Smartphone, Code2, Workflow,
   ArrowRight, Calendar, MessageSquare, FileText, Check, X,
   Sparkles,
 } from "lucide-react";
