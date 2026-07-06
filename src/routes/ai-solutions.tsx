@@ -831,6 +831,11 @@ function FinalCTA() {
 
 function AISolutions() {
   const [detail, setDetail] = useState<Industry | null>(null);
+  useEffect(() => {
+    document.body.classList.add("page-ai-solutions");
+    return () => document.body.classList.remove("page-ai-solutions");
+  }, []);
+
   return (
     <>
       <style>{`
