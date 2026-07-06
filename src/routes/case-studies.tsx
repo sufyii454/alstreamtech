@@ -20,7 +20,6 @@ import {
   Check,
 } from "lucide-react";
 import { PageHero } from "../components/PageHero";
-import { CTASection } from "../components/CTASection";
 
 export const Route = createFileRoute("/case-studies")({
   head: () => ({
