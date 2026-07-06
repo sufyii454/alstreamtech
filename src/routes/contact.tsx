@@ -490,6 +490,87 @@ function Contact() {
           </motion.div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <section className="relative mx-auto max-w-4xl px-6 py-24">
+        <div className="mb-12 text-center">
+          <div className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs uppercase tracking-widest text-primary">
+            <HelpCircle className="h-3.5 w-3.5" />
+            FAQ
+          </div>
+          <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">
+            Frequently Asked Questions
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground">
+            Find quick answers to the most common questions about our consultation process, project delivery, and services.
+          </p>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
+          className="glass-strong rounded-3xl p-2 md:p-4"
+        >
+          <Accordion type="single" collapsible className="w-full">
+            {FAQS.map((item, i) => (
+              <AccordionItem
+                key={i}
+                value={`item-${i}`}
+                className="border-white/10 px-4 last:border-b-0"
+              >
+                <AccordionTrigger className="py-5 text-left text-base font-semibold hover:text-primary hover:no-underline">
+                  {item.q}
+                </AccordionTrigger>
+                <AccordionContent className="leading-relaxed text-muted-foreground">
+                  {item.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </motion.div>
+      </section>
+
+      {/* Trust Indicators */}
+      <section className="relative mx-auto max-w-7xl px-6 py-24">
+        <div className="mb-12 text-center">
+          <div className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs uppercase tracking-widest text-primary">
+            <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+            Trust
+          </div>
+          <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">
+            Trusted by Businesses Across Industries
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground">
+            Delivering innovative AI, automation, and software solutions with measurable results.
+          </p>
+        </div>
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          {STATS.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              whileHover={{ y: -4 }}
+              className="glass-strong group relative overflow-hidden rounded-2xl p-6 text-center transition-all duration-300 hover:border-primary/60 hover:shadow-glow"
+            >
+              <div className="pointer-events-none absolute -inset-1 rounded-2xl bg-primary opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-30" />
+              <div className="relative font-display text-4xl font-bold text-gradient md:text-5xl">
+                <Counter value={stat.value} suffix={stat.suffix} />
+              </div>
+              <div className="relative mt-2 text-sm font-medium text-muted-foreground">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      <CTASection />
     </>
   );
 }
