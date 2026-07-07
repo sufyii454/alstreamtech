@@ -512,7 +512,7 @@ function TrustSection() {
 
 function FinalCTA() {
   return (
-    <section className="relative mx-auto my-16 max-w-7xl px-6">
+    <section className="relative mx-auto py-16 max-w-7xl px-6">
       <div className="glass-strong relative overflow-hidden rounded-3xl px-8 py-16 md:px-16 md:py-20 text-center">
         <div className="pointer-events-none absolute -top-32 -right-32 h-72 w-72 rounded-full bg-primary/30 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-32 -left-32 h-72 w-72 rounded-full bg-accent/30 blur-3xl" />
@@ -555,11 +555,11 @@ function Testimonials() {
         subtitle="See how our clients have transformed their businesses through AI-powered solutions, intelligent automation, custom software development, cloud innovation, and digital transformation."
       />
       <FeaturedStory />
-      <CarouselSection />
       <StatsSection />
+      <CarouselSection />
+      <IndustrySelector />
       <LogoWall />
       <Timeline />
-      <IndustrySelector />
       <TrustSection />
       <FinalCTA />
     </>
