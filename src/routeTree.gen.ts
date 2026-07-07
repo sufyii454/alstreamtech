@@ -28,6 +28,7 @@ import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesWebApplicationsRouteImport } from './routes/services.web-applications'
 import { Route as ServicesMobileAppsRouteImport } from './routes/services.mobile-apps'
 import { Route as ServicesCustomSoftwareRouteImport } from './routes/services.custom-software'
+import { Route as ServicesCloudDevopsRouteImport } from './routes/services.cloud-devops'
 import { Route as ServicesChatbotsRouteImport } from './routes/services.chatbots'
 import { Route as ServicesAutomationRouteImport } from './routes/services.automation'
 import { Route as ServicesAiDevelopmentRouteImport } from './routes/services.ai-development'
@@ -129,6 +130,11 @@ const ServicesCustomSoftwareRoute = ServicesCustomSoftwareRouteImport.update({
   path: '/custom-software',
   getParentRoute: () => ServicesRoute,
 } as any)
+const ServicesCloudDevopsRoute = ServicesCloudDevopsRouteImport.update({
+  id: '/cloud-devops',
+  path: '/cloud-devops',
+  getParentRoute: () => ServicesRoute,
+} as any)
 const ServicesChatbotsRoute = ServicesChatbotsRouteImport.update({
   id: '/chatbots',
   path: '/chatbots',
@@ -176,6 +182,7 @@ export interface FileRoutesByFullPath {
   '/services/ai-development': typeof ServicesAiDevelopmentRoute
   '/services/automation': typeof ServicesAutomationRoute
   '/services/chatbots': typeof ServicesChatbotsRoute
+  '/services/cloud-devops': typeof ServicesCloudDevopsRoute
   '/services/custom-software': typeof ServicesCustomSoftwareRoute
   '/services/mobile-apps': typeof ServicesMobileAppsRoute
   '/services/web-applications': typeof ServicesWebApplicationsRoute
@@ -201,6 +208,7 @@ export interface FileRoutesByTo {
   '/services/ai-development': typeof ServicesAiDevelopmentRoute
   '/services/automation': typeof ServicesAutomationRoute
   '/services/chatbots': typeof ServicesChatbotsRoute
+  '/services/cloud-devops': typeof ServicesCloudDevopsRoute
   '/services/custom-software': typeof ServicesCustomSoftwareRoute
   '/services/mobile-apps': typeof ServicesMobileAppsRoute
   '/services/web-applications': typeof ServicesWebApplicationsRoute
@@ -228,6 +236,7 @@ export interface FileRoutesById {
   '/services/ai-development': typeof ServicesAiDevelopmentRoute
   '/services/automation': typeof ServicesAutomationRoute
   '/services/chatbots': typeof ServicesChatbotsRoute
+  '/services/cloud-devops': typeof ServicesCloudDevopsRoute
   '/services/custom-software': typeof ServicesCustomSoftwareRoute
   '/services/mobile-apps': typeof ServicesMobileAppsRoute
   '/services/web-applications': typeof ServicesWebApplicationsRoute
@@ -256,6 +265,7 @@ export interface FileRouteTypes {
     | '/services/ai-development'
     | '/services/automation'
     | '/services/chatbots'
+    | '/services/cloud-devops'
     | '/services/custom-software'
     | '/services/mobile-apps'
     | '/services/web-applications'
@@ -281,6 +291,7 @@ export interface FileRouteTypes {
     | '/services/ai-development'
     | '/services/automation'
     | '/services/chatbots'
+    | '/services/cloud-devops'
     | '/services/custom-software'
     | '/services/mobile-apps'
     | '/services/web-applications'
@@ -307,6 +318,7 @@ export interface FileRouteTypes {
     | '/services/ai-development'
     | '/services/automation'
     | '/services/chatbots'
+    | '/services/cloud-devops'
     | '/services/custom-software'
     | '/services/mobile-apps'
     | '/services/web-applications'
@@ -466,6 +478,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesCustomSoftwareRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/services/cloud-devops': {
+      id: '/services/cloud-devops'
+      path: '/cloud-devops'
+      fullPath: '/services/cloud-devops'
+      preLoaderRoute: typeof ServicesCloudDevopsRouteImport
+      parentRoute: typeof ServicesRoute
+    }
     '/services/chatbots': {
       id: '/services/chatbots'
       path: '/chatbots'
@@ -519,6 +538,7 @@ interface ServicesRouteChildren {
   ServicesAiDevelopmentRoute: typeof ServicesAiDevelopmentRoute
   ServicesAutomationRoute: typeof ServicesAutomationRoute
   ServicesChatbotsRoute: typeof ServicesChatbotsRoute
+  ServicesCloudDevopsRoute: typeof ServicesCloudDevopsRoute
   ServicesCustomSoftwareRoute: typeof ServicesCustomSoftwareRoute
   ServicesMobileAppsRoute: typeof ServicesMobileAppsRoute
   ServicesWebApplicationsRoute: typeof ServicesWebApplicationsRoute
@@ -530,6 +550,7 @@ const ServicesRouteChildren: ServicesRouteChildren = {
   ServicesAiDevelopmentRoute: ServicesAiDevelopmentRoute,
   ServicesAutomationRoute: ServicesAutomationRoute,
   ServicesChatbotsRoute: ServicesChatbotsRoute,
+  ServicesCloudDevopsRoute: ServicesCloudDevopsRoute,
   ServicesCustomSoftwareRoute: ServicesCustomSoftwareRoute,
   ServicesMobileAppsRoute: ServicesMobileAppsRoute,
   ServicesWebApplicationsRoute: ServicesWebApplicationsRoute,
