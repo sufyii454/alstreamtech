@@ -1,43 +1,24 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, ArrowLeft, CheckCircle2, Cpu, Building2, TrendingUp, Sparkles } from "lucide-react";
 import { PageHero } from "../components/PageHero";
 import { SectionHeading } from "../components/SectionHeading";
 import { getServiceBySlug, services, type Service } from "@/lib/services-data";
 
 export const Route = createFileRoute("/services/$slug")({
-  loader: ({ params }) => {
-    const service = getServiceBySlug(params.slug);
-    if (!service) throw notFound();
-    return { slug: service.slug };
-  },
-  head: ({ loaderData }) => {
-    if (!loaderData) {
-      return {
-        meta: [
-          { title: "Service not found | ALStreamTech" },
-          { name: "robots", content: "noindex" },
-        ],
-      };
-    }
-    const service = getServiceBySlug(loaderData.slug);
-    if (!service) {
-      return {
-        meta: [
-          { title: "Service not found | ALStreamTech" },
-          { name: "robots", content: "noindex" },
-        ],
-      };
-    }
-    const title = `${service.name} — Services | ALStreamTech`;
-    return {
-      meta: [
-        { title },
-        { name: "description", content: service.summary },
-        { property: "og:title", content: title },
-        { property: "og:description", content: service.summary },
-      ],
-    };
-  },
+  head: () => ({
+    meta: [
+      { title: "Service Details — ALStreamTech" },
+      {
+        name: "description",
+        content: "Explore ALStreamTech service capabilities, technology stack, business benefits and delivery process.",
+      },
+      { property: "og:title", content: "ALStreamTech Service Details" },
+      {
+        property: "og:description",
+        content: "Explore ALStreamTech service capabilities, technology stack, business benefits and delivery process.",
+      },
+    ],
+  }),
   component: ServiceDetail,
   notFoundComponent: ServiceNotFound,
   errorComponent: ({ reset }) => (
@@ -71,8 +52,13 @@ function ServiceNotFound() {
 }
 
 function ServiceDetail() {
-  const { slug } = Route.useLoaderData() as { slug: string };
-  const service = getServiceBySlug(slug) as Service;
+  const { slug } = Route.useParams();
+  const service = getServiceBySlug(slug) as Service | undefined;
+
+  if (!service) {
+    return <ServiceNotFound />;
+  }
+
   const Icon = service.icon;
   const related = services.filter((s) => s.slug !== service.slug).slice(0, 3);
 
