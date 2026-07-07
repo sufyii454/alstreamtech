@@ -120,11 +120,6 @@ const ServicesAiDevelopmentRoute = ServicesAiDevelopmentRouteImport.update({
   path: '/ai-development',
   getParentRoute: () => ServicesRoute,
 } as any)
-const ServicesChatbotsRoute = ServicesChatbotsRouteImport.update({
-  id: '/chatbots',
-  path: '/chatbots',
-  getParentRoute: () => ServicesRoute,
-} as any)
 const ServicesSlugRoute = ServicesSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
