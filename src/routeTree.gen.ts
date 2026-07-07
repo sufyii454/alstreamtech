@@ -21,6 +21,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CaseStudiesRouteImport } from './routes/case-studies'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AiSolutionsRouteImport } from './routes/ai-solutions'
+import { Route as AiSolutionShowcaseRouteImport } from './routes/ai-solution-showcase'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
@@ -85,6 +86,11 @@ const AiSolutionsRoute = AiSolutionsRouteImport.update({
   path: '/ai-solutions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AiSolutionShowcaseRoute = AiSolutionShowcaseRouteImport.update({
+  id: '/ai-solution-showcase',
+  path: '/ai-solution-showcase',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -104,6 +110,7 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/ai-solution-showcase': typeof AiSolutionShowcaseRoute
   '/ai-solutions': typeof AiSolutionsRoute
   '/blog': typeof BlogRouteWithChildren
   '/case-studies': typeof CaseStudiesRoute
@@ -121,6 +128,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/ai-solution-showcase': typeof AiSolutionShowcaseRoute
   '/ai-solutions': typeof AiSolutionsRoute
   '/blog': typeof BlogRouteWithChildren
   '/case-studies': typeof CaseStudiesRoute
@@ -139,6 +147,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/ai-solution-showcase': typeof AiSolutionShowcaseRoute
   '/ai-solutions': typeof AiSolutionsRoute
   '/blog': typeof BlogRouteWithChildren
   '/case-studies': typeof CaseStudiesRoute
@@ -158,6 +167,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/ai-solution-showcase'
     | '/ai-solutions'
     | '/blog'
     | '/case-studies'
@@ -175,6 +185,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/ai-solution-showcase'
     | '/ai-solutions'
     | '/blog'
     | '/case-studies'
@@ -192,6 +203,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/ai-solution-showcase'
     | '/ai-solutions'
     | '/blog'
     | '/case-studies'
@@ -210,6 +222,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AiSolutionShowcaseRoute: typeof AiSolutionShowcaseRoute
   AiSolutionsRoute: typeof AiSolutionsRoute
   BlogRoute: typeof BlogRouteWithChildren
   CaseStudiesRoute: typeof CaseStudiesRoute
@@ -310,6 +323,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AiSolutionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ai-solution-showcase': {
+      id: '/ai-solution-showcase'
+      path: '/ai-solution-showcase'
+      fullPath: '/ai-solution-showcase'
+      preLoaderRoute: typeof AiSolutionShowcaseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -347,6 +367,7 @@ const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AiSolutionShowcaseRoute: AiSolutionShowcaseRoute,
   AiSolutionsRoute: AiSolutionsRoute,
   BlogRoute: BlogRouteWithChildren,
   CaseStudiesRoute: CaseStudiesRoute,
