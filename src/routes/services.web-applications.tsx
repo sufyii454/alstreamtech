@@ -40,7 +40,7 @@ import {
   CreditCard,
   Bell,
 } from "lucide-react";
-import { PageHero } from "../components/PageHero";
+
 import { SectionHeading } from "../components/SectionHeading";
 import { ParticleNetwork } from "../components/ParticleNetwork";
 
@@ -529,40 +529,49 @@ function WebApplicationsPage() {
 
 function WebHero() {
   return (
-    <PageHero
-      eyebrow="Web Applications & Websites"
-      title={
-        <>
-          Modern Websites & Web Apps That{" "}
-          <span className="text-gradient">Drive Business Growth</span>
-        </>
-      }
-      subtitle="From business websites and landing pages to enterprise web applications and customer portals, we create high-performance digital experiences designed to engage users and deliver results."
-    >
-      <div className="mt-8 flex flex-wrap gap-3">
-        <Link
-          to="/contact"
-          className="inline-flex items-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:scale-105"
-        >
-          Request a Free Consultation <ArrowRight className="h-4 w-4" />
-        </Link>
-        <Link
-          to="/contact"
-          className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold hover:bg-white/10"
-        >
-          Discuss Your Website Project
-        </Link>
-        <Link
-          to="/contact"
-          className="inline-flex items-center gap-2 rounded-full border border-primary/40 px-6 py-3 text-sm font-semibold text-primary transition hover:bg-primary/10"
-        >
-          Get a Custom Quote
-        </Link>
+    <section className="relative overflow-hidden border-b border-white/5">
+      <div className="absolute inset-0 opacity-70"><ParticleNetwork density={45} /></div>
+      <div className="absolute inset-0 ai-grid opacity-20" />
+      <div className="relative mx-auto max-w-7xl px-6 py-20 md:py-28 lg:py-32">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-10">
+          <div className="min-w-0">
+            <div className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs uppercase tracking-widest text-primary animate-fade-up">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" /> Web Applications & Websites
+            </div>
+            <h1 className="mt-6 font-display text-4xl font-bold leading-[1.08] tracking-tight animate-fade-up sm:text-5xl lg:text-6xl xl:text-7xl">
+              Modern Websites & Web Apps That{" "}
+              <span className="text-gradient">Drive Business Growth</span>
+            </h1>
+            <p className="mt-6 max-w-2xl text-base text-muted-foreground animate-fade-up sm:text-lg">
+              From business websites and landing pages to enterprise web applications and customer portals, we create high-performance digital experiences designed to engage users and deliver results.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:scale-105"
+              >
+                Request a Free Consultation <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link
+                to="/contact"
+                className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold hover:bg-white/10"
+              >
+                Discuss Your Website Project
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-full border border-primary/40 px-6 py-3 text-sm font-semibold text-primary transition hover:bg-primary/10"
+              >
+                Get a Custom Quote
+              </Link>
+            </div>
+          </div>
+          <div className="pointer-events-none hidden justify-self-end lg:block">
+            <ResponsiveShowcase />
+          </div>
+        </div>
       </div>
-      <div className="pointer-events-none absolute right-6 top-1/2 hidden -translate-y-1/2 lg:block">
-        <ResponsiveShowcase />
-      </div>
-    </PageHero>
+    </section>
   );
 }
 
