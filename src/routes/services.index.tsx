@@ -303,6 +303,15 @@ function ServiceCard({ service, index }: { service: Service; index: number; onOp
               Learn more <ArrowRight className="h-4 w-4" />
             </span>
           </Link>
+        ) : service.slug === "custom-software" ? (
+          <Link
+            to="/services/custom-software"
+            className="mt-auto pt-5 text-left"
+          >
+            <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition group-hover:gap-3">
+              Learn more <ArrowRight className="h-4 w-4" />
+            </span>
+          </Link>
         ) : (
           <Link
             to="/services/$slug"
