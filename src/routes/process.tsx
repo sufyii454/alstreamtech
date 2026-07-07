@@ -276,7 +276,7 @@ function ProcessTimeline() {
           return (
             <div
               key={p.key}
-              ref={(el) => (stepRefs.current[i] = el)}
+              ref={(el) => { stepRefs.current[i] = el; }}
               data-idx={i}
               className={`relative grid gap-6 md:grid-cols-2 ${side ? "" : "md:[&>*:first-child]:order-2"}`}
             >
