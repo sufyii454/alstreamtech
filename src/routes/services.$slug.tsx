@@ -8,7 +8,7 @@ export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
     const service = getServiceBySlug(params.slug);
     if (!service) throw notFound();
-    return { service };
+    return { slug: service.slug };
   },
   head: ({ loaderData }) => {
     if (!loaderData) {
@@ -19,7 +19,15 @@ export const Route = createFileRoute("/services/$slug")({
         ],
       };
     }
-    const { service } = loaderData;
+    const service = getServiceBySlug(loaderData.slug);
+    if (!service) {
+      return {
+        meta: [
+          { title: "Service not found | ALStreamTech" },
+          { name: "robots", content: "noindex" },
+        ],
+      };
+    }
     const title = `${service.name} — Services | ALStreamTech`;
     return {
       meta: [
@@ -63,7 +71,8 @@ function ServiceNotFound() {
 }
 
 function ServiceDetail() {
-  const { service } = Route.useLoaderData() as { service: Service };
+  const { slug } = Route.useLoaderData() as { slug: string };
+  const service = getServiceBySlug(slug) as Service;
   const Icon = service.icon;
   const related = services.filter((s) => s.slug !== service.slug).slice(0, 3);
 
