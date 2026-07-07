@@ -761,7 +761,7 @@ const pillars = [
 
 function ComparisonSection() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24">
+    <section id="key-benefits" className="mx-auto max-w-7xl px-6 py-24 scroll-mt-24">
       <SectionHeading
         eyebrow="What we deliver"
         title={
