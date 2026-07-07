@@ -25,6 +25,7 @@ import { Route as AiSolutionShowcaseRouteImport } from './routes/ai-solution-sho
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesChatbotsRouteImport } from './routes/services.chatbots'
 import { Route as ServicesAiDevelopmentRouteImport } from './routes/services.ai-development'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
@@ -109,6 +110,11 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ServicesRoute,
 } as any)
+const ServicesChatbotsRoute = ServicesChatbotsRouteImport.update({
+  id: '/chatbots',
+  path: '/chatbots',
+  getParentRoute: () => ServicesRoute,
+} as any)
 const ServicesAiDevelopmentRoute = ServicesAiDevelopmentRouteImport.update({
   id: '/ai-development',
   path: '/ai-development',
@@ -144,6 +150,7 @@ export interface FileRoutesByFullPath {
   '/blog/$slug': typeof BlogSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/ai-development': typeof ServicesAiDevelopmentRoute
+  '/services/chatbots': typeof ServicesChatbotsRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -164,6 +171,7 @@ export interface FileRoutesByTo {
   '/blog/$slug': typeof BlogSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/ai-development': typeof ServicesAiDevelopmentRoute
+  '/services/chatbots': typeof ServicesChatbotsRoute
   '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
@@ -186,6 +194,7 @@ export interface FileRoutesById {
   '/blog/$slug': typeof BlogSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/ai-development': typeof ServicesAiDevelopmentRoute
+  '/services/chatbots': typeof ServicesChatbotsRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
@@ -209,6 +218,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/services/$slug'
     | '/services/ai-development'
+    | '/services/chatbots'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -229,6 +239,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/services/$slug'
     | '/services/ai-development'
+    | '/services/chatbots'
     | '/services'
   id:
     | '__root__'
@@ -250,6 +261,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/services/$slug'
     | '/services/ai-development'
+    | '/services/chatbots'
     | '/services/'
   fileRoutesById: FileRoutesById
 }
@@ -385,6 +397,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesIndexRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/services/chatbots': {
+      id: '/services/chatbots'
+      path: '/chatbots'
+      fullPath: '/services/chatbots'
+      preLoaderRoute: typeof ServicesChatbotsRouteImport
+      parentRoute: typeof ServicesRoute
+    }
     '/services/ai-development': {
       id: '/services/ai-development'
       path: '/ai-development'
@@ -422,12 +441,14 @@ const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 interface ServicesRouteChildren {
   ServicesSlugRoute: typeof ServicesSlugRoute
   ServicesAiDevelopmentRoute: typeof ServicesAiDevelopmentRoute
+  ServicesChatbotsRoute: typeof ServicesChatbotsRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 const ServicesRouteChildren: ServicesRouteChildren = {
   ServicesSlugRoute: ServicesSlugRoute,
   ServicesAiDevelopmentRoute: ServicesAiDevelopmentRoute,
+  ServicesChatbotsRoute: ServicesChatbotsRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
 
