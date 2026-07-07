@@ -634,11 +634,9 @@ function Testimonials() {
       <StatsSection />
       <LogoWall />
       <Timeline />
-      <VideoTestimonials />
       <IndustrySelector />
       <TrustSection />
       <FinalCTA />
-      <CTASection />
     </>
   );
 }
