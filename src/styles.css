@@ -219,6 +219,62 @@ body.page-ai-solutions footer { margin-top: 0; }
   animation: fade-up 0.7s ease-out both;
 }
 
+/* =========================================================================
+   Global responsive safety net
+   Enforces fluid media, wraps long strings, prevents horizontal scroll,
+   and ensures touch-friendly interactive sizing on small screens without
+   altering any page-specific design, spacing, or animation.
+   ========================================================================= */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+body {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+img, video, svg, canvas, picture {
+  max-width: 100%;
+  height: auto;
+}
+img, video {
+  display: block;
+}
+/* Preserve intrinsic sizes for media that explicitly declares width/height */
+img[width][height], svg[width][height] {
+  height: revert-layer;
+}
+/* Prevent long unbreakable tokens (URLs, code) from expanding layouts */
+p, li, a, span, h1, h2, h3, h4, h5, h6, dd, dt, blockquote, figcaption {
+  overflow-wrap: anywhere;
+}
+table { max-width: 100%; }
+
+@media (max-width: 767px) {
+  h1 { line-height: 1.1; }
+  h2 { line-height: 1.15; }
+  /* Comfortable touch targets on mobile for form controls */
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    min-height: 44px;
+    font-size: 16px; /* prevents iOS auto-zoom on focus */
+  }
+  button, [role="button"] { touch-action: manipulation; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
 
 
 
