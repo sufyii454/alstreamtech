@@ -207,7 +207,8 @@ function Services() {
     <>
       <ServicesHero />
 
-      <section className="relative mx-auto max-w-7xl px-6 py-24">
+      <section id="quick-overview" className="relative mx-auto max-w-7xl px-6 py-24 scroll-mt-24">
+
         <SectionHeading
           eyebrow="What we offer"
           title={
