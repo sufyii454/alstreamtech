@@ -276,15 +276,26 @@ function ServiceCard({ service, index }: { service: Service; index: number; onOp
           </div>
         </div>
 
-        <Link
-          to="/services/$slug"
-          params={{ slug: service.slug }}
-          className="mt-auto pt-5 text-left"
-        >
-          <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition group-hover:gap-3">
-            Learn more <ArrowRight className="h-4 w-4" />
-          </span>
-        </Link>
+        {service.slug === "ai-development" ? (
+          <Link
+            to="/services/ai-development"
+            className="mt-auto pt-5 text-left"
+          >
+            <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition group-hover:gap-3">
+              Learn more <ArrowRight className="h-4 w-4" />
+            </span>
+          </Link>
+        ) : (
+          <Link
+            to="/services/$slug"
+            params={{ slug: service.slug }}
+            className="mt-auto pt-5 text-left"
+          >
+            <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition group-hover:gap-3">
+              Learn more <ArrowRight className="h-4 w-4" />
+            </span>
+          </Link>
+        )}
       </div>
     </div>
   );
