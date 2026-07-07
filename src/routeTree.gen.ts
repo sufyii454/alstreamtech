@@ -27,6 +27,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesWebApplicationsRouteImport } from './routes/services.web-applications'
 import { Route as ServicesMobileAppsRouteImport } from './routes/services.mobile-apps'
+import { Route as ServicesDataAnalyticsRouteImport } from './routes/services.data-analytics'
 import { Route as ServicesCustomSoftwareRouteImport } from './routes/services.custom-software'
 import { Route as ServicesCloudDevopsRouteImport } from './routes/services.cloud-devops'
 import { Route as ServicesChatbotsRouteImport } from './routes/services.chatbots'
@@ -125,6 +126,11 @@ const ServicesMobileAppsRoute = ServicesMobileAppsRouteImport.update({
   path: '/mobile-apps',
   getParentRoute: () => ServicesRoute,
 } as any)
+const ServicesDataAnalyticsRoute = ServicesDataAnalyticsRouteImport.update({
+  id: '/data-analytics',
+  path: '/data-analytics',
+  getParentRoute: () => ServicesRoute,
+} as any)
 const ServicesCustomSoftwareRoute = ServicesCustomSoftwareRouteImport.update({
   id: '/custom-software',
   path: '/custom-software',
@@ -184,6 +190,7 @@ export interface FileRoutesByFullPath {
   '/services/chatbots': typeof ServicesChatbotsRoute
   '/services/cloud-devops': typeof ServicesCloudDevopsRoute
   '/services/custom-software': typeof ServicesCustomSoftwareRoute
+  '/services/data-analytics': typeof ServicesDataAnalyticsRoute
   '/services/mobile-apps': typeof ServicesMobileAppsRoute
   '/services/web-applications': typeof ServicesWebApplicationsRoute
   '/services/': typeof ServicesIndexRoute
@@ -210,6 +217,7 @@ export interface FileRoutesByTo {
   '/services/chatbots': typeof ServicesChatbotsRoute
   '/services/cloud-devops': typeof ServicesCloudDevopsRoute
   '/services/custom-software': typeof ServicesCustomSoftwareRoute
+  '/services/data-analytics': typeof ServicesDataAnalyticsRoute
   '/services/mobile-apps': typeof ServicesMobileAppsRoute
   '/services/web-applications': typeof ServicesWebApplicationsRoute
   '/services': typeof ServicesIndexRoute
@@ -238,6 +246,7 @@ export interface FileRoutesById {
   '/services/chatbots': typeof ServicesChatbotsRoute
   '/services/cloud-devops': typeof ServicesCloudDevopsRoute
   '/services/custom-software': typeof ServicesCustomSoftwareRoute
+  '/services/data-analytics': typeof ServicesDataAnalyticsRoute
   '/services/mobile-apps': typeof ServicesMobileAppsRoute
   '/services/web-applications': typeof ServicesWebApplicationsRoute
   '/services/': typeof ServicesIndexRoute
@@ -267,6 +276,7 @@ export interface FileRouteTypes {
     | '/services/chatbots'
     | '/services/cloud-devops'
     | '/services/custom-software'
+    | '/services/data-analytics'
     | '/services/mobile-apps'
     | '/services/web-applications'
     | '/services/'
@@ -293,6 +303,7 @@ export interface FileRouteTypes {
     | '/services/chatbots'
     | '/services/cloud-devops'
     | '/services/custom-software'
+    | '/services/data-analytics'
     | '/services/mobile-apps'
     | '/services/web-applications'
     | '/services'
@@ -320,6 +331,7 @@ export interface FileRouteTypes {
     | '/services/chatbots'
     | '/services/cloud-devops'
     | '/services/custom-software'
+    | '/services/data-analytics'
     | '/services/mobile-apps'
     | '/services/web-applications'
     | '/services/'
@@ -471,6 +483,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesMobileAppsRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/services/data-analytics': {
+      id: '/services/data-analytics'
+      path: '/data-analytics'
+      fullPath: '/services/data-analytics'
+      preLoaderRoute: typeof ServicesDataAnalyticsRouteImport
+      parentRoute: typeof ServicesRoute
+    }
     '/services/custom-software': {
       id: '/services/custom-software'
       path: '/custom-software'
@@ -540,6 +559,7 @@ interface ServicesRouteChildren {
   ServicesChatbotsRoute: typeof ServicesChatbotsRoute
   ServicesCloudDevopsRoute: typeof ServicesCloudDevopsRoute
   ServicesCustomSoftwareRoute: typeof ServicesCustomSoftwareRoute
+  ServicesDataAnalyticsRoute: typeof ServicesDataAnalyticsRoute
   ServicesMobileAppsRoute: typeof ServicesMobileAppsRoute
   ServicesWebApplicationsRoute: typeof ServicesWebApplicationsRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
@@ -552,6 +572,7 @@ const ServicesRouteChildren: ServicesRouteChildren = {
   ServicesChatbotsRoute: ServicesChatbotsRoute,
   ServicesCloudDevopsRoute: ServicesCloudDevopsRoute,
   ServicesCustomSoftwareRoute: ServicesCustomSoftwareRoute,
+  ServicesDataAnalyticsRoute: ServicesDataAnalyticsRoute,
   ServicesMobileAppsRoute: ServicesMobileAppsRoute,
   ServicesWebApplicationsRoute: ServicesWebApplicationsRoute,
   ServicesIndexRoute: ServicesIndexRoute,
