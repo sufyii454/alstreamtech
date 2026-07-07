@@ -30,7 +30,7 @@ import { PageHero } from "../components/PageHero";
 import { SectionHeading } from "../components/SectionHeading";
 import { services, type Service } from "@/lib/services-data";
 
-export const Route = createFileRoute("/services")({
+export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
       { title: "Services — AI Development, Custom Software & Automation | ALStreamTech" },
