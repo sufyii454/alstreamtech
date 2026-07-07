@@ -2,11 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Quote, Star, ChevronLeft, ChevronRight,
-  Sparkles, ShieldCheck, Handshake, Rocket,
+  Sparkles, ShieldCheck, Handshake, Rocket, CheckCircle2,
   Building2, HeartPulse, ShoppingBag, Landmark, Home, GraduationCap, Truck, Factory,
   TrendingUp, Users, Award, Layers, Globe2,
 } from "lucide-react";
 import { PageHero } from "../components/PageHero";
+
 
 
 export const Route = createFileRoute("/testimonials")({
@@ -351,80 +352,6 @@ function CarouselSection() {
   );
 }
 
-function VideoTestimonials() {
-  const videos = [
-    { name: "Sarah Mitchell", company: "NovaTech Solutions", category: "AI Development", desc: "How NovaTech automated 70% of support with an AI agent." },
-    { name: "Marcus Delaney", company: "PortLine Freight", category: "Custom Software", desc: "Building an operations platform that scaled globally." },
-    { name: "Dr. Ravi Menon", company: "MedBridge Telehealth", category: "Mobile Development", desc: "Launching a telehealth app used by 350k patients." },
-  ];
-  const [openIdx, setOpenIdx] = useState<number | null>(null);
-  return (
-    <section className="mx-auto max-w-7xl px-6 py-16">
-      <div className="text-center">
-        <div className="glass inline-flex rounded-full px-3 py-1 text-xs uppercase tracking-widest text-primary">Video Stories</div>
-        <h2 className="mt-3 font-display text-3xl font-bold md:text-5xl">
-          Hear Directly From <span className="text-gradient">Our Clients</span>
-        </h2>
-      </div>
-      <div className="mt-10 grid gap-6 md:grid-cols-3">
-        {videos.map((v, i) => (
-          <button
-            key={v.name}
-            onClick={() => setOpenIdx(i)}
-            className="glass group relative overflow-hidden rounded-3xl text-left transition duration-500 hover:-translate-y-1 hover:border-primary/60 hover:shadow-glow"
-          >
-            <div className="relative aspect-video overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/25 via-transparent to-accent/20 transition duration-700 group-hover:scale-110" />
-              <div className="ai-grid absolute inset-0 opacity-30" />
-              <div className="absolute inset-0 grid place-items-center">
-                <div className="glass-strong grid h-20 w-20 place-items-center rounded-full transition duration-500 group-hover:scale-110 group-hover:shadow-glow">
-                  <Play className="h-8 w-8 translate-x-0.5 fill-primary text-primary" />
-                </div>
-              </div>
-              <div className="absolute left-4 top-4">
-                <span className="glass rounded-full px-3 py-1 text-[11px] uppercase tracking-widest text-primary">{v.category}</span>
-              </div>
-            </div>
-            <div className="p-5">
-              <div className="flex items-center gap-3">
-                <Avatar name={v.name} size={40} />
-                <div>
-                  <div className="text-sm font-semibold">{v.name}</div>
-                  <div className="text-xs text-muted-foreground">{v.company}</div>
-                </div>
-              </div>
-              <p className="mt-3 text-sm text-muted-foreground">{v.desc}</p>
-            </div>
-          </button>
-        ))}
-      </div>
-
-      {openIdx !== null && (
-        <div className="fixed inset-0 z-[100] grid place-items-center bg-background/80 p-6 backdrop-blur-md animate-fade-up" onClick={() => setOpenIdx(null)}>
-          <div className="glass-strong relative w-full max-w-3xl overflow-hidden rounded-3xl" onClick={e => e.stopPropagation()}>
-            <button aria-label="Close" onClick={() => setOpenIdx(null)} className="glass absolute right-3 top-3 z-10 grid h-9 w-9 place-items-center rounded-full">
-              <X className="h-4 w-4" />
-            </button>
-            <div className="relative aspect-video bg-black/60">
-              <div className="absolute inset-0 grid place-items-center text-center">
-                <div>
-                  <div className="glass-strong mx-auto grid h-20 w-20 place-items-center rounded-full shadow-glow">
-                    <Play className="h-8 w-8 translate-x-0.5 fill-primary text-primary" />
-                  </div>
-                  <p className="mt-4 text-sm text-muted-foreground">Video player placeholder</p>
-                </div>
-              </div>
-            </div>
-            <div className="p-6">
-              <div className="text-lg font-semibold">{videos[openIdx].name} · {videos[openIdx].company}</div>
-              <p className="mt-2 text-sm text-muted-foreground">{videos[openIdx].desc}</p>
-            </div>
-          </div>
-        </div>
-      )}
-    </section>
-  );
-}
 
 function StatsSection() {
   return (
@@ -585,41 +512,6 @@ function TrustSection() {
   );
 }
 
-function FinalCTA() {
-  return (
-    <section className="relative mx-auto my-16 max-w-7xl px-6">
-      <div className="glass-strong relative overflow-hidden rounded-3xl px-8 py-16 md:px-16 md:py-20 text-center">
-        <div className="pointer-events-none absolute -top-32 -right-32 h-72 w-72 rounded-full bg-primary/30 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-32 -left-32 h-72 w-72 rounded-full bg-accent/30 blur-3xl" />
-        <div className="relative">
-          <div className="glass inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs uppercase tracking-widest text-primary">
-            <Sparkles className="h-3.5 w-3.5" /> Your story starts here
-          </div>
-          <h2 className="mt-4 font-display text-3xl font-bold md:text-5xl">
-            Ready to Join Our <span className="text-gradient">Success Stories?</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Discover how AI, automation, and custom software solutions can help your business achieve measurable growth and long-term success.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <a href="/contact" className="group inline-flex items-center gap-2 rounded-2xl bg-gradient-brand px-6 py-4 font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.03] animate-pulse-glow">
-              <Clock className="h-5 w-5" /> Schedule a Free Consultation
-              <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-            </a>
-            <a href="/contact" className="glass group inline-flex items-center gap-2 rounded-2xl px-6 py-4 font-semibold transition hover:bg-white/10">
-              <Headphones className="h-5 w-5 text-primary" /> Discuss Your Project
-              <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-            </a>
-            <a href="/contact" className="group inline-flex items-center gap-2 rounded-2xl border border-primary/50 px-6 py-4 font-semibold text-primary transition hover:bg-primary/10 hover:shadow-glow">
-              Get a Custom Proposal
-              <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 function Testimonials() {
   return (
@@ -634,11 +526,8 @@ function Testimonials() {
       <StatsSection />
       <LogoWall />
       <Timeline />
-      <VideoTestimonials />
       <IndustrySelector />
       <TrustSection />
-      <FinalCTA />
-      <CTASection />
     </>
   );
 }
