@@ -27,7 +27,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesChatbotsRouteImport } from './routes/services.chatbots'
 import { Route as ServicesAiDevelopmentRouteImport } from './routes/services.ai-development'
-import { Route as ServicesChatbotsRouteImport } from './routes/services.chatbots'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
@@ -119,6 +118,11 @@ const ServicesChatbotsRoute = ServicesChatbotsRouteImport.update({
 const ServicesAiDevelopmentRoute = ServicesAiDevelopmentRouteImport.update({
   id: '/ai-development',
   path: '/ai-development',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesChatbotsRoute = ServicesChatbotsRouteImport.update({
+  id: '/chatbots',
+  path: '/chatbots',
   getParentRoute: () => ServicesRoute,
 } as any)
 const ServicesSlugRoute = ServicesSlugRouteImport.update({
