@@ -9,7 +9,7 @@ import {
   Layers,
   Code2,
 
-  Cloud,
+  
   Rocket,
   Sparkles,
   ShieldCheck,
