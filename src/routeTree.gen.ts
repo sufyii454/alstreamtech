@@ -117,11 +117,6 @@ const ServicesCustomSoftwareRoute = ServicesCustomSoftwareRouteImport.update({
   path: '/custom-software',
   getParentRoute: () => ServicesRoute,
 } as any)
-const ServicesCustomSoftwareRoute = ServicesCustomSoftwareRouteImport.update({
-  id: '/custom-software',
-  path: '/custom-software',
-  getParentRoute: () => ServicesRoute,
-} as any)
 const ServicesChatbotsRoute = ServicesChatbotsRouteImport.update({
   id: '/chatbots',
   path: '/chatbots',
