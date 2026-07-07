@@ -4,7 +4,6 @@ import {
   ArrowRight,
   Bot,
   MessageSquare,
-  Send,
   Sparkles,
   Zap,
   ShieldCheck,
@@ -302,7 +301,6 @@ function ChatbotsPage() {
       <Hero />
       <OverviewSection />
       <SolutionsGrid />
-      <InteractiveDemo />
       <FeaturesSection />
       <ProcessTimeline />
       <TechEcosystem />
@@ -606,147 +604,6 @@ function SolutionsGrid() {
             </div>
           );
         })}
-      </div>
-    </section>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/* Interactive demo                                                    */
-/* ------------------------------------------------------------------ */
-
-const demoPrompts: { q: string; a: string }[] = [
-  {
-    q: "I want a chatbot for my business",
-    a: "Great! We build chatbots for websites, WhatsApp, support, sales and internal teams. What's your primary goal — support, lead generation or automation?",
-  },
-  {
-    q: "Can you automate customer support?",
-    a: "Yes. We deploy AI support bots that handle FAQs, create tickets, route conversations and hand off to humans when needed — typically deflecting 60–80% of L1 queries.",
-  },
-  {
-    q: "Book a consultation",
-    a: "Absolutely. I can schedule a free 30-minute consultation. Would this week or next work better for you?",
-  },
-  {
-    q: "What industries do you serve?",
-    a: "We serve healthcare, finance, retail, real estate, education, logistics, hospitality and legal — with domain-specific conversation flows for each.",
-  },
-];
-
-function InteractiveDemo() {
-  type Msg = { role: "user" | "bot"; text: string; typing?: boolean };
-  const [messages, setMessages] = useState<Msg[]>([
-    { role: "bot", text: "Hi 👋 I'm your AI assistant. Try one of the prompts below or ask anything." },
-  ]);
-  const [busy, setBusy] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
-  }, [messages]);
-
-  const handlePrompt = (p: { q: string; a: string }) => {
-    if (busy) return;
-    setBusy(true);
-    setMessages((m) => [...m, { role: "user", text: p.q }]);
-    setTimeout(() => {
-      setMessages((m) => [...m, { role: "bot", text: "", typing: true }]);
-    }, 400);
-    setTimeout(() => {
-      setMessages((m) => {
-        const next = [...m];
-        // remove typing indicator
-        const idx = next.findIndex((x) => x.typing);
-        if (idx >= 0) next.splice(idx, 1);
-        next.push({ role: "bot", text: p.a });
-        return next;
-      });
-      setBusy(false);
-    }, 1600);
-  };
-
-  return (
-    <section className="mx-auto max-w-7xl px-6 py-24">
-      <SectionHeading
-        eyebrow="Interactive Demo"
-        title={
-          <>
-            Try it. <span className="text-gradient">Talk to the bot.</span>
-          </>
-        }
-        description="Click a suggested prompt and watch a realistic AI response stream in — the same experience your customers would get."
-      />
-      <div className="glass-strong relative mx-auto max-w-4xl overflow-hidden rounded-3xl p-4 md:p-6">
-        <div className="pointer-events-none absolute inset-0 ai-grid opacity-20" />
-        <div className="relative flex items-center gap-2 border-b border-white/10 pb-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-brand shadow-glow">
-            <Bot className="h-4 w-4 text-primary-foreground" />
-          </div>
-          <div>
-            <div className="text-sm font-semibold">ALStream AI · Live Demo</div>
-            <div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
-              <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
-              Online · Powered by GPT-4o
-            </div>
-          </div>
-        </div>
-
-        <div
-          ref={scrollRef}
-          className="relative mt-4 h-[340px] space-y-3 overflow-y-auto pr-2"
-        >
-          {messages.map((m, i) => (
-            <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
-              {m.typing ? (
-                <div className="glass flex items-center gap-1 rounded-2xl px-3 py-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary animate-bounce" />
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary animate-bounce [animation-delay:120ms]" />
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary animate-bounce [animation-delay:240ms]" />
-                </div>
-              ) : (
-                <div
-                  className={`max-w-[80%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
-                    m.role === "user"
-                      ? "bg-gradient-brand text-primary-foreground"
-                      : "glass text-foreground"
-                  }`}
-                  style={{ animation: "fade-up .35s ease-out both" }}
-                >
-                  {m.text}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-
-        <div className="relative mt-4 flex flex-wrap gap-2 border-t border-white/10 pt-4">
-          {demoPrompts.map((p) => (
-            <button
-              key={p.q}
-              onClick={() => handlePrompt(p)}
-              disabled={busy}
-              className="glass rounded-full px-3.5 py-1.5 text-xs font-medium text-foreground/90 transition hover:bg-primary/10 hover:text-primary disabled:opacity-50"
-            >
-              {p.q}
-            </button>
-          ))}
-        </div>
-
-        <div className="relative mt-3 flex items-center gap-2 rounded-full border border-white/10 bg-white/[.03] px-4 py-2.5">
-          <input
-            disabled
-            placeholder="Pick a suggested prompt above…"
-            className="flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground/70"
-          />
-          <button
-            disabled
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-brand text-primary-foreground opacity-60"
-            aria-label="Send"
-          >
-            <Send className="h-4 w-4" />
-          </button>
-        </div>
       </div>
     </section>
   );
