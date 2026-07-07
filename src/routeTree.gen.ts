@@ -26,6 +26,8 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesChatbotsRouteImport } from './routes/services.chatbots'
+import { Route as ServicesAutomationRouteImport } from './routes/services.automation'
+import { Route as ServicesAutomationRouteImport } from './routes/services.automation'
 import { Route as ServicesAiDevelopmentRouteImport } from './routes/services.ai-development'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
@@ -115,6 +117,11 @@ const ServicesChatbotsRoute = ServicesChatbotsRouteImport.update({
   path: '/chatbots',
   getParentRoute: () => ServicesRoute,
 } as any)
+const ServicesAutomationRoute = ServicesAutomationRouteImport.update({
+  id: '/automation',
+  path: '/automation',
+  getParentRoute: () => ServicesRoute,
+} as any)
 const ServicesAiDevelopmentRoute = ServicesAiDevelopmentRouteImport.update({
   id: '/ai-development',
   path: '/ai-development',
@@ -150,6 +157,7 @@ export interface FileRoutesByFullPath {
   '/blog/$slug': typeof BlogSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/ai-development': typeof ServicesAiDevelopmentRoute
+  '/services/automation': typeof ServicesAutomationRoute
   '/services/chatbots': typeof ServicesChatbotsRoute
   '/services/': typeof ServicesIndexRoute
 }
@@ -171,6 +179,7 @@ export interface FileRoutesByTo {
   '/blog/$slug': typeof BlogSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/ai-development': typeof ServicesAiDevelopmentRoute
+  '/services/automation': typeof ServicesAutomationRoute
   '/services/chatbots': typeof ServicesChatbotsRoute
   '/services': typeof ServicesIndexRoute
 }
@@ -194,6 +203,7 @@ export interface FileRoutesById {
   '/blog/$slug': typeof BlogSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/ai-development': typeof ServicesAiDevelopmentRoute
+  '/services/automation': typeof ServicesAutomationRoute
   '/services/chatbots': typeof ServicesChatbotsRoute
   '/services/': typeof ServicesIndexRoute
 }
@@ -218,6 +228,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/services/$slug'
     | '/services/ai-development'
+    | '/services/automation'
     | '/services/chatbots'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
@@ -239,6 +250,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/services/$slug'
     | '/services/ai-development'
+    | '/services/automation'
     | '/services/chatbots'
     | '/services'
   id:
@@ -261,6 +273,7 @@ export interface FileRouteTypes {
     | '/blog/$slug'
     | '/services/$slug'
     | '/services/ai-development'
+    | '/services/automation'
     | '/services/chatbots'
     | '/services/'
   fileRoutesById: FileRoutesById
@@ -404,6 +417,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesChatbotsRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/services/automation': {
+      id: '/services/automation'
+      path: '/automation'
+      fullPath: '/services/automation'
+      preLoaderRoute: typeof ServicesAutomationRouteImport
+      parentRoute: typeof ServicesRoute
+    }
     '/services/ai-development': {
       id: '/services/ai-development'
       path: '/ai-development'
@@ -441,6 +461,7 @@ const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 interface ServicesRouteChildren {
   ServicesSlugRoute: typeof ServicesSlugRoute
   ServicesAiDevelopmentRoute: typeof ServicesAiDevelopmentRoute
+  ServicesAutomationRoute: typeof ServicesAutomationRoute
   ServicesChatbotsRoute: typeof ServicesChatbotsRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
@@ -448,6 +469,7 @@ interface ServicesRouteChildren {
 const ServicesRouteChildren: ServicesRouteChildren = {
   ServicesSlugRoute: ServicesSlugRoute,
   ServicesAiDevelopmentRoute: ServicesAiDevelopmentRoute,
+  ServicesAutomationRoute: ServicesAutomationRoute,
   ServicesChatbotsRoute: ServicesChatbotsRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
