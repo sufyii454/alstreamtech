@@ -14,8 +14,6 @@ import {
   Zap,
   ShieldCheck,
   Workflow,
-  MessageSquare,
-  Send,
   ChevronDown,
   CheckCircle2,
   Rocket,
@@ -288,7 +286,6 @@ function AIDevelopmentPage() {
       <IndustryUseCases />
       <ProjectShowcase />
       <MetricsSection />
-      <InteractiveDemo />
       <WhyUsSection />
       <FAQSection />
       <FinalCTA />
@@ -842,125 +839,6 @@ function Counter({ value, suffix, label, delay }: { value: number; suffix: strin
       <div className="mt-2 text-xs uppercase tracking-wider text-muted-foreground">{label}</div>
     </div>
   );
-}
-
-/* ------------------------------------------------------------------ */
-/* Interactive Demo                                                    */
-/* ------------------------------------------------------------------ */
-
-const suggestedPrompts = [
-  "Summarize a 40-page RFP into 5 bullets",
-  "Recommend products for a returning customer",
-  "Draft a sales follow-up from meeting notes",
-];
-
-function InteractiveDemo() {
-  const [messages, setMessages] = useState<{ role: "user" | "ai"; text: string }[]>([
-    { role: "ai", text: "Hi! I'm a preview of our AI assistant. Ask me anything — try a suggested prompt." },
-  ]);
-  const [input, setInput] = useState("");
-  const [thinking, setThinking] = useState(false);
-
-  const send = (text: string) => {
-    if (!text.trim()) return;
-    setMessages((m) => [...m, { role: "user", text }]);
-    setInput("");
-    setThinking(true);
-    setTimeout(() => {
-      const reply = mockReply(text);
-      setMessages((m) => [...m, { role: "ai", text: reply }]);
-      setThinking(false);
-    }, 900);
-  };
-
-  return (
-    <section className="mx-auto max-w-7xl px-6 py-24">
-      <SectionHeading
-        eyebrow="Try it live"
-        title={
-          <>
-            Experience AI in <span className="text-gradient">action</span>
-          </>
-        }
-        description="A lightweight preview of what a production AI assistant feels like."
-      />
-      <div className="glass-strong overflow-hidden rounded-3xl">
-        <div className="flex items-center gap-2 border-b border-white/10 px-5 py-3 text-xs text-muted-foreground">
-          <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-          AI Assistant • Demo
-        </div>
-        <div className="max-h-[420px] space-y-3 overflow-y-auto p-5">
-          {messages.map((m, i) => (
-            <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
-              <div
-                className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-sm ${
-                  m.role === "user"
-                    ? "bg-gradient-brand text-primary-foreground"
-                    : "glass"
-                }`}
-              >
-                {m.role === "ai" && <MessageSquare className="mb-1 inline h-3 w-3 text-primary" />} {m.text}
-              </div>
-            </div>
-          ))}
-          {thinking && (
-            <div className="flex justify-start">
-              <div className="glass flex items-center gap-1.5 rounded-2xl px-4 py-2.5">
-                <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-primary [animation-delay:0ms]" />
-                <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-primary [animation-delay:120ms]" />
-                <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-primary [animation-delay:240ms]" />
-              </div>
-            </div>
-          )}
-        </div>
-        <div className="border-t border-white/10 p-4">
-          <div className="mb-3 flex flex-wrap gap-2">
-            {suggestedPrompts.map((p) => (
-              <button
-                key={p}
-                onClick={() => send(p)}
-                className="glass rounded-full px-3 py-1.5 text-xs transition hover:bg-white/10"
-              >
-                {p}
-              </button>
-            ))}
-          </div>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              send(input);
-            }}
-            className="flex items-center gap-2"
-          >
-            <input
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask the AI assistant..."
-              className="glass flex-1 rounded-full px-4 py-2.5 text-sm outline-none placeholder:text-muted-foreground focus:ring-2 focus:ring-primary"
-            />
-            <button
-              type="submit"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-brand text-primary-foreground shadow-glow transition hover:scale-105"
-              aria-label="Send"
-            >
-              <Send className="h-4 w-4" />
-            </button>
-          </form>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function mockReply(q: string): string {
-  const s = q.toLowerCase();
-  if (s.includes("summariz") || s.includes("rfp"))
-    return "Here's a 5-point summary: 1) Scope & goals 2) Key requirements 3) Timeline 4) Budget bands 5) Evaluation criteria. In production this runs on your document via RAG.";
-  if (s.includes("recommend") || s.includes("product"))
-    return "Based on the user's browsing and purchase history, I'd surface 3 complementary items with dynamic pricing and social proof — powered by a hybrid recommender.";
-  if (s.includes("draft") || s.includes("email") || s.includes("follow"))
-    return "Draft: 'Hi {name}, thanks for the great conversation on {topic}. As discussed, next steps are… Let me know a good time to reconnect.' Tunable per persona.";
-  return "Great question. In production I'd combine your knowledge base, tools and live data to answer with citations. This preview is illustrative — the real assistant is grounded in your systems.";
 }
 
 /* ------------------------------------------------------------------ */
