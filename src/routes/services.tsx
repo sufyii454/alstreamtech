@@ -54,8 +54,6 @@ export const Route = createFileRoute("/services")({
 // Service data lives in @/lib/services-data
 
 function Services() {
-  const [active, setActive] = useState<Service | null>(null);
-
   return (
     <>
       <ServicesHero />
@@ -73,7 +71,7 @@ function Services() {
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 lg:auto-rows-fr">
           {services.map((s, i) => (
-            <ServiceCard key={s.slug} service={s} index={i} onOpen={() => setActive(s)} />
+            <ServiceCard key={s.slug} service={s} index={i} />
           ))}
         </div>
         <TeamShowcase />
@@ -83,8 +81,6 @@ function Services() {
       <ComparisonSection />
       <IndustriesSection />
       <TechEcosystem />
-
-      <QuickPanel service={active} onClose={() => setActive(null)} />
 
       <FinalCTA />
     </>
