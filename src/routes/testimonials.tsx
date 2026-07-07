@@ -1,13 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
-  Quote, Star, ChevronLeft, ChevronRight, Play, X, ArrowRight,
-  Sparkles, ShieldCheck, Handshake, Rocket, Headphones, CheckCircle2,
+  Quote, Star, ChevronLeft, ChevronRight,
+  Sparkles, ShieldCheck, Handshake, Rocket,
   Building2, HeartPulse, ShoppingBag, Landmark, Home, GraduationCap, Truck, Factory,
-  TrendingUp, Users, Award, Layers, Globe2, Clock,
+  TrendingUp, Users, Award, Layers, Globe2,
 } from "lucide-react";
 import { PageHero } from "../components/PageHero";
-import { CTASection } from "../components/CTASection";
+
 
 export const Route = createFileRoute("/testimonials")({
   head: () => ({
