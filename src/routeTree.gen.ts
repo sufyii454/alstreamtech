@@ -24,6 +24,7 @@ import { Route as AiSolutionsRouteImport } from './routes/ai-solutions'
 import { Route as AiSolutionShowcaseRouteImport } from './routes/ai-solution-showcase'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesAiDevelopmentRouteImport } from './routes/services.ai-development'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
@@ -102,6 +103,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesAiDevelopmentRoute = ServicesAiDevelopmentRouteImport.update({
+  id: '/ai-development',
+  path: '/ai-development',
+  getParentRoute: () => ServicesRoute,
+} as any)
 const ServicesSlugRoute = ServicesSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -131,6 +137,7 @@ export interface FileRoutesByFullPath {
   '/why-us': typeof WhyUsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/services/ai-development': typeof ServicesAiDevelopmentRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -150,6 +157,7 @@ export interface FileRoutesByTo {
   '/why-us': typeof WhyUsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/services/ai-development': typeof ServicesAiDevelopmentRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -170,6 +178,7 @@ export interface FileRoutesById {
   '/why-us': typeof WhyUsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/services/ai-development': typeof ServicesAiDevelopmentRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -191,6 +200,7 @@ export interface FileRouteTypes {
     | '/why-us'
     | '/blog/$slug'
     | '/services/$slug'
+    | '/services/ai-development'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -210,6 +220,7 @@ export interface FileRouteTypes {
     | '/why-us'
     | '/blog/$slug'
     | '/services/$slug'
+    | '/services/ai-development'
   id:
     | '__root__'
     | '/'
@@ -229,6 +240,7 @@ export interface FileRouteTypes {
     | '/why-us'
     | '/blog/$slug'
     | '/services/$slug'
+    | '/services/ai-development'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -356,6 +368,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/ai-development': {
+      id: '/services/ai-development'
+      path: '/ai-development'
+      fullPath: '/services/ai-development'
+      preLoaderRoute: typeof ServicesAiDevelopmentRouteImport
+      parentRoute: typeof ServicesRoute
+    }
     '/services/$slug': {
       id: '/services/$slug'
       path: '/$slug'
@@ -385,10 +404,12 @@ const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
 
 interface ServicesRouteChildren {
   ServicesSlugRoute: typeof ServicesSlugRoute
+  ServicesAiDevelopmentRoute: typeof ServicesAiDevelopmentRoute
 }
 
 const ServicesRouteChildren: ServicesRouteChildren = {
   ServicesSlugRoute: ServicesSlugRoute,
+  ServicesAiDevelopmentRoute: ServicesAiDevelopmentRoute,
 }
 
 const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
