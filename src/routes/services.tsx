@@ -33,6 +33,7 @@ import {
 import { PageHero } from "../components/PageHero";
 import { SectionHeading } from "../components/SectionHeading";
 import { useEffect, useState } from "react";
+import { services, type Service } from "@/lib/services-data";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
