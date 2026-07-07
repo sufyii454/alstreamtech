@@ -8,7 +8,7 @@ import {
   Apple,
   Layers,
   Code2,
-  Database,
+
   Cloud,
   Rocket,
   Sparkles,
@@ -21,7 +21,7 @@ import {
   BarChart3,
   Brain,
   WifiOff,
-  KeyRound,
+
   Wrench,
   FileText,
   HeartPulse,

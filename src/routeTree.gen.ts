@@ -26,6 +26,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesWebApplicationsRouteImport } from './routes/services.web-applications'
+import { Route as ServicesMobileAppsRouteImport } from './routes/services.mobile-apps'
 import { Route as ServicesCustomSoftwareRouteImport } from './routes/services.custom-software'
 import { Route as ServicesChatbotsRouteImport } from './routes/services.chatbots'
 import { Route as ServicesAutomationRouteImport } from './routes/services.automation'
@@ -118,6 +119,11 @@ const ServicesWebApplicationsRoute = ServicesWebApplicationsRouteImport.update({
   path: '/web-applications',
   getParentRoute: () => ServicesRoute,
 } as any)
+const ServicesMobileAppsRoute = ServicesMobileAppsRouteImport.update({
+  id: '/mobile-apps',
+  path: '/mobile-apps',
+  getParentRoute: () => ServicesRoute,
+} as any)
 const ServicesCustomSoftwareRoute = ServicesCustomSoftwareRouteImport.update({
   id: '/custom-software',
   path: '/custom-software',
@@ -171,6 +177,7 @@ export interface FileRoutesByFullPath {
   '/services/automation': typeof ServicesAutomationRoute
   '/services/chatbots': typeof ServicesChatbotsRoute
   '/services/custom-software': typeof ServicesCustomSoftwareRoute
+  '/services/mobile-apps': typeof ServicesMobileAppsRoute
   '/services/web-applications': typeof ServicesWebApplicationsRoute
   '/services/': typeof ServicesIndexRoute
 }
@@ -195,6 +202,7 @@ export interface FileRoutesByTo {
   '/services/automation': typeof ServicesAutomationRoute
   '/services/chatbots': typeof ServicesChatbotsRoute
   '/services/custom-software': typeof ServicesCustomSoftwareRoute
+  '/services/mobile-apps': typeof ServicesMobileAppsRoute
   '/services/web-applications': typeof ServicesWebApplicationsRoute
   '/services': typeof ServicesIndexRoute
 }
@@ -221,6 +229,7 @@ export interface FileRoutesById {
   '/services/automation': typeof ServicesAutomationRoute
   '/services/chatbots': typeof ServicesChatbotsRoute
   '/services/custom-software': typeof ServicesCustomSoftwareRoute
+  '/services/mobile-apps': typeof ServicesMobileAppsRoute
   '/services/web-applications': typeof ServicesWebApplicationsRoute
   '/services/': typeof ServicesIndexRoute
 }
@@ -248,6 +257,7 @@ export interface FileRouteTypes {
     | '/services/automation'
     | '/services/chatbots'
     | '/services/custom-software'
+    | '/services/mobile-apps'
     | '/services/web-applications'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
@@ -272,6 +282,7 @@ export interface FileRouteTypes {
     | '/services/automation'
     | '/services/chatbots'
     | '/services/custom-software'
+    | '/services/mobile-apps'
     | '/services/web-applications'
     | '/services'
   id:
@@ -297,6 +308,7 @@ export interface FileRouteTypes {
     | '/services/automation'
     | '/services/chatbots'
     | '/services/custom-software'
+    | '/services/mobile-apps'
     | '/services/web-applications'
     | '/services/'
   fileRoutesById: FileRoutesById
@@ -440,6 +452,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesWebApplicationsRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/services/mobile-apps': {
+      id: '/services/mobile-apps'
+      path: '/mobile-apps'
+      fullPath: '/services/mobile-apps'
+      preLoaderRoute: typeof ServicesMobileAppsRouteImport
+      parentRoute: typeof ServicesRoute
+    }
     '/services/custom-software': {
       id: '/services/custom-software'
       path: '/custom-software'
@@ -501,6 +520,7 @@ interface ServicesRouteChildren {
   ServicesAutomationRoute: typeof ServicesAutomationRoute
   ServicesChatbotsRoute: typeof ServicesChatbotsRoute
   ServicesCustomSoftwareRoute: typeof ServicesCustomSoftwareRoute
+  ServicesMobileAppsRoute: typeof ServicesMobileAppsRoute
   ServicesWebApplicationsRoute: typeof ServicesWebApplicationsRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
@@ -511,6 +531,7 @@ const ServicesRouteChildren: ServicesRouteChildren = {
   ServicesAutomationRoute: ServicesAutomationRoute,
   ServicesChatbotsRoute: ServicesChatbotsRoute,
   ServicesCustomSoftwareRoute: ServicesCustomSoftwareRoute,
+  ServicesMobileAppsRoute: ServicesMobileAppsRoute,
   ServicesWebApplicationsRoute: ServicesWebApplicationsRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
