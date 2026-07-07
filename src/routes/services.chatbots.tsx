@@ -12,7 +12,6 @@ import {
   Cloud,
   Cpu,
   Users,
-  Building2,
   HeartPulse,
   Landmark,
   ShoppingBag,
@@ -34,7 +33,6 @@ import {
   Mail,
   Calendar,
   BookOpen,
-  PhoneCall,
 } from "lucide-react";
 import { PageHero } from "../components/PageHero";
 import { SectionHeading } from "../components/SectionHeading";
@@ -307,7 +305,6 @@ function ChatbotsPage() {
       <IndustryUseCases />
       <ProjectShowcase />
       <MetricsSection />
-      <IntegrationEcosystem />
       <WhyUsSection />
       <FAQSection />
       <FinalCTA />
@@ -937,75 +934,6 @@ function MetricItem({
       </div>
       <div className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">{label}</div>
     </div>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/* Integration ecosystem                                               */
-/* ------------------------------------------------------------------ */
-
-function IntegrationEcosystem() {
-  const spokes = [
-    { icon: Database, label: "CRM" },
-    { icon: Mail, label: "Email" },
-    { icon: Calendar, label: "Calendar" },
-    { icon: BookOpen, label: "Knowledge Base" },
-    { icon: Building2, label: "ERP" },
-    { icon: PhoneCall, label: "Help Desk" },
-    { icon: LineChart, label: "Analytics" },
-    { icon: Smartphone, label: "Mobile Apps" },
-  ];
-  return (
-    <section className="mx-auto max-w-7xl px-6 py-24">
-      <SectionHeading
-        eyebrow="Integration Ecosystem"
-        title={
-          <>
-            Connected to <span className="text-gradient">everything you use</span>
-          </>
-        }
-        description="Chatbots that plug into the systems running your business — securely and at scale."
-      />
-      <div className="glass-strong relative mx-auto flex h-[440px] w-full max-w-4xl items-center justify-center overflow-hidden rounded-3xl">
-        <div className="pointer-events-none absolute inset-0 ai-grid opacity-25" />
-        <div className="pointer-events-none absolute inset-0 opacity-30">
-          <ParticleNetwork density={40} />
-        </div>
-        <div className="relative flex h-56 w-56 items-center justify-center">
-          <div className="absolute inset-0 rounded-full border border-primary/30 animate-[spin_20s_linear_infinite]" />
-          <div className="absolute inset-6 rounded-full border border-primary/20 animate-[spin_28s_linear_infinite_reverse]" />
-          <div className="relative flex h-24 w-24 items-center justify-center rounded-full bg-gradient-brand shadow-glow animate-pulse-glow">
-            <Bot className="h-10 w-10 text-primary-foreground" />
-          </div>
-          {spokes.map((n, i) => {
-            const angle = (i / spokes.length) * 360;
-            const rad = (angle * Math.PI) / 180;
-            const r = 170;
-            const x = Math.cos(rad) * r;
-            const y = Math.sin(rad) * r;
-            const Icon = n.icon;
-            return (
-              <div
-                key={n.label}
-                className="absolute flex flex-col items-center gap-1"
-                style={{
-                  transform: `translate(${x}px, ${y}px)`,
-                  animation: `fade-up 0.6s ease-out both`,
-                  animationDelay: `${i * 80}ms`,
-                }}
-              >
-                <div className="glass flex h-12 w-12 items-center justify-center rounded-xl transition hover:bg-primary/10 hover:shadow-glow">
-                  <Icon className="h-5 w-5 text-primary" />
-                </div>
-                <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                  {n.label}
-                </span>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
   );
 }
 
