@@ -5,8 +5,6 @@ import {
   Zap,
   Cloud,
   Code2,
-  Smartphone,
-  BarChart3,
   Sparkles,
   Building2,
   Stethoscope,
@@ -26,13 +24,11 @@ import {
   MessageSquare,
   Globe,
   Settings,
-  X,
-  CheckCircle2,
-  TrendingUp,
+  BarChart3,
 } from "lucide-react";
 import { PageHero } from "../components/PageHero";
 import { SectionHeading } from "../components/SectionHeading";
-import { useEffect, useState } from "react";
+import { services, type Service } from "@/lib/services-data";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -50,159 +46,9 @@ export const Route = createFileRoute("/services")({
   component: Services,
 });
 
-type Service = {
-  slug: string;
-  icon: typeof Brain;
-  name: string;
-  summary: string;
-  capabilities: string[];
-  technologies: string[];
-  industries: string[];
-  featured?: boolean;
-  visual: "ai" | "software" | "web" | "mobile" | "chatbot" | "automation" | "cloud" | "analytics";
-};
-
-const services: Service[] = [
-  {
-    slug: "ai-development",
-    icon: Brain,
-    featured: true,
-    visual: "ai",
-    name: "AI Development",
-    summary:
-      "Flagship offering. Custom AI agents, generative AI apps, ML models and vision systems engineered for production.",
-    capabilities: [
-      "AI Agents",
-      "Generative AI",
-      "Machine Learning",
-      "NLP",
-      "Recommendation Systems",
-      "Predictive Analytics",
-      "Computer Vision",
-      "AI Integrations",
-    ],
-    technologies: ["OpenAI", "Gemini", "Claude", "LangChain", "Python", "TensorFlow"],
-    industries: ["Healthcare", "Finance", "Retail", "Manufacturing"],
-  },
-  {
-    slug: "custom-software",
-    icon: Code2,
-    visual: "software",
-    name: "Custom Software Development",
-    summary: "Bespoke enterprise platforms, CRMs, ERPs and SaaS built around your exact workflows.",
-    capabilities: [
-      "Enterprise Platforms",
-      "CRM Systems",
-      "ERP Solutions",
-      "SaaS Applications",
-      "Internal Tools",
-      "Workflow Platforms",
-      "Customer Portals",
-    ],
-    technologies: ["React", "Angular", "Node.js", ".NET", "Java", "PostgreSQL"],
-    industries: ["Enterprise", "SaaS", "Logistics", "Healthcare"],
-  },
-  {
-    slug: "web-applications",
-    icon: Globe,
-    visual: "web",
-    name: "Web Application Development",
-    summary: "Progressive web apps, portals and dashboards with lightning performance and modern UX.",
-    capabilities: [
-      "Progressive Web Apps",
-      "Customer Portals",
-      "SaaS Products",
-      "Enterprise Dashboards",
-      "Booking Systems",
-      "E-Commerce Platforms",
-    ],
-    technologies: ["React", "Next.js", "Vue.js", "Angular", "Node.js"],
-    industries: ["SaaS", "Retail", "Media", "Education"],
-  },
-  {
-    slug: "mobile-apps",
-    icon: Smartphone,
-    visual: "mobile",
-    name: "Mobile App Development",
-    summary: "Native and cross-platform mobile apps built for iOS and Android with native-grade UX.",
-    capabilities: ["Android Apps", "iOS Apps", "Cross Platform", "Business Apps", "Customer Apps", "Enterprise Mobile"],
-    technologies: ["Flutter", "React Native", "Swift", "Kotlin"],
-    industries: ["Consumer", "Fintech", "Health", "Enterprise"],
-  },
-  {
-    slug: "chatbots",
-    icon: Bot,
-    featured: true,
-    visual: "chatbot",
-    name: "AI Chatbot Development",
-    summary: "Conversational AI for support, sales, WhatsApp, internal assistants and knowledge search.",
-    capabilities: [
-      "Website Chatbots",
-      "WhatsApp Bots",
-      "Support Bots",
-      "Internal AI Assistants",
-      "Sales Chatbots",
-      "Knowledge Base Bots",
-    ],
-    technologies: ["GPT", "Gemini", "LangChain", "Vector Databases"],
-    industries: ["Ecommerce", "SaaS", "Banking", "Telecom"],
-  },
-  {
-    slug: "automation",
-    icon: Zap,
-    visual: "automation",
-    name: "Business Automation",
-    summary: "Intelligent workflow automation across sales, ops, finance and support — eliminate repetitive work.",
-    capabilities: [
-      "Process Automation",
-      "CRM Automation",
-      "Document Automation",
-      "Email Automation",
-      "Approval Workflows",
-      "Operational Automation",
-    ],
-    technologies: ["n8n", "Zapier", "Temporal", "Python", "REST APIs"],
-    industries: ["Operations", "Finance", "HR", "Logistics"],
-  },
-  {
-    slug: "cloud-devops",
-    icon: Cloud,
-    visual: "cloud",
-    name: "Cloud & DevOps",
-    summary: "Cloud-native architecture, CI/CD, infrastructure-as-code and 24/7 monitoring.",
-    capabilities: [
-      "AWS Solutions",
-      "Azure Solutions",
-      "CI/CD Pipelines",
-      "Infrastructure Automation",
-      "Monitoring",
-      "Security",
-    ],
-    technologies: ["AWS", "Azure", "Docker", "Kubernetes", "Terraform", "Jenkins"],
-    industries: ["Enterprise", "SaaS", "Fintech", "Streaming"],
-  },
-  {
-    slug: "data-analytics",
-    icon: BarChart3,
-    visual: "analytics",
-    name: "Data & Analytics",
-    summary: "Modern data platforms, BI dashboards, warehousing and predictive analytics.",
-    capabilities: [
-      "Business Intelligence",
-      "Reporting Dashboards",
-      "Data Warehousing",
-      "Predictive Analytics",
-      "Data Visualization",
-      "KPI Monitoring",
-    ],
-    technologies: ["Power BI", "Tableau", "Python", "SQL", "Snowflake"],
-    industries: ["Retail", "Finance", "Media", "Healthcare"],
-  },
-];
+// Service data lives in @/lib/services-data
 
 function Services() {
-  const [active, setActive] = useState<Service | null>(null);
-
   return (
     <>
       <ServicesHero />
@@ -220,7 +66,7 @@ function Services() {
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 lg:auto-rows-fr">
           {services.map((s, i) => (
-            <ServiceCard key={s.slug} service={s} index={i} onOpen={() => setActive(s)} />
+            <ServiceCard key={s.slug} service={s} index={i} />
           ))}
         </div>
         <TeamShowcase />
@@ -230,8 +76,6 @@ function Services() {
       <ComparisonSection />
       <IndustriesSection />
       <TechEcosystem />
-
-      <QuickPanel service={active} onClose={() => setActive(null)} />
 
       <FinalCTA />
     </>
@@ -373,7 +217,7 @@ function HeroVisual() {
 
 /* ---------------- Service Card ---------------- */
 
-function ServiceCard({ service, index, onOpen }: { service: Service; index: number; onOpen: () => void }) {
+function ServiceCard({ service, index }: { service: Service; index: number; onOpen?: () => void }) {
   const Icon = service.icon;
   const featured = service.featured;
   return (
@@ -432,11 +276,15 @@ function ServiceCard({ service, index, onOpen }: { service: Service; index: numb
           </div>
         </div>
 
-        <button onClick={onOpen} className="mt-auto pt-5 text-left">
+        <Link
+          to="/services/$slug"
+          params={{ slug: service.slug }}
+          className="mt-auto pt-5 text-left"
+        >
           <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition group-hover:gap-3">
             Learn more <ArrowRight className="h-4 w-4" />
           </span>
-        </button>
+        </Link>
       </div>
     </div>
   );
@@ -657,96 +505,6 @@ function ArchViz() {
   );
 }
 
-/* ---------------- Quick Panel ---------------- */
-
-function QuickPanel({ service, onClose }: { service: Service | null; onClose: () => void }) {
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [onClose]);
-
-  useEffect(() => {
-    if (!service) return;
-    document.body.style.overflow = "hidden";
-    document.body.classList.add("modal-open");
-    return () => {
-      document.body.style.overflow = "";
-      document.body.classList.remove("modal-open");
-    };
-  }, [service]);
-
-  if (!service) return null;
-  const Icon = service.icon;
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/70 p-0 backdrop-blur-md sm:items-center sm:p-6"
-      onClick={onClose}
-    >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="glass-strong relative max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-t-3xl p-8 sm:rounded-3xl"
-        style={{ animation: "fade-up 0.4s ease-out both" }}
-      >
-        <button onClick={onClose} className="glass absolute right-4 top-4 rounded-full p-2 hover:bg-white/10">
-          <X className="h-4 w-4" />
-        </button>
-        <div className="flex items-start gap-4">
-          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-brand shadow-glow">
-            <Icon className="h-7 w-7 text-primary-foreground" />
-          </div>
-          <div>
-            <h3 className="font-display text-2xl font-bold md:text-3xl">{service.name}</h3>
-            <p className="mt-2 text-muted-foreground">{service.summary}</p>
-          </div>
-        </div>
-
-        <div className="mt-8 grid gap-6 md:grid-cols-2">
-          <PanelBlock title="Key Capabilities" items={service.capabilities} icon={CheckCircle2} />
-          <PanelBlock title="Technology Stack" items={service.technologies} icon={Cpu} />
-          <PanelBlock title="Industry Applications" items={service.industries} icon={Building2} />
-          <PanelBlock
-            title="Key Benefits"
-            items={["Faster delivery", "Enterprise-grade security", "Scalable architecture", "Measurable ROI"]}
-            icon={TrendingUp}
-          />
-        </div>
-
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow"
-          >
-            Discuss this service <ArrowRight className="h-4 w-4" />
-          </Link>
-          <Link
-            to="/case-studies"
-            className="glass inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold hover:bg-white/10"
-          >
-            See related work
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function PanelBlock({ title, items, icon: Icon }: { title: string; items: string[]; icon: typeof Brain }) {
-  return (
-    <div className="glass rounded-2xl p-5">
-      <div className="mb-3 flex items-center gap-2 text-sm font-semibold">
-        <Icon className="h-4 w-4 text-primary" /> {title}
-      </div>
-      <ul className="space-y-1.5">
-        {items.map((i) => (
-          <li key={i} className="text-sm text-muted-foreground">
-            • {i}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
 
 /* ---------------- Comparison ---------------- */
 
