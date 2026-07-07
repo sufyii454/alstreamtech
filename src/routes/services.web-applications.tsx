@@ -40,7 +40,7 @@ import {
   CreditCard,
   Bell,
 } from "lucide-react";
-import { PageHero } from "../components/PageHero";
+
 import { SectionHeading } from "../components/SectionHeading";
 import { ParticleNetwork } from "../components/ParticleNetwork";
 
