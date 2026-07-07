@@ -25,6 +25,7 @@ import { Route as AiSolutionShowcaseRouteImport } from './routes/ai-solution-sho
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesWebApplicationsRouteImport } from './routes/services.web-applications'
 import { Route as ServicesCustomSoftwareRouteImport } from './routes/services.custom-software'
 import { Route as ServicesChatbotsRouteImport } from './routes/services.chatbots'
 import { Route as ServicesAutomationRouteImport } from './routes/services.automation'
@@ -112,6 +113,11 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
   path: '/',
   getParentRoute: () => ServicesRoute,
 } as any)
+const ServicesWebApplicationsRoute = ServicesWebApplicationsRouteImport.update({
+  id: '/web-applications',
+  path: '/web-applications',
+  getParentRoute: () => ServicesRoute,
+} as any)
 const ServicesCustomSoftwareRoute = ServicesCustomSoftwareRouteImport.update({
   id: '/custom-software',
   path: '/custom-software',
@@ -165,6 +171,7 @@ export interface FileRoutesByFullPath {
   '/services/automation': typeof ServicesAutomationRoute
   '/services/chatbots': typeof ServicesChatbotsRoute
   '/services/custom-software': typeof ServicesCustomSoftwareRoute
+  '/services/web-applications': typeof ServicesWebApplicationsRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -188,6 +195,7 @@ export interface FileRoutesByTo {
   '/services/automation': typeof ServicesAutomationRoute
   '/services/chatbots': typeof ServicesChatbotsRoute
   '/services/custom-software': typeof ServicesCustomSoftwareRoute
+  '/services/web-applications': typeof ServicesWebApplicationsRoute
   '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
@@ -213,6 +221,7 @@ export interface FileRoutesById {
   '/services/automation': typeof ServicesAutomationRoute
   '/services/chatbots': typeof ServicesChatbotsRoute
   '/services/custom-software': typeof ServicesCustomSoftwareRoute
+  '/services/web-applications': typeof ServicesWebApplicationsRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
@@ -239,6 +248,7 @@ export interface FileRouteTypes {
     | '/services/automation'
     | '/services/chatbots'
     | '/services/custom-software'
+    | '/services/web-applications'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -262,6 +272,7 @@ export interface FileRouteTypes {
     | '/services/automation'
     | '/services/chatbots'
     | '/services/custom-software'
+    | '/services/web-applications'
     | '/services'
   id:
     | '__root__'
@@ -286,6 +297,7 @@ export interface FileRouteTypes {
     | '/services/automation'
     | '/services/chatbots'
     | '/services/custom-software'
+    | '/services/web-applications'
     | '/services/'
   fileRoutesById: FileRoutesById
 }
@@ -421,6 +433,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesIndexRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/services/web-applications': {
+      id: '/services/web-applications'
+      path: '/web-applications'
+      fullPath: '/services/web-applications'
+      preLoaderRoute: typeof ServicesWebApplicationsRouteImport
+      parentRoute: typeof ServicesRoute
+    }
     '/services/custom-software': {
       id: '/services/custom-software'
       path: '/custom-software'
@@ -482,6 +501,7 @@ interface ServicesRouteChildren {
   ServicesAutomationRoute: typeof ServicesAutomationRoute
   ServicesChatbotsRoute: typeof ServicesChatbotsRoute
   ServicesCustomSoftwareRoute: typeof ServicesCustomSoftwareRoute
+  ServicesWebApplicationsRoute: typeof ServicesWebApplicationsRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
@@ -491,6 +511,7 @@ const ServicesRouteChildren: ServicesRouteChildren = {
   ServicesAutomationRoute: ServicesAutomationRoute,
   ServicesChatbotsRoute: ServicesChatbotsRoute,
   ServicesCustomSoftwareRoute: ServicesCustomSoftwareRoute,
+  ServicesWebApplicationsRoute: ServicesWebApplicationsRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
 
