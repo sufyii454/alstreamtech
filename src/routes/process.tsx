@@ -33,7 +33,7 @@ export const Route = createFileRoute("/process")({
       { property: "og:description", content: "How we turn ideas into intelligent digital solutions." },
     ],
   }),
-  component: Process;
+  component: Process,
 });
 
 type Phase = {
