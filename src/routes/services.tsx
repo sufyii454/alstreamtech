@@ -853,7 +853,7 @@ const techClusters: { title: string; icon: typeof Brain; items: string[] }[] = [
 
 function TechEcosystem() {
   return (
-    <section className="relative mx-auto max-w-7xl px-6 py-24">
+    <section id="technologies" className="relative mx-auto max-w-7xl px-6 py-24 scroll-mt-24">
       <SectionHeading
         eyebrow="Ecosystem"
         title={
