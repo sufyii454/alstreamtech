@@ -226,7 +226,7 @@ function HeroVisual() {
 
 /* ---------------- Service Card ---------------- */
 
-function ServiceCard({ service, index, onOpen }: { service: Service; index: number; onOpen: () => void }) {
+function ServiceCard({ service, index }: { service: Service; index: number; onOpen?: () => void }) {
   const Icon = service.icon;
   const featured = service.featured;
   return (
