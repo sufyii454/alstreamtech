@@ -284,7 +284,7 @@ function AIDevelopmentPage() {
       <ProcessSection />
       <TechEcosystem />
       <IndustryUseCases />
-      <ProjectShowcase />
+      
       <MetricsSection />
       <WhyUsSection />
       <FAQSection />
@@ -328,9 +328,6 @@ function Hero() {
         >
           Request a Custom Proposal
         </Link>
-      </div>
-      <div className="mt-14">
-        <AIEcosystemVisual />
       </div>
     </PageHero>
   );
