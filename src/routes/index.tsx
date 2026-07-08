@@ -21,15 +21,16 @@ const trustIndicators = [
 ];
 
 const services = [
-  { icon: Brain, title: "AI Development", desc: "Custom ML models, LLM apps, generative AI, and agents built for real business outcomes." },
-  { icon: Code2, title: "Custom Software", desc: "Bespoke platforms and enterprise applications tailored to your workflows." },
-  { icon: Smartphone, title: "Web & Mobile Apps", desc: "Fast, scalable, delightful apps across iOS, Android and the web." },
-  { icon: Bot, title: "AI Chatbots & Agents", desc: "Conversational AI that handles support, sales, and complex workflows 24/7." },
-  { icon: Zap, title: "Business Automation", desc: "Replace repetitive work with intelligent automation across your entire stack." },
-  { icon: Cloud, title: "Cloud & DevOps", desc: "Infrastructure that scales — AWS, Azure, GCP, Kubernetes and Terraform." },
-  { icon: BarChart3, title: "Data & Analytics", desc: "Turn data into insight with warehouses, dashboards, and predictive analytics." },
-  { icon: ShieldCheck, title: "AI Integration", desc: "Weave AI into your existing systems securely and reliably." },
-];
+  { icon: Brain, title: "AI Development", desc: "Custom ML models, LLM apps, generative AI, and agents built for real business outcomes.", href: "/services/ai-development" },
+  { icon: Code2, title: "Custom Software", desc: "Bespoke platforms and enterprise applications tailored to your workflows.", href: "/services/custom-software" },
+  { icon: Smartphone, title: "Web & Mobile Apps", desc: "Fast, scalable, delightful apps across iOS, Android and the web.", href: "/services/web-applications" },
+  { icon: Bot, title: "AI Chatbots & Agents", desc: "Conversational AI that handles support, sales, and complex workflows 24/7.", href: "/services/chatbots" },
+  { icon: Zap, title: "Business Automation", desc: "Replace repetitive work with intelligent automation across your entire stack.", href: "/services/automation" },
+  { icon: Cloud, title: "Cloud & DevOps", desc: "Infrastructure that scales — AWS, Azure, GCP, Kubernetes and Terraform.", href: "/services/cloud-devops" },
+  { icon: BarChart3, title: "Data & Analytics", desc: "Turn data into insight with warehouses, dashboards, and predictive analytics.", href: "/services/data-analytics" },
+  { icon: ShieldCheck, title: "AI Integration", desc: "Weave AI into your existing systems securely and reliably.", href: "/ai-solutions" },
+] as const;
+
 
 const stats = [
   { v: "50+", l: "Projects Delivered" },
@@ -134,18 +135,23 @@ function Home() {
           description="Eight core services covering everything from ideation to deployment, and beyond."
         />
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {services.map(({ icon: Icon, title, desc }) => (
-            <div key={title} className="glass group relative overflow-hidden rounded-2xl p-6 transition hover:-translate-y-1 hover:border-primary/40">
+          {services.map(({ icon: Icon, title, desc, href }) => (
+            <div key={title} className="glass group relative flex flex-col overflow-hidden rounded-2xl p-6 transition hover:-translate-y-1 hover:border-primary/40">
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-brand shadow-glow transition group-hover:animate-pulse-glow">
                 <Icon className="h-6 w-6 text-primary-foreground" />
               </div>
               <div className="font-display text-lg font-semibold">{title}</div>
               <p className="mt-2 text-sm text-muted-foreground">{desc}</p>
-              <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-primary opacity-0 transition group-hover:opacity-100">
-                Learn more <ArrowRight className="h-3 w-3" />
-              </div>
+              <Link
+                to={href}
+                aria-label={`Learn more about ${title}`}
+                className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-primary transition-all hover:gap-2"
+              >
+                Learn more <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
+              </Link>
             </div>
           ))}
+
         </div>
         <div className="mt-10 text-center">
           <Link to="/services" className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold hover:bg-white/10">
