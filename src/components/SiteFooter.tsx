@@ -64,17 +64,20 @@ export function SiteFooter() {
           <div>
             <div className="mb-4 font-semibold text-foreground">Get in touch</div>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li className="flex items-start gap-2">
-                <Mail className="mt-0.5 h-4 w-4 text-primary" /> info@alstreamtech.com
+              <li className="flex items-start gap-3">
+                <Mail className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                <span>info@alstreamtech.com</span>
               </li>
-              <li className="flex items-start gap-2">
-                <Phone className="mt-0.5 h-4 w-4 text-primary" /> +1 (732) 588-7501
+              <li className="flex items-start gap-3">
+                <Phone className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                <span>+1 (732) 588-7501</span>
               </li>
-              <li className="flex items-start gap-2">
-                <MapPin className="mt-0.5 h-4 w-4 text-primary" /> 409 Joyce Kilmer Avenue, Suite 315, New Brunswick, NJ
-                08901
+              <li className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                <span>409 Joyce Kilmer Avenue, Suite 315, New Brunswick, NJ 08901</span>
               </li>
             </ul>
+
             <Link
               to="/contact"
               className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all"
