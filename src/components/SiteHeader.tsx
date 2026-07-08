@@ -147,7 +147,14 @@ export function SiteHeader() {
           <div className="border-t border-white/5 bg-background/95 px-6 py-4 lg:hidden">
             <nav className="flex flex-col gap-1">
               {nav.map((item) => (
-                <MobileNavItem key={item.to} item={item} onNavigate={() => setOpen(false)} />
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  onClick={() => setOpen(false)}
+                  className="rounded-md px-3 py-2 text-sm hover:bg-white/5 hover:text-primary"
+                >
+                  {item.label}
+                </Link>
               ))}
               <Link
                 to="/contact"
@@ -161,66 +168,5 @@ export function SiteHeader() {
         )}
       </div>
     </header>
-  );
-}
-
-function MobileNavItem({
-  item,
-  onNavigate,
-}: {
-  item: { to: string; label: string; dropdown?: { to: string; label: string }[] };
-  onNavigate: () => void;
-}) {
-  const [expanded, setExpanded] = useState(false);
-
-  if (!item.dropdown) {
-    return (
-      <Link
-        to={item.to}
-        onClick={onNavigate}
-        className="rounded-md px-3 py-2 text-sm hover:bg-white/5 hover:text-primary"
-      >
-        {item.label}
-      </Link>
-    );
-  }
-
-  return (
-    <div className="flex flex-col">
-      <div className="flex items-center">
-        <Link
-          to={item.to}
-          onClick={onNavigate}
-          className="flex-1 rounded-md px-3 py-2 text-sm hover:bg-white/5 hover:text-primary"
-        >
-          {item.label}
-        </Link>
-        <button
-          type="button"
-          onClick={() => setExpanded((v) => !v)}
-          aria-label={`Toggle ${item.label} submenu`}
-          aria-expanded={expanded}
-          className="rounded-md p-2 text-foreground/70 hover:bg-white/5 hover:text-primary"
-        >
-          <ChevronDown
-            className={cn("h-4 w-4 transition-transform", expanded && "rotate-180")}
-          />
-        </button>
-      </div>
-      {expanded && (
-        <div className="ml-3 mt-1 flex flex-col border-l border-white/10 pl-3">
-          {item.dropdown.map((d) => (
-            <a
-              key={d.to}
-              href={d.to}
-              onClick={onNavigate}
-              className="rounded-md px-3 py-2 text-sm text-foreground/80 hover:bg-primary/10 hover:text-primary"
-            >
-              {d.label}
-            </a>
-          ))}
-        </div>
-      )}
-    </div>
   );
 }
