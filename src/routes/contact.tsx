@@ -16,12 +16,7 @@ import {
 import { toast } from "sonner";
 import { PageHero } from "../components/PageHero";
 import { CTASection } from "../components/CTASection";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -50,8 +45,7 @@ const WHATSAPP_NUMBER = "17325887501"; // digits only
 const EMAIL = "info@alstreamtech.com";
 const PHONE_DISPLAY = "+1 (732) 588-7501";
 const PHONE_TEL = "+17325887501";
-const ADDRESS =
-  "409 Joyce Kilmer Avenue, Suite 315, New Brunswick, NJ 08901";
+const ADDRESS = "409 Joyce Kilmer Avenue, Suite 315, New Brunswick, NJ 08901";
 
 type FormState = {
   name: string;
@@ -84,13 +78,7 @@ const SERVICES = [
   "Data Analytics",
 ];
 
-const BUDGETS = [
-  "Under $5,000",
-  "$5,000–$10,000",
-  "$10,000–$25,000",
-  "$25,000–$50,000",
-  "$50,000+",
-];
+const BUDGETS = ["Under $5,000", "$5,000–$10,000", "$10,000–$25,000", "$25,000–$50,000", "$50,000+"];
 
 const FAQS = [
   {
@@ -123,15 +111,7 @@ const STATS = [
   { value: 20, suffix: "+", label: "Industries Served" },
 ];
 
-function Counter({
-  value,
-  suffix,
-  duration = 2,
-}: {
-  value: number;
-  suffix: string;
-  duration?: number;
-}) {
+function Counter({ value, suffix, duration = 2 }: { value: number; suffix: string; duration?: number }) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-80px" });
   const count = useMotionValue(0);
@@ -167,14 +147,12 @@ function Contact() {
     if (!form.name.trim()) e.name = "Please enter your name";
     else if (form.name.trim().length > 100) e.name = "Name is too long";
     if (!form.email.trim()) e.email = "Email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim()))
-      e.email = "Enter a valid email";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) e.email = "Enter a valid email";
     if (form.phone && form.phone.length > 30) e.phone = "Phone is too long";
     if (!form.service) e.service = "Choose a service";
     if (!form.budget) e.budget = "Choose a budget";
     if (!form.message.trim()) e.message = "Tell us a bit about your project";
-    else if (form.message.trim().length < 10)
-      e.message = "Please add a little more detail";
+    else if (form.message.trim().length < 10) e.message = "Please add a little more detail";
     else if (form.message.length > 2000) e.message = "Message is too long";
     setErrors(e);
     return Object.keys(e).length === 0;
@@ -196,7 +174,7 @@ function Contact() {
         },
         body: JSON.stringify({
           access_key: "8d4a68ab-4716-4d75-9a9b-e07f8be1467c",
-          subject: `New consultation request from ${form.name}`,
+          subject: `New Contact Form Submission | ALStreamTech | ${form.name}`,
           from_name: "ALStreamTech Website",
           name: form.name,
           email: form.email,
@@ -214,12 +192,9 @@ function Contact() {
       toast.success("Thanks — we'll be in touch within one business day.");
     } catch (err) {
       setStatus("error");
-      toast.error(
-        err instanceof Error ? err.message : "Something went wrong. Please try again.",
-      );
+      toast.error(err instanceof Error ? err.message : "Something went wrong. Please try again.");
     }
   };
-
 
   return (
     <>
@@ -227,8 +202,7 @@ function Contact() {
         eyebrow="Contact Us"
         title={
           <>
-            Let's build{" "}
-            <span className="text-gradient">something amazing</span> together
+            Let's build <span className="text-gradient">something amazing</span> together
           </>
         }
         subtitle="Whether you're planning an AI solution, custom software platform, chatbot, mobile application, automation system, or cloud project, we'd love to hear from you."
@@ -265,26 +239,12 @@ function Contact() {
             <span className="h-1.5 w-1.5 rounded-full" style={{ background: BRAND }} />
             Get in touch
           </div>
-          <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">
-            Reach us through your favorite channel
-          </h2>
+          <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">Reach us through your favorite channel</h2>
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
-          <InfoCard
-            icon={Mail}
-            title="Email"
-            value={EMAIL}
-            href={`mailto:${EMAIL}`}
-            delay={0}
-          />
-          <InfoCard
-            icon={Phone}
-            title="Phone"
-            value={PHONE_DISPLAY}
-            href={`tel:${PHONE_TEL}`}
-            delay={0.05}
-          />
+          <InfoCard icon={Mail} title="Email" value={EMAIL} href={`mailto:${EMAIL}`} delay={0} />
+          <InfoCard icon={Phone} title="Phone" value={PHONE_DISPLAY} href={`tel:${PHONE_TEL}`} delay={0.05} />
           <InfoCard
             icon={MessageCircle}
             title="WhatsApp"
@@ -307,8 +267,7 @@ function Contact() {
             value={
               <>
                 Monday – Friday
-                <br />
-                9 AM – 6 PM
+                <br />9 AM – 6 PM
               </>
             }
             delay={0.2}
@@ -317,10 +276,7 @@ function Contact() {
       </section>
 
       {/* Contact Form */}
-      <section
-        id="contact-form"
-        className="relative overflow-hidden border-t border-white/5 py-24"
-      >
+      <section id="contact-form" className="relative overflow-hidden border-t border-white/5 py-24">
         <div className="absolute inset-0 ai-grid opacity-10" />
         <div
           className="absolute -top-40 left-1/2 h-96 w-[36rem] -translate-x-1/2 rounded-full opacity-30 blur-[120px]"
@@ -336,12 +292,10 @@ function Contact() {
               <span className="h-1.5 w-1.5 rounded-full" style={{ background: BRAND }} />
               Project Inquiry
             </div>
-            <h2 className="mt-4 font-display text-3xl font-bold md:text-5xl">
-              Tell us about your project
-            </h2>
+            <h2 className="mt-4 font-display text-3xl font-bold md:text-5xl">Tell us about your project</h2>
             <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground">
-              Share a few details and we'll come back with next steps, a rough
-              scope, and a realistic timeline — usually within one business day.
+              Share a few details and we'll come back with next steps, a rough scope, and a realistic timeline — usually
+              within one business day.
             </p>
           </div>
 
@@ -363,12 +317,9 @@ function Contact() {
                 >
                   <CheckCircle2 className="h-10 w-10" style={{ color: BRAND }} />
                 </div>
-                <h3 className="font-display text-2xl font-bold md:text-3xl">
-                  Message received.
-                </h3>
+                <h3 className="font-display text-2xl font-bold md:text-3xl">Message received.</h3>
                 <p className="mt-3 max-w-md text-muted-foreground">
-                  Thanks for reaching out — a specialist will get back to you
-                  within one business day.
+                  Thanks for reaching out — a specialist will get back to you within one business day.
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
@@ -452,17 +403,12 @@ function Contact() {
                     style={{ ["--brand" as string]: BRAND }}
                     placeholder="Goals, timeline, systems involved, and anything else that will help us understand your project..."
                   />
-                  {errors.message && (
-                    <p className="mt-1.5 text-xs font-medium text-destructive">
-                      {errors.message}
-                    </p>
-                  )}
+                  {errors.message && <p className="mt-1.5 text-xs font-medium text-destructive">{errors.message}</p>}
                 </div>
 
                 <div className="mt-2 flex flex-col-reverse items-stretch gap-4 sm:flex-row sm:items-center sm:justify-between">
                   <p className="text-xs text-muted-foreground">
-                    By submitting this form, you agree to be contacted about your
-                    inquiry.
+                    By submitting this form, you agree to be contacted about your inquiry.
                   </p>
                   <button
                     type="submit"
@@ -498,11 +444,10 @@ function Contact() {
             <HelpCircle className="h-3.5 w-3.5" />
             FAQ
           </div>
-          <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">
-            Frequently Asked Questions
-          </h2>
+          <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">Frequently Asked Questions</h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground">
-            Find quick answers to the most common questions about our consultation process, project delivery, and services.
+            Find quick answers to the most common questions about our consultation process, project delivery, and
+            services.
           </p>
         </div>
 
@@ -515,17 +460,11 @@ function Contact() {
         >
           <Accordion type="single" collapsible className="w-full">
             {FAQS.map((item, i) => (
-              <AccordionItem
-                key={i}
-                value={`item-${i}`}
-                className="border-white/10 px-4 last:border-b-0"
-              >
+              <AccordionItem key={i} value={`item-${i}`} className="border-white/10 px-4 last:border-b-0">
                 <AccordionTrigger className="py-5 text-left text-base font-semibold hover:text-primary hover:no-underline">
                   {item.q}
                 </AccordionTrigger>
-                <AccordionContent className="leading-relaxed text-muted-foreground">
-                  {item.a}
-                </AccordionContent>
+                <AccordionContent className="leading-relaxed text-muted-foreground">{item.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
@@ -539,9 +478,7 @@ function Contact() {
             <span className="h-1.5 w-1.5 rounded-full bg-primary" />
             Trust
           </div>
-          <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">
-            Trusted by Businesses Across Industries
-          </h2>
+          <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl">Trusted by Businesses Across Industries</h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground">
             Delivering innovative AI, automation, and software solutions with measurable results.
           </p>
@@ -562,9 +499,7 @@ function Contact() {
               <div className="relative font-display text-4xl font-bold text-gradient md:text-5xl">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="relative mt-2 text-sm font-medium text-muted-foreground">
-                {stat.label}
-              </div>
+              <div className="relative mt-2 text-sm font-medium text-muted-foreground">{stat.label}</div>
             </motion.div>
           ))}
         </div>
@@ -610,12 +545,8 @@ function InfoCard({
       >
         <Icon className="h-5 w-5" style={{ color: BRAND }} />
       </div>
-      <div className="relative text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-        {title}
-      </div>
-      <div className="relative mt-1.5 text-sm font-medium leading-relaxed text-foreground break-words">
-        {value}
-      </div>
+      <div className="relative text-xs font-semibold uppercase tracking-widest text-muted-foreground">{title}</div>
+      <div className="relative mt-1.5 text-sm font-medium leading-relaxed text-foreground break-words">{value}</div>
     </motion.div>
   );
   if (!href) return inner;
@@ -663,9 +594,7 @@ function Field({
         style={{ ["--brand" as string]: BRAND }}
         aria-invalid={!!error}
       />
-      {error && (
-        <p className="mt-1.5 text-xs font-medium text-destructive">{error}</p>
-      )}
+      {error && <p className="mt-1.5 text-xs font-medium text-destructive">{error}</p>}
     </div>
   );
 }
@@ -712,9 +641,7 @@ function SelectField({
           </option>
         ))}
       </select>
-      {error && (
-        <p className="mt-1.5 text-xs font-medium text-destructive">{error}</p>
-      )}
+      {error && <p className="mt-1.5 text-xs font-medium text-destructive">{error}</p>}
     </div>
   );
 }
