@@ -21,15 +21,16 @@ const trustIndicators = [
 ];
 
 const services = [
-  { icon: Brain, title: "AI Development", desc: "Custom ML models, LLM apps, generative AI, and agents built for real business outcomes." },
-  { icon: Code2, title: "Custom Software", desc: "Bespoke platforms and enterprise applications tailored to your workflows." },
-  { icon: Smartphone, title: "Web & Mobile Apps", desc: "Fast, scalable, delightful apps across iOS, Android and the web." },
-  { icon: Bot, title: "AI Chatbots & Agents", desc: "Conversational AI that handles support, sales, and complex workflows 24/7." },
-  { icon: Zap, title: "Business Automation", desc: "Replace repetitive work with intelligent automation across your entire stack." },
-  { icon: Cloud, title: "Cloud & DevOps", desc: "Infrastructure that scales — AWS, Azure, GCP, Kubernetes and Terraform." },
-  { icon: BarChart3, title: "Data & Analytics", desc: "Turn data into insight with warehouses, dashboards, and predictive analytics." },
-  { icon: ShieldCheck, title: "AI Integration", desc: "Weave AI into your existing systems securely and reliably." },
-];
+  { icon: Brain, title: "AI Development", desc: "Custom ML models, LLM apps, generative AI, and agents built for real business outcomes.", href: "/services/ai-development" },
+  { icon: Code2, title: "Custom Software", desc: "Bespoke platforms and enterprise applications tailored to your workflows.", href: "/services/custom-software" },
+  { icon: Smartphone, title: "Web & Mobile Apps", desc: "Fast, scalable, delightful apps across iOS, Android and the web.", href: "/services/web-applications" },
+  { icon: Bot, title: "AI Chatbots & Agents", desc: "Conversational AI that handles support, sales, and complex workflows 24/7.", href: "/services/chatbots" },
+  { icon: Zap, title: "Business Automation", desc: "Replace repetitive work with intelligent automation across your entire stack.", href: "/services/automation" },
+  { icon: Cloud, title: "Cloud & DevOps", desc: "Infrastructure that scales — AWS, Azure, GCP, Kubernetes and Terraform.", href: "/services/cloud-devops" },
+  { icon: BarChart3, title: "Data & Analytics", desc: "Turn data into insight with warehouses, dashboards, and predictive analytics.", href: "/services/data-analytics" },
+  { icon: ShieldCheck, title: "AI Integration", desc: "Weave AI into your existing systems securely and reliably.", href: "/ai-solutions" },
+] as const;
+
 
 const stats = [
   { v: "50+", l: "Projects Delivered" },
