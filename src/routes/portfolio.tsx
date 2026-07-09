@@ -209,14 +209,14 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
   }, [inView, to]);
-  return <div ref={ref} className="font-display text-4xl font-bold text-gradient md:text-5xl">{val}{suffix}</div>;
+  return <div ref={ref} className="font-display text-2xl font-bold text-gradient sm:text-3xl md:text-5xl">{val}{suffix}</div>;
 }
 
 /* ------------------------------- Hero Viz ------------------------------ */
 
 function HeroShowcase() {
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[560px]">
+    <div className="relative mx-auto aspect-square w-full max-w-[340px] px-6 sm:max-w-[440px] md:max-w-[560px] md:px-0">
       <div className="absolute inset-0 rounded-full border border-primary/15 animate-[whyus-spin_50s_linear_infinite]" />
       <div className="absolute inset-[10%] rounded-full border border-primary/10" />
 
@@ -619,9 +619,9 @@ function CaseStudy({ c, index }: { c: Case; index: number }) {
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
               {c.results.map(r => (
-                <div key={r.l} className="glass rounded-2xl p-4 text-center">
+                <div key={r.l} className="glass rounded-2xl p-3 text-center sm:p-4">
                   <Counter to={r.v} suffix={r.suffix} />
                   <div className="mt-1 text-[10px] uppercase tracking-widest text-muted-foreground">{r.l}</div>
                 </div>

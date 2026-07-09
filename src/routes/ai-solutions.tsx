@@ -59,7 +59,7 @@ const HERO_INDUSTRIES = [
 function EcosystemVisual() {
   const R = 150;
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[520px]">
+    <div className="relative mx-auto aspect-square w-full max-w-[340px] sm:max-w-[420px] md:max-w-[520px]">
       <div className="absolute inset-0 rounded-full bg-primary/10 blur-3xl" />
       <svg viewBox="-200 -200 400 400" className="absolute inset-0 h-full w-full">
         <defs>
