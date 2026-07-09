@@ -1534,40 +1534,40 @@ function FinalCTA() {
         <ParticleNetwork density={40} />
       </div>
       <div className="absolute inset-0 ai-grid opacity-20" />
-      <div className="relative mx-auto max-w-6xl px-6 py-24">
+      <div className="relative mx-auto max-w-6xl px-6 py-20 md:py-24">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-center">
           <div>
-            <h2 className="font-display text-4xl font-bold md:text-5xl">
+            <h2 className="font-display text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
               Ready to Build Your Next{" "}
               <span className="text-gradient">Digital Experience?</span>
             </h2>
-            <p className="mt-4 max-w-2xl text-muted-foreground">
+            <p className="mt-4 max-w-2xl text-sm text-muted-foreground sm:text-base">
               Whether you need a business website, web application, e-commerce platform, landing
               page or secure portal, we can design and develop a solution tailored to your business
               goals.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:scale-105 hover:shadow-[0_0_40px_rgba(21,171,230,0.55)]"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-brand px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:scale-105 hover:shadow-[0_0_40px_rgba(21,171,230,0.55)]"
               >
                 Schedule Consultation <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 to="/contact"
-                className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition hover:scale-105 hover:bg-white/10"
+                className="glass inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition hover:scale-105 hover:bg-white/10"
               >
                 Request a Quote
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-full border border-primary/40 px-6 py-3 text-sm font-semibold text-primary transition hover:scale-105 hover:bg-primary/10"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/40 px-6 py-3 text-sm font-semibold text-primary transition hover:scale-105 hover:bg-primary/10"
               >
                 Start Your Project
               </Link>
             </div>
           </div>
-          <div className="flex items-center justify-center">
+          <div className="hidden items-center justify-center overflow-hidden lg:flex">
             <ResponsiveShowcase />
           </div>
         </div>
