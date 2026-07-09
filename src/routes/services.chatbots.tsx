@@ -1101,15 +1101,16 @@ function FinalCTAVisual() {
           {nodes.map((n, i) => {
             const angle = (i / nodes.length) * 360;
             const rad = (angle * Math.PI) / 180;
+            const r = 110;
+            const x = Math.cos(rad) * r;
+            const y = Math.sin(rad) * r;
             const Icon = n.icon;
             return (
               <div
                 key={n.label}
                 className="absolute flex flex-col items-center gap-1"
                 style={{
-                  ["--r-sm" as any]: "100px",
-                  ["--r-md" as any]: "130px",
-                  transform: `translate(calc(cos(${rad}rad) * var(--r, 100px)), calc(sin(${rad}rad) * var(--r, 100px)))`,
+                  transform: `translate(${x}px, ${y}px)`,
                   animation: `fade-up 0.6s ease-out both`,
                   animationDelay: `${i * 80}ms`,
                 }}
