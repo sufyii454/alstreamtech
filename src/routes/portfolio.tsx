@@ -216,7 +216,7 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
 
 function HeroShowcase() {
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[560px]">
+    <div className="relative mx-auto aspect-square w-full max-w-[340px] px-6 sm:max-w-[440px] md:max-w-[560px] md:px-0">
       <div className="absolute inset-0 rounded-full border border-primary/15 animate-[whyus-spin_50s_linear_infinite]" />
       <div className="absolute inset-[10%] rounded-full border border-primary/10" />
 
