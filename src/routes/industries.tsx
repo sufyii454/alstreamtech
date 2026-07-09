@@ -219,7 +219,7 @@ function IndustryEcosystem() {
   ];
   const R = 42; // percent radius
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[520px]">
+    <div className="relative mx-auto aspect-square w-full max-w-[340px] sm:max-w-[420px] md:max-w-[520px]">
       {/* rings */}
       <div className="absolute inset-0 rounded-full border border-white/10" />
       <div className="absolute inset-[10%] rounded-full border border-primary/20" />
