@@ -619,9 +619,9 @@ function CaseStudy({ c, index }: { c: Case; index: number }) {
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-2 sm:gap-3">
               {c.results.map(r => (
-                <div key={r.l} className="glass rounded-2xl p-4 text-center">
+                <div key={r.l} className="glass rounded-2xl p-3 text-center sm:p-4">
                   <Counter to={r.v} suffix={r.suffix} />
                   <div className="mt-1 text-[10px] uppercase tracking-widest text-muted-foreground">{r.l}</div>
                 </div>
