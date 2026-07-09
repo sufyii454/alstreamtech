@@ -1086,36 +1086,35 @@ function FinalCTAVisual() {
     { icon: Cloud, label: "Cloud" },
   ];
   return (
-    <div className="glass-strong relative h-[360px] overflow-hidden rounded-3xl">
+    <div className="glass-strong relative h-[300px] overflow-hidden rounded-3xl sm:h-[360px]">
       <div className="pointer-events-none absolute inset-0 ai-grid opacity-30" />
       <div className="pointer-events-none absolute inset-0 opacity-40">
         <ParticleNetwork density={30} />
       </div>
       <div className="relative flex h-full items-center justify-center">
-        <div className="relative flex h-48 w-48 items-center justify-center">
+        <div className="relative flex h-40 w-40 items-center justify-center sm:h-48 sm:w-48">
           <div className="absolute inset-0 rounded-full border border-primary/30 animate-[spin_18s_linear_infinite]" />
           <div className="absolute inset-6 rounded-full border border-primary/20 animate-[spin_26s_linear_infinite_reverse]" />
-          <div className="relative flex h-20 w-20 items-center justify-center rounded-full bg-gradient-brand shadow-glow animate-pulse-glow">
-            <Bot className="h-9 w-9 text-primary-foreground" />
+          <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-brand shadow-glow animate-pulse-glow sm:h-20 sm:w-20">
+            <Bot className="h-8 w-8 text-primary-foreground sm:h-9 sm:w-9" />
           </div>
           {nodes.map((n, i) => {
             const angle = (i / nodes.length) * 360;
             const rad = (angle * Math.PI) / 180;
-            const r = 130;
-            const x = Math.cos(rad) * r;
-            const y = Math.sin(rad) * r;
             const Icon = n.icon;
             return (
               <div
                 key={n.label}
                 className="absolute flex flex-col items-center gap-1"
                 style={{
-                  transform: `translate(${x}px, ${y}px)`,
+                  ["--r-sm" as any]: "100px",
+                  ["--r-md" as any]: "130px",
+                  transform: `translate(calc(cos(${rad}rad) * var(--r, 100px)), calc(sin(${rad}rad) * var(--r, 100px)))`,
                   animation: `fade-up 0.6s ease-out both`,
                   animationDelay: `${i * 80}ms`,
                 }}
               >
-                <div className="glass flex h-10 w-10 items-center justify-center rounded-xl">
+                <div className="glass flex h-9 w-9 items-center justify-center rounded-xl sm:h-10 sm:w-10">
                   <Icon className="h-4 w-4 text-primary" />
                 </div>
                 <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
