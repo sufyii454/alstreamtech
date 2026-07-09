@@ -209,7 +209,7 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
   }, [inView, to]);
-  return <div ref={ref} className="font-display text-4xl font-bold text-gradient md:text-5xl">{val}{suffix}</div>;
+  return <div ref={ref} className="font-display text-2xl font-bold text-gradient sm:text-3xl md:text-5xl">{val}{suffix}</div>;
 }
 
 /* ------------------------------- Hero Viz ------------------------------ */
