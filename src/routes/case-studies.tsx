@@ -944,14 +944,16 @@ function CaseStudyDrawer({ project: p, onClose }: { project: Project; onClose: (
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
+    document.body.classList.add("modal-open");
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
+      document.body.classList.remove("modal-open");
     };
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-[100] flex justify-end">
+    <div className="fixed inset-0 z-[1100] flex justify-end">
       <div className="absolute inset-0 bg-background/70 backdrop-blur-md animate-fade-up" onClick={onClose} />
       <div className="relative h-full w-full max-w-3xl overflow-y-auto border-l border-white/10 bg-background shadow-elegant animate-fade-up">
         <div className={`relative overflow-hidden bg-gradient-to-br ${p.gradient} p-8`}>
