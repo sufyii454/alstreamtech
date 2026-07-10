@@ -191,7 +191,7 @@ function TechEcosystem() {
   const nodes = ["Artificial Intelligence", "Backend", "Frontend", "Mobile", "Cloud", "DevOps", "Databases"];
   const R = 42;
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[340px] sm:max-w-[420px] md:max-w-[520px]">
+    <div className="relative mx-auto aspect-square w-full max-w-[260px] px-2 sm:max-w-[420px] sm:px-0 md:max-w-[520px]">
       <div className="absolute inset-0 rounded-full border border-white/10" />
       <div className="absolute inset-[10%] rounded-full border border-primary/20" />
       <div className="absolute inset-[24%] rounded-full border border-white/5" />
@@ -229,7 +229,7 @@ function TechEcosystem() {
             className="absolute -translate-x-1/2 -translate-y-1/2"
             style={{ left: `${x}%`, top: `${y}%`, animation: `floatY 6s ease-in-out ${i * 0.3}s infinite` }}
           >
-            <div className="glass flex items-center gap-1.5 whitespace-nowrap rounded-full border border-primary/20 px-3 py-1.5 text-[11px] font-medium shadow-glow backdrop-blur-xl">
+            <div className="glass flex items-center gap-1 whitespace-nowrap rounded-full border border-primary/20 px-2 py-1 text-[9px] font-medium shadow-glow backdrop-blur-xl sm:gap-1.5 sm:px-3 sm:py-1.5 sm:text-[11px]">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
               {n}
             </div>
