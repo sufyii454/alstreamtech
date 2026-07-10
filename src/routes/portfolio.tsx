@@ -638,19 +638,19 @@ function CaseStudy({ c, index }: { c: Case; index: number }) {
         {/* Related */}
         {related.length > 0 && (
           <div className="relative mt-10 border-t border-white/10 pt-8">
-            <div className="mb-4 text-xs uppercase tracking-widest text-primary/80">You May Also Like</div>
-            <div className="grid gap-4 md:grid-cols-3">
+            <div className="mb-4 text-[11px] sm:text-xs uppercase tracking-widest text-primary/80">You May Also Like</div>
+            <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 md:grid-cols-3">
               {related.map(r => {
                 const RIcon = r.icon;
                 return (
                   <a key={r.id} href={`#${r.id}`}
-                    className="group flex items-center gap-3 rounded-2xl glass p-4 transition hover:-translate-y-1 hover:border-primary/50 hover:shadow-glow">
-                    <div className={`grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br ${r.accent}`}>
-                      <RIcon className="h-5 w-5 text-primary-foreground" />
+                    className="group flex items-center gap-3 rounded-2xl glass p-3 sm:p-4 transition hover:-translate-y-1 hover:border-primary/50 hover:shadow-glow">
+                    <div className={`grid h-10 w-10 sm:h-11 sm:w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br ${r.accent}`}>
+                      <RIcon className="h-4 w-4 sm:h-5 sm:w-5 text-primary-foreground" />
                     </div>
-                    <div className="min-w-0">
-                      <div className="truncate text-sm font-semibold">{r.title}</div>
-                      <div className="truncate text-[11px] uppercase tracking-widest text-muted-foreground">{r.industry} · {r.service}</div>
+                    <div className="min-w-0 flex-1">
+                      <div className="text-sm font-semibold leading-tight break-words">{r.title}</div>
+                      <div className="mt-0.5 text-[10px] sm:text-[11px] uppercase tracking-widest text-muted-foreground break-words">{r.industry} · {r.service}</div>
                     </div>
                     <ArrowUpRight className="ml-auto h-4 w-4 shrink-0 text-primary transition group-hover:translate-x-1 group-hover:-translate-y-1" />
                   </a>
@@ -658,6 +658,7 @@ function CaseStudy({ c, index }: { c: Case; index: number }) {
               })}
             </div>
           </div>
+
         )}
       </div>
     </article>
