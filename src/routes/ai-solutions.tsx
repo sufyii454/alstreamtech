@@ -97,9 +97,10 @@ function EcosystemVisual() {
         const y = 50 + (Math.sin(a) * R * 100) / 400;
         return (
           <div key={label} className="absolute -translate-x-1/2 -translate-y-1/2" style={{ left: `${x}%`, top: `${y}%`, animation: `float 4s ease-in-out ${i * 0.25}s infinite` }}>
-            <div className="glass-strong group flex flex-col items-center gap-1 rounded-2xl px-3 py-2 shadow-glow transition hover:scale-110">
-              <Icon className="h-5 w-5 text-primary" />
-              <span className="text-[10px] font-medium uppercase tracking-wider">{label}</span>
+            <div className="glass-strong group flex flex-col items-center gap-1 rounded-2xl px-2 py-1.5 shadow-glow transition hover:scale-110 sm:px-3 sm:py-2">
+              <Icon className="h-4 w-4 text-primary sm:h-5 sm:w-5" />
+              <span className="text-[9px] font-medium uppercase tracking-wider sm:text-[10px]">{label}</span>
+
             </div>
           </div>
         );
