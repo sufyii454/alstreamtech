@@ -1033,7 +1033,7 @@ function FinalCTA() {
         <div className="pointer-events-none absolute inset-0 ai-grid opacity-20" />
         <div className="pointer-events-none absolute -right-24 -top-24 h-80 w-80 rounded-full bg-primary/20 blur-3xl" />
         <div className="pointer-events-none absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-primary-glow/20 blur-3xl" />
-        <div className="relative grid gap-10 lg:grid-cols-2 lg:items-center">
+        <div className="relative">
           <div>
             <div className="glass inline-flex rounded-full px-4 py-1.5 text-xs uppercase tracking-widest text-primary">
               Ready to Launch
@@ -1069,7 +1069,6 @@ function FinalCTA() {
               </Link>
             </div>
           </div>
-          <FinalCTAVisual />
         </div>
       </div>
     </section>
